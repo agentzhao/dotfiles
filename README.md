@@ -22,4 +22,6 @@ tar -xzvf Hack-v3.003-ttf.tar.gz
 ```
 
 # Brew
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```

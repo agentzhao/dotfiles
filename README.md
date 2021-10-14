@@ -1,6 +1,6 @@
 # dotfiles
 
-#nvim
+# nvim
 ```
 curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o nvim.
 chmod u+x nvim.appimage

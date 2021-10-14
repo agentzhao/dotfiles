@@ -31,3 +31,9 @@ tar -xzvf Hack-v3.003-ttf.tar.gz
 source ~/.bash_aliases
 source ~/.bash_functions
 ```
+
+# Powershell
+```
+copy to $profile
+C:\Users\zhao\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+```

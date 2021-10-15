@@ -1,18 +1,19 @@
-sudo su
-sudo apt-get 
-
 cd ~
-sudo apt install curl git
+apt install curl git
 
 curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o nvim
 chmod u+x nvim
 
-sudo git clone https://github.com/Agentzhao/dotfiles.git temp
-sudo mv ~/temp/.zhao_profile ~/
-sudo mv -v ~/temp/* ~/.config
-sudo rm -rf temp
-sudo chown -R $USER .config
+git clone https://github.com/Agentzhao/dotfiles.git temp
+mv ~/temp/.bash_profile ~/
+mv -v ~/temp/* ~/.config
+rm -rf temp
+chown -R $USER .config
 
-export PATH=$PATH:$(pwd):$(pwd)/.config/shell
+echo "source ~/.bash_profile" >> .bashrc
 
-sudo apt-get -u upgrade
+
+curl -L -O https://raw.githubusercontent.com/source-foundry/hack-linux-installer/master/hack-linux-installer.sh
+chmod +x hack-linux-installer.sh
+sudo mkdir ~/.local/share/fonts/
+./hack-linux-installer.sh latest

@@ -2,7 +2,7 @@
 
 # nvim
 ```
-curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o nvim.
+curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o nvim.appimage
 chmod u+x nvim.appimage
     
 gh repo clone Agentzhao/dotfiles/nvim

@@ -1,4 +1,7 @@
 # dotfiles
+```
+source ~/.bash_profile
+```
 
 # nvim
 ```

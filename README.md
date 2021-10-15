@@ -2,6 +2,7 @@
 ```
 source ~/.bash_profile
 chmod +x hack-linux-installer.sh
+sudo mkdir ~/.local/share/fonts/
 ./hackfont.sh latest
 ```
 

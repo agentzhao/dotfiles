@@ -22,5 +22,5 @@ sudo mkdir ~/.local/share/fonts/
 ./hack-linux-installer.sh latest
 rm ./hack-linux-installer.sh
 
-rm /.config/install.sh
+rm .config/install.sh
 rm ./install.sh

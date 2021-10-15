@@ -1,12 +1,8 @@
 # dotfiles
 ```
-source ~/.bash_profile
-
-
-curl -L -O https://raw.githubusercontent.com/source-foundry/hack-linux-installer/master/hack-linux-installer.sh
-chmod +x hack-linux-installer.sh
-sudo mkdir ~/.local/share/fonts/
-./hack-linux-installer.sh latest
+curl https://raw.githubusercontent.com/Agentzhao/dotfiles/main/install.sh -o install.sh
+chmod +x install.sh
+./install.sh
 ```
 
 # nvim

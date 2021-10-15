@@ -1,5 +1,5 @@
 cd ~
-sudo apt install curl git
+sudo apt install git
 
 # nvim
 curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o nvim

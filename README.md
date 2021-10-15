@@ -1,6 +1,8 @@
 # dotfiles
 ```
 source ~/.bash_profile
+chmod +x hack-linux-installer.sh
+./hackfont.sh latest
 ```
 
 # nvim

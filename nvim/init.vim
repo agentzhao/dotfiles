@@ -19,7 +19,7 @@ set encoding=UTF-8
 filetype plugin indent on
 set clipboard+=unnamedplus " y and p to clipboard
 set backspace=indent,eol,start	
-let NERDTreeChDirMode = 2
+
 
 " let g:deoplete#enable_at_startup = 1
 
@@ -104,6 +104,9 @@ let g:lightline = {
 xnoremap i <Esc>i
 
 " Shift C to change root, r to refresh
+let NERDTreeChDirMode = 2
+let NERDTreeShowHidden=1
+
 nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <C-t> :call NERDTreeToggleAndRefresh()<CR>
 function NERDTreeToggleAndRefresh()

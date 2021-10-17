@@ -1,7 +1,7 @@
 cd ~
 
 # packages
-sudo apt-get update && apt-get install git zsh -y
+sudo apt-get update && apt-get install git zsh xclip -y
 
 # node js
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -

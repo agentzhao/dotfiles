@@ -1,8 +1,10 @@
 # dotfiles
 ```
+cd ~
 curl https://raw.githubusercontent.com/Agentzhao/dotfiles/main/install.sh -o install.sh
 chmod +x install.sh
 ./install.sh
+rm install.sh
 ```
 # Brew
 ```

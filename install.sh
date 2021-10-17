@@ -21,6 +21,7 @@ chmod +x hack-linux-installer.sh
 sudo mkdir ~/.local/share/fonts/
 ./hack-linux-installer.sh latest
 rm ./hack-linux-installer.sh
+fc-cache -f -v
 
 rm .config/install.sh
 rm ./install.sh

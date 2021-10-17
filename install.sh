@@ -1,5 +1,11 @@
 cd ~
-sudo apt-get update && apt-get install git zsh nodejs -y
+
+# packages
+sudo apt-get update && apt-get install git zsh -y
+
+# node js
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 # nvim
 curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o nvim

@@ -35,5 +35,5 @@ echo "source ~/.config/.bash_profile" >> .bashrc
 echo "source ~/.config/.bash_profile" >> .zshrc
 
 # clean up
-rm .config/install.sh
-rm ./install.sh
+rm .config/basic_setup.sh
+rm ./basic_setup.sh

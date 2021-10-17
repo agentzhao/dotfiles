@@ -1,10 +1,10 @@
 # dotfiles
 ```
 cd ~
-curl https://raw.githubusercontent.com/Agentzhao/dotfiles/main/install.sh -o install.sh
-chmod +x install.sh
-./install.sh
-rm install.sh
+curl https://raw.githubusercontent.com/Agentzhao/dotfiles/main/basic_setup.sh -o basic_setup.sh
+chmod +x basic_setup.sh
+./basic_setup.sh
+rm basic_setup.sh
 ```
 # Brew
 ```

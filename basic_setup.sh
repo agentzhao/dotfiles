@@ -31,7 +31,7 @@ git clone https://github.com/Agentzhao/dotfiles.git temp
 mv -v ~/temp/* ~/.config
 rm -rf temp
 chown -R $USER .config
-echo "source ~/.config/.bash_profile" >> .bashrc
-echo "source ~/.config/.bash_profile" >> .zshrc
+mv ~/.config/.bash_profile ~/
+echo "source ~/.bash_profile" >> .zshrc
 
 # clean up

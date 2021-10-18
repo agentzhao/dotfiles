@@ -18,3 +18,4 @@ git clone git://github.com/inishchith/autoenv.git ~/.autoenv
 # bat
 curl -L https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb -o bat_0.18.3_amd64.deb
 sudo dpkg -i bat_0.18.3_amd64.deb 
+sudo rm bat_0.18.3_amd64.deb 

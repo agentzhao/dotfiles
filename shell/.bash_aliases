@@ -25,7 +25,7 @@ alias cd.....="cd ../../../.."
 alias cd......="cd ../../../../.."
 
 # My stuff
-alias NTU='cd /mnt/c/Users/zhao/Desktop/NTU'
+alias ntu='cd /mnt/c/Users/zhao/Desktop/ntu'
 alias projects='cd /mnt/c/Users/zhao/projects'
 
 alias chksum='md5sum --ignore-missing --quiet -c' # check md5 hash

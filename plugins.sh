@@ -13,7 +13,7 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 # auto env
 git clone git://github.com/inishchith/autoenv.git ~/.autoenv
-echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
 
 # bat
-sudo dpkg -i bat_0.18.3_amd64.deb  # adapt version number and architecture
+curl -L https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb -o bat_0.18.3_amd64.deb
+sudo dpkg -i bat_0.18.3_amd64.deb 

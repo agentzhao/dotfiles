@@ -25,6 +25,7 @@ fc-cache -f -v
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+chsh -s $(which zsh)
 
 # config files
 git clone https://github.com/Agentzhao/dotfiles.git temp

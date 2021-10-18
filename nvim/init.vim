@@ -4,7 +4,6 @@ else
 	source $HOME/.config/nvim/plug-config/coc.vim
 endif
 
-
 set hidden
 set number
 set autoindent
@@ -18,10 +17,7 @@ autocmd BufEnter * silent! lcd %:p:h
 set encoding=UTF-8
 filetype plugin indent on
 set clipboard+=unnamedplus " y and p to clipboard
-set backspace=indent,eol,start	
-
-
-" let g:deoplete#enable_at_startup = 1
+set backspace=indent,eol,start
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -32,11 +28,11 @@ endif
 " Coc tailwind init :CocInstall @yaegassy/coc-volar @yaegassy/coc-nginx
 let g:coc_global_extensions = [
 			\ 'coc-clangd',
-                        \ 'coc-css',
-                        \ 'coc-html',
-                        \ 'coc-json',
+      \ 'coc-css',
+      \ 'coc-html',
+      \ 'coc-json',
 			\ 'coc-phpls',
-                        \ 'coc-prettier',
+      \ 'coc-prettier',
 			\ 'coc-powershell',
 			\ 'coc-pyright',
 			\ 'coc-sh',
@@ -44,12 +40,12 @@ let g:coc_global_extensions = [
 			\ 'coc-sql',
 			\ 'coc-svg',
 			\ 'coc-tailwindcss',
-                        \ 'coc-tsserver',
+      \ 'coc-tsserver',
 			\ 'coc-vimlsp',
 			\ 'coc-xml',
 			\ 'coc-yaml',
 			\ 'coc-yank',
-                        \ ]
+      \ ]
 
 if has("win32")
 	call plug#begin('~/AppData/Local/nvim/plugged')
@@ -57,7 +53,8 @@ else
 	call plug#begin('~/.config/nvim/plugged')
 endif
 
-Plug 'EdenEast/nightfox.nvim'        " Theme :colorscheme nightfox
+" Plug 'EdenEast/nightfox.nvim'        " Theme :colorscheme nightfox
+Plug 'navarasu/onedark.nvim'         " Onedark theem
 Plug 'preservim/nerdtree'            " File system explorer :NERDTree
 Plug 'vim-syntastic/syntastic'       " Syntax checking
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto Completion
@@ -85,11 +82,12 @@ Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
-colorscheme nightfox
+colorscheme onedark
+let g:onedark_style = 'darker'
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'nightfox',
+      \ 'colorscheme': 'deus',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'method' ] ]
@@ -101,20 +99,10 @@ let g:lightline = {
       \ }
 
 " Shortcuts 
+inoremap <M-BS> <C-w>
+inoremap <M-d> <cmd>norm! dw<CR>
+
 xnoremap i <Esc>i
-
-" Shift C to change root, r to refresh
-let NERDTreeChDirMode = 2
-let NERDTreeShowHidden=1
-
-nnoremap <C-f> :NERDTreeFind<CR>
-nnoremap <C-t> :call NERDTreeToggleAndRefresh()<CR>
-function NERDTreeToggleAndRefresh()
-  :NERDTreeToggle
-  if g:NERDTree.IsOpen()
-    :NERDTreeRefreshRoot
-  endif
-endfunction
 
 " nnoremap <C-f> :call CocActionAsync('jumpDefinition')<CR> " Jump to definition
 nnoremap <C-c> <Esc>
@@ -199,10 +187,24 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 EOF
 
+
+
 " NERDTree-------------------------
+" Shift C to change root, r to refresh
+let NERDTreeShowHidden = 1
 let NERDTreeChDirMode = 2
+
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+
+nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-t> :call NERDTreeToggleAndRefresh()<CR>
+function NERDTreeToggleAndRefresh()
+  :NERDTreeToggle
+  if g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
+endfunction
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
@@ -210,5 +212,3 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-

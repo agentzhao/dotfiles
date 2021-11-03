@@ -1,3 +1,4 @@
+cd ~
 sudo apt update
 
 # the fuck
@@ -19,3 +20,10 @@ git clone git://github.com/inishchith/autoenv.git ~/.autoenv
 curl -L https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb -o bat_0.18.3_amd64.deb
 sudo dpkg -i bat_0.18.3_amd64.deb 
 sudo rm bat_0.18.3_amd64.deb 
+
+# ripgrep
+RIPGREP_VERSION=$(curl -s "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | grep -Po '"tag_name": "\K[0-9.]+')
+curl -Lo ripgrep.deb "https://github.com/BurntSushi/ripgrep/releases/latest/download/ripgrep_${RIPGREP_VERSION}_amd64.deb"
+sudo apt install -y ./ripgrep.deb
+rm -rf ripgrep.deb
+rg --version

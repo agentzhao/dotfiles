@@ -12,12 +12,12 @@ set softtabstop=2
 set shiftwidth=2
 set smarttab
 set mouse=a
-set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 set encoding=UTF-8
 filetype plugin indent on
 set clipboard+=unnamedplus " y and p to clipboard
 set backspace=indent,eol,start
+" set nohlsearch " disable search highlighting :noh to claer
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -53,7 +53,6 @@ else
 	call plug#begin('~/.config/nvim/plugged')
 endif
 
-" Plug 'EdenEast/nightfox.nvim'        " Theme :colorscheme nightfox
 Plug 'navarasu/onedark.nvim'         " Onedark theem
 Plug 'preservim/nerdtree'            " File system explorer :NERDTree
 Plug 'vim-syntastic/syntastic'       " Syntax checking
@@ -63,7 +62,7 @@ Plug 'tpope/vim-commentary'          " Commenting gcc & gc
 Plug 'itchyny/lightline.vim'         " Status bar
 Plug 'ap/vim-css-color'              " CSS Color preview
 Plug 'ryanoasis/vim-devicons'        " Dev icons
-Plug 'beauwilliams/focus.nvim'       " Focused splits
+" Plug 'beauwilliams/focus.nvim'       " Focused splits
 Plug 'lewis6991/gitsigns.nvim'       " Git diff
 Plug 'tpope/vim-fugitive'            " Git plugin
 Plug 'danilamihailov/beacon.nvim'    " See cursor jump
@@ -77,6 +76,8 @@ Plug 'windwp/nvim-autopairs'         " Auto-pair
 " Plug 'Shatur/neovim-session-manager' " Session Manager
 Plug 'goolord/alpha-nvim'            " Startup screen
 Plug 'sindrets/winshift.nvim'        " Moving windows
+Plug 'simonefranza/nvim-conv'        " Numeric conversion tool
+Plug 'github/copilot.vim'            " Github copilot :Copilot setup
 
 Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
@@ -99,6 +100,8 @@ let g:lightline = {
       \ }
 
 " Shortcuts 
+command CDC cd %:p:h
+
 inoremap <M-BS> <C-w>
 inoremap <M-d> <cmd>norm! dw<CR>
 
@@ -117,7 +120,7 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-w> :tabclose<CR>
 
-nnoremap <leader>pp <cmd>Telescope projects<CR>
+nnoremap <leader>pp <cmd>Telescope projects<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -154,12 +157,8 @@ require('telescope').setup{
     },
   },
 }
-require("focus").setup({excluded_filetypes = {"toggleterm"}})
-vim.api.nvim_set_keymap('n', '<c-l>', ':FocusSplitNicely<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>h', ':FocusSplitLeft<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>j', ':FocusSplitDown<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>k', ':FocusSplitUp<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>l', ':FocusSplitRight<CR>', { silent = true })
+
+-- require("focus").setup({excluded_filetypes = {"toggleterm"}})
 
 vim.opt.list = true
 -- vim.opt.listchars:append("eol:↴")
@@ -192,7 +191,7 @@ EOF
 " NERDTree-------------------------
 " Shift C to change root, r to refresh
 let NERDTreeShowHidden = 1
-let NERDTreeChDirMode = 2
+let NERDTreeChDirMode = 3
 
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -201,7 +200,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <C-t> :call NERDTreeToggleAndRefresh()<CR>
 function NERDTreeToggleAndRefresh()
   :NERDTreeToggle
-  if g:NERDTree.IsOpen()
+	if g:NERDTree.IsOpen()		
     :NERDTreeRefreshRoot
   endif
 endfunction

@@ -5,6 +5,7 @@ curl https://raw.githubusercontent.com/Agentzhao/dotfiles/main/basic_setup.sh -o
 chmod +x basic_setup.sh
 ./basic_setup.sh
 rm basic_setup.sh
+chsh -s $(which zsh)
 ```
 # Brew
 ```

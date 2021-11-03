@@ -6,6 +6,7 @@ alias grep='grep -sI --color=auto' # Colorful (auto) 'grep' output.
 alias lsa='ls -A' # show all files.
 alias lsl='ls -nph' # lots of information.
 alias lsla='ls -Anph' # but also show all files.
+alias exp='explorer.exe .'
 
 # files
 alias rm='rm -v -i'

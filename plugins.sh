@@ -27,3 +27,7 @@ curl -Lo ripgrep.deb "https://github.com/BurntSushi/ripgrep/releases/latest/down
 sudo apt install -y ./ripgrep.deb
 rm -rf ripgrep.deb
 rg --version
+
+# fd
+sudo apt install fd-find
+ln -s $(which fdfind)

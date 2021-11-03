@@ -24,6 +24,9 @@ alias cd....="cd ../../.."
 alias cd.....="cd ../../../.."
 alias cd......="cd ../../../../.."
 
+# Plugins
+alias fd=fdfind
+
 # My stuff
 alias ntu='cd /mnt/c/Users/zhao/Desktop/ntu'
 alias projects='cd /mnt/c/Users/zhao/projects'

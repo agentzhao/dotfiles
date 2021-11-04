@@ -9,7 +9,7 @@ sudo apt-get install -y nodejs
 
 # nvim
 sudo curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o /usr/local/bin/nvim
-sudo chmod u+x /usr/local/bin/nvim
+sudo chmod +x /usr/local/bin/nvim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 

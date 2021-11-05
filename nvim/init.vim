@@ -78,6 +78,7 @@ Plug 'goolord/alpha-nvim'            " Startup screen
 Plug 'sindrets/winshift.nvim'        " Moving windows
 Plug 'simonefranza/nvim-conv'        " Numeric conversion tool
 Plug 'github/copilot.vim'            " Github copilot :Copilot setup
+Plug 'honza/vim-snippets'            " Snippets
 
 Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
@@ -99,7 +100,7 @@ let g:lightline = {
       \ },
       \ }
 
-" Shortcuts 
+" Key Bindings ---------------------------------------------------------------------------
 command CDC cd %:p:h
 
 inoremap <M-BS> <C-w>
@@ -126,6 +127,8 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>>
 
+" lua config
+" ------------------------------------------------------------------------
 lua << EOF
 require('alpha').setup(require'alpha.themes.dashboard'.opts)
 require("winshift").setup({
@@ -188,7 +191,7 @@ EOF
 
 
 
-" NERDTree-------------------------
+" NERDTree------------------------------------------------------------
 " Shift C to change root, r to refresh
 let NERDTreeShowHidden = 1
 let NERDTreeChDirMode = 3
@@ -211,3 +214,36 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+
+" coc-snippets------------------------------------------------------------
+"" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'

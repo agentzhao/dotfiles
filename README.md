@@ -1,11 +1,11 @@
 # dotfiles
 ```
 cd ~
-curl https://raw.githubusercontent.com/Agentzhao/dotfiles/main/basic_setup.sh -o basic_setup.sh
+curl https://raw.githubusercontent.com/agentzhao/dotfiles/main/scripts/basic_setup.sh -o basic_setup.sh
 chmod +x basic_setup.sh
 ./basic_setup.sh
-rm basic_setup.sh
 chsh -s $(which zsh)
+rm basic_setup.sh
 ```
 # Brew
 ```

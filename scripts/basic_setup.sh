@@ -8,7 +8,7 @@ curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # nvim
-sudo curl -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage -o /usr/local/bin/nvim
+sudo curl -L https://github.com/neovim/neovim/releases/download/v0.6.0/nvim.appimage -o /usr/local/bin/nvim
 sudo chmod +x /usr/local/bin/nvim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'

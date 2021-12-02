@@ -1,3 +1,4 @@
+
 if has("win32")
 	source $HOME/AppData/Local/nvim/plug-config/coc.vim
 else
@@ -12,7 +13,7 @@ set softtabstop=2
 set shiftwidth=2
 set smarttab
 set mouse=a
-autocmd BufEnter * silent! lcd %:p:h
+set autochdir
 set encoding=UTF-8
 filetype plugin indent on
 set clipboard+=unnamedplus " y and p to clipboard
@@ -55,14 +56,14 @@ endif
 
 Plug 'navarasu/onedark.nvim'         " Onedark theem
 Plug 'preservim/nerdtree'            " File system explorer :NERDTree
-Plug 'vim-syntastic/syntastic'       " Syntax checking
+Plug 'numToStr/Comment.nvim'         " Commenting"
+Plug 'rcarriga/nvim-notify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto Completion
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Auto completion
-Plug 'tpope/vim-commentary'          " Commenting gcc & gc
 Plug 'itchyny/lightline.vim'         " Status bar
 Plug 'ap/vim-css-color'              " CSS Color preview
 Plug 'ryanoasis/vim-devicons'        " Dev icons
-" Plug 'beauwilliams/focus.nvim'       " Focused splits
+Plug 'beauwilliams/focus.nvim'       " Focused splits
 Plug 'lewis6991/gitsigns.nvim'       " Git diff
 Plug 'tpope/vim-fugitive'            " Git plugin
 Plug 'danilamihailov/beacon.nvim'    " See cursor jump
@@ -74,16 +75,30 @@ Plug 'lukas-reineke/indent-blankline.nvim' " Indentation guides
 Plug 'akinsho/toggleterm.nvim'       " Terminals
 Plug 'windwp/nvim-autopairs'         " Auto-pair
 " Plug 'Shatur/neovim-session-manager' " Session Manager
-Plug 'goolord/alpha-nvim'            " Startup screen
+Plug 'glepnir/dashboard-nvim'        " Dashboard
 Plug 'sindrets/winshift.nvim'        " Moving windows
 Plug 'simonefranza/nvim-conv'        " Numeric conversion tool
 Plug 'github/copilot.vim'            " Github copilot :Copilot setup
 Plug 'honza/vim-snippets'            " Snippets
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Treesitter
 
 Plug 'yaegassy/coc-nginx', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
+let g:dashboard_custom_header = [
+      \'   ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣴⣶⣶⣶⣶⣶⠶⣶⣤⣤⣀⠀⠀⠀⠀⠀⠀ ',
+      \' ⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⠁⠀⢀⠈⢿⢀⣀⠀⠹⣿⣿⣿⣦⣄⠀⠀⠀ ',
+      \' ⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⠿⠀⠀⣟⡇⢘⣾⣽⠀⠀⡏⠉⠙⢛⣿⣷⡖⠀ ',
+      \' ⠀⠀⠀⠀⠀⣾⣿⣿⡿⠿⠷⠶⠤⠙⠒⠀⠒⢻⣿⣿⡷⠋⠀⠴⠞⠋⠁⢙⣿⣄ ',
+      \' ⠀⠀⠀⠀⢸⣿⣿⣯⣤⣤⣤⣤⣤⡄⠀⠀⠀⠀⠉⢹⡄⠀⠀⠀⠛⠛⠋⠉⠹⡇ ',
+      \' ⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣼⣇⣀⣀⣀⣛⣛⣒⣲⢾⡷ ',
+      \' ⢀⠤⠒⠒⢼⣿⣿⠶⠞⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⣼⠃ ',
+      \' ⢮⠀⠀⠀⠀⣿⣿⣆⠀⠀⠻⣿⡿⠛⠉⠉⠁⠀⠉⠉⠛⠿⣿⣿⠟⠁⠀⣼⠃⠀ ',
+      \' ⠈⠓⠶⣶⣾⣿⣿⣿⣧⡀⠀⠈⠒⢤⣀⣀⡀⠀⠀⣀⣀⡠⠚⠁⠀⢀⡼⠃⠀⠀ ',
+      \' ⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁    ',
+			\ ]
+let g:dashboard_default_executive = 'telescope'
 colorscheme onedark
 let g:onedark_style = 'darker'
 
@@ -127,10 +142,22 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>>
 
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
 " lua config
 " ------------------------------------------------------------------------
 lua << EOF
-require('alpha').setup(require'alpha.themes.dashboard'.opts)
+require('Comment').setup()
 require("winshift").setup({
   highlight_moving_win = true,  -- Highlight the window being moved
   focused_hl_group = "Visual",  -- The highlight group used for the moving window
@@ -161,20 +188,24 @@ require('telescope').setup{
   },
 }
 
--- require("focus").setup({excluded_filetypes = {"toggleterm"}})
 
+-- indent-blankline
 vim.opt.list = true
--- vim.opt.listchars:append("eol:↴")
 
 require("indent_blankline").setup {
-    show_end_of_line = true,
+	buftype_exclude = { "terminal" },
+	filetype_exclude = { "dashboard"},
+	space_char_blankline = " ",
+	show_current_context = true,
+	show_current_context_start = true,
 }
 
 require("toggleterm").setup{
-  size = 20,
+  size = 10,
   open_mapping = [[<C-\>]],
   direction = 'horizontal',
 }
+require("focus").setup({excluded_filetypes = {"toggleterm"}})
 
 function _G.set_terminal_keymaps()
   local opts = {noremap = true}
@@ -187,6 +218,22 @@ function _G.set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+-- TreeSitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
 EOF
 
 

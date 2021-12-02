@@ -28,9 +28,35 @@ vim.o.clipboard = "unnamedplus"
 vim.cmd("set backspace=indent,eol,start")
 -- :noh to clear search highlighting
 
+vim.g.onedark_style = 'darker'
 
 vim.opt.list = true
 --vim.opt.listchars:append("eol:↴")
 
+-- coc nvim
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.updatetime = 500
 
-vim.g.onedark_style = 'darker'
+vim.cmd([[
+let g:coc_global_extensions = [
+			\ 'coc-clangd',
+      \ 'coc-css',
+      \ 'coc-html',
+      \ 'coc-json',
+			\ 'coc-phpls',
+      \ 'coc-prettier',
+			\ 'coc-powershell',
+			\ 'coc-pyright',
+			\ 'coc-sh',
+			\ 'coc-snippets',
+			\ 'coc-sql',
+			\ 'coc-svg',
+			\ 'coc-tailwindcss',
+      \ 'coc-tsserver',
+			\ 'coc-vimlsp',
+			\ 'coc-xml',
+			\ 'coc-yaml',
+			\ 'coc-yank',
+      \ ]
+]])

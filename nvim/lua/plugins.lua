@@ -14,10 +14,33 @@ vim.cmd([[
 
 vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(function()
+require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- Environment
   use 'danilamihailov/beacon.nvim'
+
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require('auto-session').setup {
+        log_level = 'info',
+        auto_session_suppress_dirs = {'~/', '~/Projects'}
+      }
+    end
+  }
+  use {
+    'rmagatti/session-lens',
+    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    config = function()
+      require('session-lens').setup({
+        previewer = true,
+        --path_display = true, -- {'shorten'}
+      })
+      require("telescope").load_extension("session-lens")
+    end
+  }
+
+
   use {
     'goolord/alpha-nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
@@ -50,7 +73,8 @@ require('packer').startup(function()
 			require('lualine').setup({
 				options = {
 					theme = 'onedark'
-				}
+				},
+        sections = {lualine_c = {require('auto-session-library').current_session_name}}
 			})
 		end
 	}
@@ -62,9 +86,9 @@ require('packer').startup(function()
   }
   	-- Tools
 	use 'sindrets/winshift.nvim'
-	use 'simonefranza/nvim-conv'
+	use 'simonefranza/nvim-conv' -- Converts things
 	use 'ap/vim-css-color'  -- Color highlighter
-	use 'liuchengxu/vista.vim'  -- Color highlighter
+	use 'liuchengxu/vista.vim'
 	use {
     "akinsho/toggleterm.nvim",
     config = function()
@@ -94,6 +118,14 @@ require('packer').startup(function()
   }
 
   use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require'plugins.nvim-tree' end
+  }
+
+  use {
     "windwp/nvim-autopairs",
     config = function()
       require('nvim-autopairs').setup()
@@ -113,10 +145,10 @@ require('packer').startup(function()
         defaults = {
           mappings = {
             i = {
-              ["<C-x>"] = select_horizontal,
+              ["<C-x>"] = 'select_horizontal',
             },
             n = {
-              ["<C-x>"] = select_horizontal,
+              ["<C-x>"] = 'select_horizontal',
             },
           },
         },

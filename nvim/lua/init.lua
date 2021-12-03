@@ -1,4 +1,4 @@
--- https://github.com/nanotee/nvim-lua-guide
+-- https://ithub.com/nanotee/nvim-lua-guide
 --vim.o: behaves like :set
 --vim.go: behaves like :setglobal
 --vim.bo: behaves like :setlocal for buffer-local options
@@ -11,6 +11,7 @@ vim.bo.softtabstop = 2
 
 vim.opt.encoding = 'UTF-8'
 vim.opt.shortmess:append {c = true}
+vim.opt.inccommand = 'nosplit'
 
 -- Number on side bar
 vim.wo.number = true
@@ -32,6 +33,9 @@ vim.g.onedark_style = 'darker'
 
 vim.opt.list = true
 --vim.opt.listchars:append("eol:↴")
+
+-- auto-session
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 -- coc nvim
 vim.o.backup = false

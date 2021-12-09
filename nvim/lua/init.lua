@@ -5,9 +5,17 @@
 ----vim.wo: behaves like :setlocal for window-local options
 
 -- Tabs
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.softtabstop = 2
+vim.cmd [[
+set autoindent
+set expandtab
+set shiftwidth=2
+set smartindent
+set softtabstop=2
+set tabstop=2
+]]
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 
 vim.opt.encoding = 'UTF-8'
 vim.opt.shortmess:append {c = true}
@@ -44,7 +52,7 @@ vim.o.updatetime = 500
 
 vim.cmd([[
 let g:coc_global_extensions = [
-			\ 'coc-clangd',
+	\ 'coc-clangd',
       \ 'coc-css',
       \ 'coc-html',
       \ 'coc-json',

@@ -35,3 +35,6 @@ map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 
+--copilot
+--map('i', '<C-L>', '<cmd>copilot#Accept()<CR>', { silent = true })
+

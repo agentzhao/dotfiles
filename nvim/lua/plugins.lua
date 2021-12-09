@@ -1,3 +1,6 @@
+-- Define utils functions
+local utils = {}
+
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -60,7 +63,7 @@ require('packer').startup(function(use)
       }
     end
   }
-  
+
   use {
 		'navarasu/onedark.nvim',
 		config = function() require('onedark').setup() end
@@ -74,18 +77,19 @@ require('packer').startup(function(use)
 				options = {
 					theme = 'onedark'
 				},
-        sections = {lualine_c = {require('auto-session-library').current_session_name}}
+        sections = {lualine_d = {require('auto-session-library').current_session_name}}
 			})
 		end
 	}
 
-  use { "beauwilliams/focus.nvim",
+  use {
+    "beauwilliams/focus.nvim",
     config = function()
-      require("focus").setup({enable = false, excluded_filetypes = {"toggleterm"}, excluded_buftypes = {"help"}})
+      require("focus").setup({enable = false, excluded_filetypes = {"nvim-tree", "toggleterm"}, excluded_buftypes = {"help"}})
     end
   }
   	-- Tools
-	use 'sindrets/winshift.nvim'
+	use 'sindrets/winshift.nvim' -- Windows
 	use 'simonefranza/nvim-conv' -- Converts things
 	use 'ap/vim-css-color'  -- Color highlighter
 	use 'liuchengxu/vista.vim'
@@ -100,8 +104,8 @@ require('packer').startup(function(use)
     end
   }
 
-	use { 
-    'nvim-treesitter/nvim-treesitter', 
+	use {
+    'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
@@ -109,12 +113,12 @@ require('packer').startup(function(use)
         sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
         ignore_install = { },
         highlight = {
-          enable = true, 
-          disable = { },  
+          enable = true,
+          disable = { },
           additional_vim_regex_highlighting = false,
         },
       }
-    end  
+    end
   }
 
   use {
@@ -131,11 +135,29 @@ require('packer').startup(function(use)
       require('nvim-autopairs').setup()
     end
   }
-  
-	use { -- Coc.nvim
-		'neoclide/coc.nvim', 
-		branch = 'release'
-	}
+
+  -- LSP
+  use {
+    'neovim/nvim-lspconfig',
+  }
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-emoji'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'ray-x/lsp_signature.nvim'
+
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function() require'plugins.nvim-cmp' end
+  }
+
+  use {
+    'williamboman/nvim-lsp-installer',
+    config = function() require'plugins.lsp-installer' end
+  }
 
 	use {
 		'nvim-telescope/telescope.nvim',
@@ -174,19 +196,23 @@ require('packer').startup(function(use)
 
 	-- Github
 	use 'tpope/vim-fugitive'
-  use 'github/copilot.vim'
+  use {
+    'github/copilot.vim',
+    config = function() require 'plugins.copilot' end
+  }
 
 	use {
 		'lewis6991/gitsigns.nvim',
 		requires = {
 			'nvim-lua/plenary.nvim'
 		},
+    tag = 'release',
 		config = function()
 			require('gitsigns').setup()
 		end
 	}
-	
-	  -- Put this at the end after all plugins
+
+  -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end

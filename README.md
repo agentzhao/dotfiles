@@ -22,3 +22,9 @@ sudo apt install gh
 ```
 C:\Users\zhao\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 ```
+
+
+# Get all saved wifi network and passwords
+```
+(netsh wlan show profiles) | Select-String “\:(.+)$” | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name=”$name” key=clear)} | Select-String “Key Content\W+\:(.+)$” | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize
+```

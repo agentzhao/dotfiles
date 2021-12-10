@@ -14,3 +14,11 @@ crun() {
     echo "Compiled! Enter input:"
     ./"$1"
 }
+
+updatenvimconfig(){
+    cd ~
+    git clone https://github.com/Agentzhao/dotfiles.git temp
+    rm -rf ~/.config/nvim/*
+    mv -v ~/temp/nvim/* ~/.config/nvim
+    rm -rf ~/temp
+}

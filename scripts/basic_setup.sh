@@ -34,6 +34,7 @@ mv -v ~/temp/* ~/.config
 rm -rf temp
 chown -R $USER .config
 mv ~/.config/.bash_profile ~/
-echo "source ~/.bash_profile" >> .zshrc
+mv ~/.config/.p10k.zsh ~/
+mv ~/.config/.zshrc ~/
 
 # clean up

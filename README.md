@@ -28,3 +28,13 @@ C:\Users\zhao\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 ```
 (netsh wlan show profiles) | Select-String “\:(.+)$” | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name=”$name” key=clear)} | Select-String “Key Content\W+\:(.+)$” | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize
 ```
+
+# python
+```
+cd ~
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.9 -y
+sudo apt install python3-pip -y
+pip3 install pynvim
+```

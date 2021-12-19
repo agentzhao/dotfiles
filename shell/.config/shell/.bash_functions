@@ -1,4 +1,14 @@
 # Functions
+# Sync dotfiles
+stowsync() {
+  cd ~/dotfiles
+  stow -nvt ~ */
+  echo "Are you sure you want to sync dotfiles? [y/n]"
+  read input
+  if [ "$input" == "y" ]; then
+    stow -vt ~ */
+  fi
+}
 
 # C/C++ compile and run
 cpprun() {

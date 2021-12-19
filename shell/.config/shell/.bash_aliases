@@ -9,7 +9,7 @@ alias lsla='ls -Anph' # but also show all files.
 alias exp='explorer.exe .'
 
 # files
-alias rm='rm -v -i'
+alias rm='rm -v'
 alias mv='mv -v'
 alias mkdir='mkdir -v -p'
 alias cp='cp -v'

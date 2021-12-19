@@ -1,6 +1,9 @@
 # dotfiles
 ```
 cd ~
+sudo apt update
+sudo apt install git stow
+stow -d ~/dotfiles -t ~/
 curl https://raw.githubusercontent.com/agentzhao/dotfiles/main/scripts/basic_setup.sh -o basic_setup.sh
 chmod +x basic_setup.sh
 ./basic_setup.sh

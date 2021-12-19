@@ -8,6 +8,30 @@ vim.g.nvim_tree_disable_window_picker = 0 --0 by default, will disable the windo
 vim.g.nvim_tree_icon_padding = ' ' --one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 vim.g.nvim_tree_respect_buf_cwd = 1 --0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 
+vim.g.nvim_tree_icons = {
+  default = '',
+  symlink = '',
+  git = {
+    unstaged = "✗",
+    staged = "✓",
+    unmerged = "",
+    renamed = "➜",
+    untracked = "★",
+    deleted = "",
+    ignored = "◌"
+  },
+  folder = {
+    arrow_open = "",
+    arrow_closed = "",
+    default = "",
+    open = "",
+    empty = "",
+    empty_open = "",
+    symlink = "",
+    symlink_open = "",
+  }
+}
+
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
   noremap = true,
   silent = true
@@ -36,30 +60,6 @@ vim.g.nvim_tree_window_picker_exclude = {
   }
 }
 
-vim.g.nvim_tree_icons = {
-  default = '',
-  symlink = '',
-  git = {
-    unstaged = "✗",
-    staged = "✓",
-    unmerged = "",
-    renamed = "➜",
-    untracked = "★",
-    deleted = "",
-    ignored = "◌"
-  },
-  folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-    symlink_open = "",
-  }
-}
-
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 require'nvim-tree'.setup {
@@ -76,7 +76,7 @@ require'nvim-tree'.setup {
     auto_open = true,
   },
   diagnostics = {
-    enable = false,
+    enable = true,
     icons = {
       hint = "",
       info = "",

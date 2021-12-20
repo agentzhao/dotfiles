@@ -41,6 +41,51 @@ local lssources = {
   diagnostics.eslint_d, -- eslint but faster
   diagnostics.shellcheck, -- bash/sh shell scripts
   diagnostics.cppcheck, --fast static analysis of C/C++ code
+
+  -- Code actions
+  actions.eslint_d, -- eslint but faster
+  actions.gitsigns, -- git commit
+
+  -- If eslint config exists use eslint, else use prettier
+  require("null-ls.helpers").conditional(function(utils)
+    local has_eslint = utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json")
+
+    if has_eslint then
+      return formatter.prettier.with({
+        filetypes = {
+          "vue",
+          "css",
+          "html",
+          "yaml",
+          "markdown",
+          "json",
+        },
+        args = {
+          "--stdin-filepath",
+          "$FILENAME",
+        },
+      })
+    else
+      return formatter.prettier.with({
+        filetypes = {
+          "vue",
+          "css",
+          "html",
+          "yaml",
+          "markdown",
+          "json",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+        },
+        args = {
+          "--stdin-filepath",
+          "$FILENAME",
+        },
+      })
+    end
+  end),
 }
 
 -- Format files on save

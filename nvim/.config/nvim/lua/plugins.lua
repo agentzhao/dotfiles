@@ -117,6 +117,8 @@ require("packer").startup(function(use)
   use("sindrets/winshift.nvim") -- Windows
   use("simonefranza/nvim-conv") -- Converts things
   use("liuchengxu/vista.vim")
+  use("ggandor/lightspeed.nvim") -- motions at lightspeed
+  use("tpope/vim-repeat") -- dot-repeat for lightspeed
 
   use({ -- Run snippets
     "michaelb/sniprun",

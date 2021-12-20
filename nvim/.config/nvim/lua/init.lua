@@ -5,7 +5,7 @@
 ----vim.wo: behaves like :setlocal for window-local options
 
 -- Tabs
-vim.cmd [[
+vim.cmd([[
 set autoindent
 set expandtab
 set shiftwidth=2
@@ -13,14 +13,14 @@ set smartindent
 set softtabstop=2
 set tabstop=2
 set termguicolors
-]]
+]])
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 
-vim.opt.encoding = 'UTF-8'
-vim.opt.shortmess:append {c = true}
-vim.opt.inccommand = 'nosplit'
+vim.opt.encoding = "UTF-8"
+vim.opt.shortmess:append({ c = true })
+vim.opt.inccommand = "nosplit"
 
 -- Number on side bar
 vim.wo.number = true
@@ -38,18 +38,21 @@ vim.o.clipboard = "unnamedplus"
 vim.cmd("set backspace=indent,eol,start")
 -- :noh to clear search highlighting
 
-vim.g.onedark_style = 'darker'
+vim.g.onedark_style = "darker"
 
 vim.opt.list = true
 --vim.opt.listchars:append("eol:↴")
 
 -- auto-session
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 -- coc nvim
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.updatetime = 500
+
+-- lightspeed default highlighting
+vim.cmd([[autocmd ColorScheme * lua require'lightspeed'.init_highlight(true)]])
 
 vim.cmd([[
 let g:coc_global_extensions = [

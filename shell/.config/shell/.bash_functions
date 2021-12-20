@@ -7,6 +7,8 @@ stowsync() {
   read input
   if [ "$input" == "y" ]; then
     stow -vt ~ */
+  else
+    echo "Abouting..."
   fi
 }
 

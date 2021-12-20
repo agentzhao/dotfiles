@@ -13,6 +13,7 @@ local servers = {
   "sumneko_lua",
   --"powershell_es",
   "pyright",
+  "rust_analyzer",
   --"sqlls",
   "tailwindcss",
   "volar",

@@ -4,7 +4,8 @@ cd ~
 sudo apt update
 sudo apt install -y git stow
 git clone https://github.com/agentzhao/dotfiles.git
-stow -vd ~/dotfiles -t ~/
+cd ~/dotfiles
+stow -vt ~ */
 
 curl https://raw.githubusercontent.com/agentzhao/dotfiles/main/scripts/basic_setup.sh -o basic_setup.sh
 chmod +x basic_setup.sh

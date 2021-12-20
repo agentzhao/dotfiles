@@ -1,0 +1,27 @@
+[core]
+	autocrlf = input
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = 20024592+agentzhao@users.noreply.github.com
+  name = agentzhao
+[alias]
+  s = status
+
+  #branches
+  co = checkout
+  cob = checkout -b
+  del = branch -D
+  # list all branches
+  branches = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+
+  # changes
+  save = !git add -A && git commit -m 'chore: commit save point'
+  undo = reset HEAD~1 --mixed    # reset to last commit
+  res = !git reset --hard        # hard reset to last save point
+  done = !git push origin HEAD
+
+  # logs
+  last = log -1 HEAD
+  logs = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30

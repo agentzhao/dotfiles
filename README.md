@@ -48,4 +48,5 @@ pip3 install pynvim
 # zsh tools
 ```
 https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 ```

@@ -85,6 +85,7 @@ plugins=(alias-finder
           git
           ripgrep
           zsh-autosuggestions
+          zsh-syntax-highlighting
           )
 
 

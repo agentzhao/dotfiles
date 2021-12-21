@@ -120,6 +120,13 @@ require("packer").startup(function(use)
   use("ggandor/lightspeed.nvim") -- motions at lightspeed
   use("tpope/vim-repeat") -- dot-repeat for lightspeed
 
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({})
+    end,
+  })
+
   use({ -- Run snippets
     "michaelb/sniprun",
     run = "bash ./install.sh",

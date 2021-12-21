@@ -14,18 +14,13 @@ local lssources = {
   }),
   formatter.black.with({ extra_args = { "--fast" } }), --python
   formatter.rustywind, -- tailwindcss
-
+  formatter.uncrustify, -- c/c++
   -- null_ls.builtins.formatting.cmake_format, --foramt listfiiles
-  -- null_ls.builtins.formatting.codespell, --common misspellings in text files
-  -- null_ls.builtins.formatting.eslint_d, --eslint but faster
   -- null_ls.builtins.formatting.fixjson, --JSON file fixer/formatter for humans using (relaxed) JSONS
   -- null_ls.builtins.formatting.json_tool, --cli to validate and pretty print JSON objects
   -- null_ls.builtins.formatting.gofmt, -- format go programs
   -- null_ls.builtins.diagnostics.golangci_lint, --go linter aggregator
   -- null_ls.builtins.formatting.google_java_format,
-  -- null_ls.builtins.formatting.isort, --python sort imports alphabetically
-  -- null_ls.builtins.diagnostics.mypy, -- static type checker for python
-  -- null_ls.builtins.diagnostics.pylint, --static analysis of python
   -- null_ls.builtins.formatting.latexindent, --perl script for formatting LaTeX
   -- null_ls.builtins.formatting.nginx_beautifier, -- nginx
   -- null_ls.builtins.diagnostics.php, --php syntax error
@@ -35,12 +30,11 @@ local lssources = {
   -- null_ls.builtins.formatting.sqlformat, --sql
   -- null_ls.builtins.formatting.stylelint, -- css/scss/sass/less
   -- null_ls.builtins.formatting.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
-  -- null_ls.builtins.diagnostics.codespell, --spell checker for text files
 
   -- diagnostics
   diagnostics.eslint_d, -- eslint but faster
   diagnostics.shellcheck, -- bash/sh shell scripts
-  diagnostics.cppcheck, --fast static analysis of C/C++ code
+  --diagnostics.cppcheck, --fast static analysis of C/C++ code
 
   -- Code actions
   actions.eslint_d, -- eslint but faster

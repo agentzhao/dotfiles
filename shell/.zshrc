@@ -84,6 +84,7 @@ plugins=(alias-finder
           dotenv
           git
           ripgrep
+          zsh-autosuggestions
           )
 
 

@@ -52,27 +52,12 @@ vim.o.writebackup = false
 vim.o.updatetime = 500
 
 -- lightspeed default highlighting
-vim.cmd([[autocmd ColorScheme * lua require'lightspeed'.init_highlight(true)]])
-
 vim.cmd([[
-let g:coc_global_extensions = [
-	\ 'coc-clangd',
-      \ 'coc-css',
-      \ 'coc-html',
-      \ 'coc-json',
-			\ 'coc-phpls',
-      \ 'coc-prettier',
-			\ 'coc-powershell',
-			\ 'coc-pyright',
-			\ 'coc-sh',
-			\ 'coc-snippets',
-			\ 'coc-sql',
-			\ 'coc-svg',
-			\ 'coc-tailwindcss',
-      \ 'coc-tsserver',
-			\ 'coc-vimlsp',
-			\ 'coc-xml',
-			\ 'coc-yaml',
-			\ 'coc-yank',
-      \ ]
+autocmd ColorScheme * lua require'lightspeed'.init_highlight(true)
+autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
 ]])

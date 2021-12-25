@@ -26,6 +26,7 @@ vim.cmd([[packadd packer.nvim]])
 
 require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
+
   -- Environment
   use("danilamihailov/beacon.nvim")
 
@@ -66,7 +67,7 @@ require("packer").startup(function(use)
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
     config = function()
-      require("alpha").setup(require("alpha.themes.dashboard").opts)
+      require("plugins.alpha")
     end,
   })
 
@@ -119,6 +120,25 @@ require("packer").startup(function(use)
   use("liuchengxu/vista.vim")
   use("ggandor/lightspeed.nvim") -- motions at lightspeed
   use("tpope/vim-repeat") -- dot-repeat for lightspeed
+  use("tpope/vim-surround") -- add s/surround noun
+
+  use({ -- autoclose and autorename tags
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        autotag = {
+          enable = true,
+        },
+      })
+    end,
+  })
+
+  use({ -- autoclose brackets
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
+    end,
+  })
 
   use({
     "folke/which-key.nvim",
@@ -184,20 +204,6 @@ require("packer").startup(function(use)
     end,
   })
 
-  use({
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-    end,
-  })
-
-  use({
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  })
-
   -- LSP
   use({
     "neovim/nvim-lspconfig",
@@ -207,9 +213,15 @@ require("packer").startup(function(use)
   use("hrsh7th/cmp-path")
   use("hrsh7th/cmp-cmdline")
   use("hrsh7th/cmp-emoji")
-  use("L3MON4D3/LuaSnip")
+  use({
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("plugins.lua_snip")
+    end,
+  })
   use("saadparwaiz1/cmp_luasnip")
   use("ray-x/lsp_signature.nvim")
+  use("rafamadriz/friendly-snippets")
 
   use({
     "hrsh7th/nvim-cmp",
@@ -293,3 +305,12 @@ require("packer").startup(function(use)
     require("packer").sync()
   end
 end)
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  virtual_text = {
+    spacing = 5,
+    severity_limit = "Warning",
+  },
+  update_in_insert = true,
+})

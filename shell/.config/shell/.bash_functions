@@ -1,4 +1,5 @@
 # Functions
+
 # Sync dotfiles
 stowsync() {
   cd ~/dotfiles
@@ -27,10 +28,8 @@ crun() {
     ./"$1"
 }
 
-updatenvimconfig(){
-    cd ~
-    git clone https://github.com/Agentzhao/dotfiles.git temp
-    rm -rf ~/.config/nvim/*
-    mv -v ~/temp/nvim/* ~/.config/nvim
-    rm -rf ~/temp
+# size of dir/file
+sizeof() {
+  depth=${2:-0}
+  du -h --max-depth=$depth $1
 }

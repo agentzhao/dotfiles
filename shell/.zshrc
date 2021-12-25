@@ -85,9 +85,11 @@ plugins=(alias-finder
           git
           ripgrep
           zsh-autosuggestions
+          zsh-completions
           zsh-syntax-highlighting
           )
 
+autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,3 +125,5 @@ source ~/.bash_profile
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/share/autojump/autojump.zsh
+
+

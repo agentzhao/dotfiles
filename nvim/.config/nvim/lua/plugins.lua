@@ -39,13 +39,14 @@ require("packer").startup(function(use)
       })
     end,
   })
+
   use({
     "rmagatti/session-lens",
     requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
     config = function()
       require("session-lens").setup({
         previewer = true,
-        --path_display = true, -- {'shorten'}
+        -- path_display = true, -- {'shorten'}
       })
       require("telescope").load_extension("session-lens")
     end,

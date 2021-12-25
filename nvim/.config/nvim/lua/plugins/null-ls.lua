@@ -4,6 +4,7 @@ local null_ls = require("null-ls")
 local formatter = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local actions = null_ls.builtins.code_actions
+local completion = null_ls.builtins.completion
 
 local lssources = {
   -- formatting
@@ -39,6 +40,9 @@ local lssources = {
   -- Code actions
   actions.eslint_d, -- eslint but faster
   actions.gitsigns, -- git commit
+
+  -- Completion
+  completion.luasnip,
 
   -- If eslint config exists use eslint, else use prettier
   require("null-ls.helpers").conditional(function(utils)

@@ -29,6 +29,8 @@ map("n", "<Leader>ss", ":<C-u>SaveSession<CR>", {})
 map("n", "<Leader>rs", ":<C-u>RestoreSession<CR>", {})
 map("n", "<Leader>sl", ":<C-u>SearchSession<CR>", {})
 
+map("n", "<A-w>", "<cmd>WinShift<cr>", opts)
+
 --Telescope
 map("n", "<leader>pp", "<cmd>Telescope projects<cr>", opts)
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)

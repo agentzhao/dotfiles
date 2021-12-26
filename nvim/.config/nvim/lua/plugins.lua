@@ -68,7 +68,7 @@ require("packer").startup(function(use)
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
     config = function()
-      require("plugins.alpha")
+      require("config.alpha")
     end,
   })
 
@@ -201,7 +201,7 @@ require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
     config = function()
-      require("plugins.nvim-tree")
+      require("config.nvim-tree")
     end,
   })
 
@@ -217,7 +217,7 @@ require("packer").startup(function(use)
   use({
     "L3MON4D3/LuaSnip",
     config = function()
-      require("plugins.lua_snip")
+      require("config.lua_snip")
     end,
   })
   use("saadparwaiz1/cmp_luasnip")
@@ -227,21 +227,21 @@ require("packer").startup(function(use)
   use({
     "hrsh7th/nvim-cmp",
     config = function()
-      require("plugins.nvim-cmp")
+      require("config.nvim-cmp")
     end,
   })
 
   use({
     "williamboman/nvim-lsp-installer",
     config = function()
-      require("plugins.lsp-installer")
+      require("config.lsp-installer")
     end,
   })
 
   use({
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      require("plugins.null-ls")
+      require("config.null-ls")
     end,
     requires = { "nvim-lua/plenary.nvim" },
   })
@@ -277,7 +277,7 @@ require("packer").startup(function(use)
   use({
     "github/copilot.vim",
     config = function()
-      require("plugins.copilot")
+      require("config.copilot")
     end,
   })
 

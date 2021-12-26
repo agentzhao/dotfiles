@@ -21,6 +21,20 @@ local servers = {
   "yamlls",
 }
 
+-- Install servers
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
+
+for _, server in ipairs(servers) do
+  local server_available, requested_server = lsp_installer_servers.get_server(server)
+  if server_available then
+    if not requested_server:is_installed() then
+      -- Queue the server to be installed
+      print("Installing LSP server " .. server)
+      requested_server:install()
+    end
+  end
+end
+
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 local on_attach = function(client, bufnr)
@@ -117,16 +131,3 @@ end
 
 -- Setup language servers
 make_server_ready(on_attach)
-
--- Install servers
-local lsp_installer_servers = require("nvim-lsp-installer.servers")
-
-for _, server in ipairs(servers) do
-  local server_available, requested_server = lsp_installer_servers.get_server(server)
-  if server_available then
-    if not requested_server:is_installed() then
-      -- Queue the server to be installed
-      requested_server:install()
-    end
-  end
-end

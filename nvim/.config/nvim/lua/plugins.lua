@@ -206,9 +206,9 @@ require("packer").startup(function(use)
   })
 
   -- LSP
-  use({
-    "neovim/nvim-lspconfig",
-  })
+  use("neovim/nvim-lspconfig")
+  use("simrat39/rust-tools.nvim") --extra tools over rust_analyzer
+
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-buffer")
   use("hrsh7th/cmp-path")
@@ -234,7 +234,7 @@ require("packer").startup(function(use)
   use({
     "williamboman/nvim-lsp-installer",
     config = function()
-      require("config.lsp-installer")
+      require("config.lsp.lsp-installer")
     end,
   })
 

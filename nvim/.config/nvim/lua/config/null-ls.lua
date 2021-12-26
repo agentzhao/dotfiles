@@ -87,7 +87,7 @@ local lssources = {
 }
 
 -- Format files on save
-require("null-ls").setup({
+null_ls.setup({
   sources = lssources,
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then

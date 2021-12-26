@@ -33,3 +33,8 @@ sizeof() {
   depth=${2:-0}
   du -h --max-depth=$depth $1
 }
+
+mkdircd() {
+  mkdir -v -p $1
+  cd $1
+}

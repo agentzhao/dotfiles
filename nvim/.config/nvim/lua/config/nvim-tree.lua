@@ -113,9 +113,8 @@ require("nvim-tree").setup({
     mappings = {
       custom_only = false,
       list = {
-        { key = "x", cb = tree_cb("vsplit") },
-        { key = "v", cb = tree_cb("split") },
-        { key = "t", cb = tree_cb("tabnew") },
+        { key = "v", cb = tree_cb("vsplit") },
+        { key = "C-t", cb = tree_cb("tabnew") },
       },
     },
     number = false,

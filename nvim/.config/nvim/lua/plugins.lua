@@ -76,7 +76,7 @@ require("packer").startup(function(use)
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("indent_blankline").setup({
-        buftype_exclude = { "terminal", "help" },
+        buftype_exclude = { "terminal", "help", "nofile" },
         filetype_exclude = { "alpha" },
         space_char_blankline = " ",
         show_current_context = true,

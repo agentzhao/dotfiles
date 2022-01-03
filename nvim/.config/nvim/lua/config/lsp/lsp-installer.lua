@@ -6,6 +6,7 @@ local lsp_servers = {
   "ccls",
   --"clangd",
   "cssls",
+  -- "dartls",
   "dockerls",
   --"efm",
   -- "eslint",
@@ -52,6 +53,12 @@ local null_ls_formatting = function(client)
 end
 
 local servers = {
+  volar = {
+    on_attach = function(client)
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+    end,
+  },
   tsserver = {
     root_dir = util.root_pattern("package.json"),
     on_attach = function(client, bufnr)

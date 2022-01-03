@@ -7,11 +7,7 @@ vim.g.mapleader = "," -- using space as leader
 
 -- Tabs
 vim.cmd([[
-set autoindent
-set expandtab
-set shiftwidth=2
 set smartindent
-set softtabstop=2
 set tabstop=2
 set termguicolors
 ]])
@@ -33,7 +29,7 @@ vim.bo.softtabstop = 2
 
 vim.o.smarttab = true
 vim.o.mouse = "a"
-vim.o.autochdir = true
+-- vim.o.autochdir = true
 vim.o.clipboard = "unnamedplus"
 
 vim.cmd("set backspace=indent,eol,start")
@@ -43,14 +39,14 @@ vim.g.onedark_style = "darker"
 
 vim.opt.list = true
 --vim.opt.listchars:append("eol:↴")
-
+--
 -- auto-session
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
--- coc nvim
-vim.o.backup = false
-vim.o.writebackup = false
-vim.o.updatetime = 500
+-- -- coc nvim
+-- vim.o.backup = false
+-- vim.o.writebackup = false
+-- vim.o.updatetime = 500
 
 -- lightspeed default highlighting
 vim.cmd([[

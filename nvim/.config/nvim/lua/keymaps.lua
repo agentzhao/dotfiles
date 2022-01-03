@@ -8,6 +8,8 @@ map("x", "<i>", "<Esc>i", opts)
 
 map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
 
+map("n", "<leader>gb", "<c-^>", opts)
+
 -- Delete word
 map("i", "<M-BS>", "<C-w>", opts)
 map("i", "<M-d>", "<cmd>norm! dw<CR>", opts)

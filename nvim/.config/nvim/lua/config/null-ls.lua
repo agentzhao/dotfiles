@@ -8,8 +8,8 @@ local completion = null_ls.builtins.completion
 
 local lssources = {
   -- formatting
-  formatter.eslint_d,
-  formatter.prettier,
+  -- formatter.eslint_d,
+  -- formatter.prettier,
   formatter.stylua.with({
     args = { "--indent-width", "2", "--indent-type", "Spaces", "-" },
   }),
@@ -56,7 +56,6 @@ local lssources = {
           "html",
           "yaml",
           "markdown",
-          "json",
         },
         args = {
           "--stdin-filepath",
@@ -71,7 +70,6 @@ local lssources = {
           "html",
           "yaml",
           "markdown",
-          "json",
           "javascript",
           "javascriptreact",
           "typescript",

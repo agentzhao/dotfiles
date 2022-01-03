@@ -3,6 +3,7 @@
 --vim.go: behaves like :setglobal
 --vim.bo: behaves like :setlocal for buffer-local options
 ----vim.wo: behaves like :setlocal for window-local options
+vim.g.mapleader = "," -- using space as leader
 
 -- Tabs
 vim.cmd([[

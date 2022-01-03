@@ -15,7 +15,8 @@ local lssources = {
   }),
   formatter.black.with({ extra_args = { "--fast" } }), --python
   formatter.rustywind, -- tailwindcss
-  formatter.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
+  -- formatter.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
+
   -- null_ls.builtins.formatting.cmake_format, --foramt listfiiles
   -- null_ls.builtins.formatting.fixjson, --JSON file fixer/formatter for humans using (relaxed) JSONS
   -- null_ls.builtins.formatting.json_tool, --cli to validate and pretty print JSON objects

@@ -1,4 +1,7 @@
 # Functions
+allfunctions(){
+  bat ~/.config/shell/.bash_functions
+}
 
 # Sync dotfiles
 stowsync() {

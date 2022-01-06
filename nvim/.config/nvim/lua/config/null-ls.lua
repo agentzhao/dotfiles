@@ -56,6 +56,7 @@ local lssources = {
           "html",
           "yaml",
           "markdown",
+          -- "json",
         },
         args = {
           "--stdin-filepath",
@@ -70,6 +71,7 @@ local lssources = {
           "html",
           "yaml",
           "markdown",
+          -- "json",
           "javascript",
           "javascriptreact",
           "typescript",

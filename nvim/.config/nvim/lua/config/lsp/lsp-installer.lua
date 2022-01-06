@@ -3,8 +3,8 @@ local lsp = require("config/lsp")
 
 local lsp_servers = {
   "bashls",
-  "ccls",
-  --"clangd",
+  -- "ccls",
+  "clangd",
   "cssls",
   -- "dartls",
   "dockerls",

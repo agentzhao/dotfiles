@@ -255,10 +255,10 @@ require("packer").startup(function(use)
         defaults = {
           mappings = {
             i = {
-              ["<C-x>"] = "select_horizontal",
+              ["<C-x>"] = "select_vertical",
             },
             n = {
-              ["<C-x>"] = "select_horizontal",
+              ["<C-x>"] = "select_vertical",
             },
           },
         },

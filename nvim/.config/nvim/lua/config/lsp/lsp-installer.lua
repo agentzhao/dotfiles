@@ -62,7 +62,7 @@ local servers = {
   tsserver = {
     root_dir = util.root_pattern("package.json"),
     on_attach = function(client, bufnr)
-      null_ls_formatting(client)
+      null_ls_formatting(client) -- disable null_ls formatting
       lsp.on_attach(client, bufnr)
     end,
   },

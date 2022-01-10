@@ -55,14 +55,13 @@ end
 local servers = {
   volar = {
     on_attach = function(client)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
+      null_ls_formatting(client)
     end,
   },
   tsserver = {
     root_dir = util.root_pattern("package.json"),
     on_attach = function(client, bufnr)
-      null_ls_formatting(client) -- disable null_ls formatting
+      null_ls_formatting(client)
       lsp.on_attach(client, bufnr)
     end,
   },

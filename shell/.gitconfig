@@ -8,6 +8,8 @@
   name = agentzhao
 [alias]
   s = status
+  rao = remote add origin
+  ac = !git add . && git commit -am
 
   #branches
   co = checkout
@@ -17,7 +19,7 @@
   branches = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
 
   # changes
-  save = !git add -A && git commit -m 'chore: commit save point'
+  save = !git add -A && git commit -m 'save point'
   undo = reset HEAD~1 --mixed    # reset to last commit
   res = !git reset --hard        # hard reset to last save point
   done = !git push origin HEAD

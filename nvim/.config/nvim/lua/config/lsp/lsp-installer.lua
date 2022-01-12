@@ -2,6 +2,7 @@ local util = require("lspconfig.util")
 local lsp = require("config/lsp")
 
 local lsp_servers = {
+  "arduino_language_server",
   "bashls",
   -- "ccls",
   "clangd",
@@ -9,7 +10,6 @@ local lsp_servers = {
   -- "dartls",
   "dockerls",
   --"efm",
-  -- "eslint",
   "gopls",
   "html",
   "jsonls",
@@ -53,10 +53,11 @@ local null_ls_formatting = function(client)
 end
 
 local servers = {
+  jsonls = {
+    on_attach = null_ls_formatting,
+  },
   volar = {
-    on_attach = function(client)
-      null_ls_formatting(client)
-    end,
+    on_attach = null_ls_formatting,
   },
   tsserver = {
     root_dir = util.root_pattern("package.json"),

@@ -4,7 +4,7 @@ local opts = { noremap = true }
 local opts2 = { noremap = true, silent = true }
 
 map("n", "<C-c>", "<Esc>", opts)
-map("x", "<i>", "<Esc>i", opts)
+map("x", "i", "<C-c>i", opts)
 
 map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
 

@@ -5,11 +5,11 @@ local formatter = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local actions = null_ls.builtins.code_actions
 local completion = null_ls.builtins.completion
+local hover = null_ls.builtins.hover
 
 local lssources = {
   -- formatting
-  -- formatter.eslint_d,
-  -- formatter.prettier,
+  formatter.prettier,
   formatter.stylua.with({
     args = { "--indent-width", "2", "--indent-type", "Spaces", "-" },
   }),
@@ -18,8 +18,6 @@ local lssources = {
   -- formatter.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
 
   -- null_ls.builtins.formatting.cmake_format, --foramt listfiiles
-  -- null_ls.builtins.formatting.fixjson, --JSON file fixer/formatter for humans using (relaxed) JSONS
-  -- null_ls.builtins.formatting.json_tool, --cli to validate and pretty print JSON objects
   -- null_ls.builtins.formatting.gofmt, -- format go programs
   -- null_ls.builtins.diagnostics.golangci_lint, --go linter aggregator
   -- null_ls.builtins.formatting.google_java_format,
@@ -33,56 +31,39 @@ local lssources = {
   -- null_ls.builtins.formatting.stylelint, -- css/scss/sass/less
   --
   -- diagnostics
-  diagnostics.eslint_d, -- eslint but faster
   diagnostics.shellcheck, -- bash/sh shell scripts
   --diagnostics.cppcheck, --fast static analysis of C/C++ code
 
   -- Code actions
-  actions.eslint_d, -- eslint but faster
   actions.gitsigns, -- git commit
 
   -- Completion
   completion.luasnip,
 
+  -- Hover
+  hover.dictionary,
+
   -- If eslint config exists use eslint, else use prettier
   require("null-ls.helpers").conditional(function(utils)
-    local has_eslint = utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json")
-
-    if has_eslint then
-      return formatter.prettier.with({
-        filetypes = {
-          "vue",
-          "css",
-          "html",
-          "yaml",
-          "markdown",
-          -- "json",
-        },
-        args = {
-          "--stdin-filepath",
-          "$FILENAME",
-        },
-      })
-    else
-      return formatter.prettier.with({
-        filetypes = {
-          "vue",
-          "css",
-          "html",
-          "yaml",
-          "markdown",
-          -- "json",
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact",
-        },
-        args = {
-          "--stdin-filepath",
-          "$FILENAME",
-        },
-      })
+    local has_eslint = function(u)
+      return utils.root_has_file(".eslintrc")
+        or utils.root_has_file(".eslintrc.json")
+        or utils.root_has_file(".eslintrc.js")
+        or utils.root_has_file("package.json")
+        or utils.root_has_file(".eslintrc.cjs")
+        or utils.root_has_file(".eslintrc.yaml")
+        or utils.root_has_file(".eslintrc.yml")
     end
+
+    formatter.eslint_d.with({
+      condition = has_eslint,
+    })
+    diagnostics.eslint_d.with({
+      condition = has_eslint,
+    })
+    actions.eslint_d.with({
+      condition = has_eslint,
+    })
   end),
 }
 

@@ -2,7 +2,7 @@ local util = require("lspconfig.util")
 local lsp = require("config/lsp")
 
 local lsp_servers = {
-  "arduino_language_server",
+  -- "arduino_language_server",
   "bashls",
   -- "ccls",
   "clangd",
@@ -10,7 +10,7 @@ local lsp_servers = {
   -- "dartls",
   "dockerls",
   --"efm",
-  "gopls",
+  -- "gopls",
   "html",
   "jsonls",
   "tsserver",

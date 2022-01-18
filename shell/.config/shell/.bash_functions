@@ -20,13 +20,13 @@ stowsync() {
 cpprun() {
   g++ -o "$1" "$1.cpp"
   echo "Compiled! Enter input:"
-  ./"$1"
+  time ./"$1"
 }
 
 crun() {
   gcc -o "$1" "$1.c"
   echo "Compiled! Enter input:"
-  ./"$1"
+  time ./"$1"
 }
 
 # size of dir/file

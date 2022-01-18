@@ -99,8 +99,13 @@ end
 lsp_installer.on_server_ready(function(server)
   local opts = {}
   opts.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
   for _, opt in ipairs({ "settings", "on_attach", "root_dir" }) do
     set_server_option(server.name, opt, opts)
+  end
+
+  if server.name == "clangd" then
+    opts.capabilities.offsetEncoding = { "utf-16" }
   end
 
   if server.name == "rust_analyzer" then

@@ -35,8 +35,6 @@ vim.o.clipboard = "unnamedplus"
 vim.cmd("set backspace=indent,eol,start")
 -- :noh to clear search highlighting
 
-vim.g.onedark_style = "darker"
-
 vim.opt.list = true
 --vim.opt.listchars:append("eol:↴")
 --

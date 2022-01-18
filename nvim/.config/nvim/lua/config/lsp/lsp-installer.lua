@@ -17,7 +17,7 @@ local lsp_servers = {
   "sumneko_lua",
   --"powershell_es",
   "pyright",
-  "rust_analyzer",
+  -- "rust_analyzer",
   --"sqlls",
   "tailwindcss",
   "volar",

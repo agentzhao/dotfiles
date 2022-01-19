@@ -19,18 +19,7 @@ local lssources = {
 
   -- null_ls.builtins.formatting.cmake_format, --foramt listfiiles
   -- null_ls.builtins.formatting.gofmt, -- format go programs
-  -- null_ls.builtins.diagnostics.golangci_lint, --go linter aggregator
-  -- null_ls.builtins.formatting.google_java_format,
-  -- null_ls.builtins.formatting.latexindent, --perl script for formatting LaTeX
-  -- null_ls.builtins.formatting.nginx_beautifier, -- nginx
-  -- null_ls.builtins.diagnostics.php, --php syntax error
-  -- null_ls.builtins.formatting.phpcsfixer, -- formatter for php
-  -- null_ls.builtins.formatting.rustfmt, -- rust
-  -- null_ls.builtins.formatting.shfmt, -- shell/bash
-  -- null_ls.builtins.formatting.sqlformat, --sql
-  -- null_ls.builtins.formatting.stylelint, -- css/scss/sass/less
-  --
-  -- diagnostics
+
   diagnostics.shellcheck, -- bash/sh shell scripts
   --diagnostics.cppcheck, --fast static analysis of C/C++ code
 

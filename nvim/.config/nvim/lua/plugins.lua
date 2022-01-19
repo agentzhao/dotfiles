@@ -57,11 +57,7 @@ require("packer").startup(function(use)
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("trouble").setup({})
     end,
   })
 
@@ -118,6 +114,13 @@ require("packer").startup(function(use)
         excluded_filetypes = { "nvim-tree", "toggleterm" },
         excluded_buftypes = { "help" },
       })
+    end,
+  })
+
+  use({
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup({})
     end,
   })
   -- Tools

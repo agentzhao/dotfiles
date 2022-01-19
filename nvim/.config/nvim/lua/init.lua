@@ -59,3 +59,6 @@ augroup END
 
 -- auto session
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+
+-- nvim-notify
+vim.notify = require("notify")

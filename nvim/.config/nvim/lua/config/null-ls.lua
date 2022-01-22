@@ -7,6 +7,19 @@ local actions = null_ls.builtins.code_actions
 local completion = null_ls.builtins.completion
 local hover = null_ls.builtins.hover
 
+local has_eslint = function(utils)
+  -- root_has_file accepts multiple files now
+  return utils.root_has_file({
+    ".eslintrc",
+    ".eslintrc.json",
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.yaml",
+    ".eslintrc.yml",
+    "package.json",
+  })
+end
+
 local lssources = {
   -- formatting
   formatter.prettier,
@@ -33,27 +46,15 @@ local lssources = {
   hover.dictionary,
 
   -- If eslint config exists use eslint, else use prettier
-  require("null-ls.helpers").conditional(function(utils)
-    local has_eslint = function(u)
-      return utils.root_has_file(".eslintrc")
-        or utils.root_has_file(".eslintrc.json")
-        or utils.root_has_file(".eslintrc.js")
-        or utils.root_has_file("package.json")
-        or utils.root_has_file(".eslintrc.cjs")
-        or utils.root_has_file(".eslintrc.yaml")
-        or utils.root_has_file(".eslintrc.yml")
-    end
-
-    formatter.eslint_d.with({
-      condition = has_eslint,
-    })
-    diagnostics.eslint_d.with({
-      condition = has_eslint,
-    })
-    actions.eslint_d.with({
-      condition = has_eslint,
-    })
-  end),
+  formatter.eslint_d.with({
+    condition = has_eslint,
+  }),
+  diagnostics.eslint_d.with({
+    condition = has_eslint,
+  }),
+  actions.eslint_d.with({
+    condition = has_eslint,
+  }),
 }
 
 -- Format files on save

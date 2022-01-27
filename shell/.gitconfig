@@ -10,6 +10,7 @@
   s = status
   rao = remote add origin
   ac = !git add . && git commit -am
+  url = remote get-url origin
 
   #branches
   co = checkout

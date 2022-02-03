@@ -129,7 +129,14 @@ require("packer").startup(function(use)
   use("liuchengxu/vista.vim")
   use("ggandor/lightspeed.nvim") -- motions at lightspeed
   use("tpope/vim-repeat") -- dot-repeat for lightspeed
-  use("tpope/vim-surround") -- add s/surround noun
+  use("tpope/vim-surround") -- add surround noun
+
+  -- use({ -- nvim fzf
+  --   "vijaymarupudi/nvim-fzf",
+  --   config = function()
+  --     require("fzf")
+  --   end,
+  -- })
 
   use({ -- autoclose and autorename tags
     "windwp/nvim-ts-autotag",
@@ -152,7 +159,7 @@ require("packer").startup(function(use)
   use({
     "folke/which-key.nvim",
     config = function()
-      require("which-key").setup({})
+      require("config.whichkey")
     end,
   })
 
@@ -270,6 +277,30 @@ require("packer").startup(function(use)
           },
         },
       })
+    end,
+  })
+
+  -- Debugging
+  use("mfussenegger/nvim-dap") --debugging
+  use({ -- installing debuggers
+    "Pocco81/DAPInstall.nvim",
+    config = function()
+      require("config.DAPInstall")
+    end,
+  })
+
+  use({ -- UI
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function()
+      require("dapui").setup()
+    end,
+  })
+
+  use({
+    "theHamsta/nvim-dap-virtual-text",
+    config = function()
+      require("nvim-dap-virtual-text").setup()
     end,
   })
 

@@ -56,3 +56,37 @@ vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr
 vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts2)
 vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts2)
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", opts2)
+
+-- Debugging
+map("n", "<F1>", ":lua require('dap').step_over()<CR>", opts)
+map("n", "<F2>", ":lua require('dap').step_into()<CR>", opts)
+map("n", "<F3>", ":lua require('dap').step_out()<CR>", opts)
+map("n", "<F4>", ":lua require('dapui').toggle()<CR>", opts)
+map("n", "<F5>", ":lua require('dap').toggle_breakpoint()<CR>", opts)
+map("n", "<F9>", ":lua require('dap').continue()<CR>", opts)
+
+map("n", "<Leader>dsc", ":lua require('dap').continue()<CR>", opts)
+map("n", "<Leader>dsv", ":lua require('dap').step_over()<CR>", opts)
+map("n", "<Leader>dsi", ":lua require('dap').step_into()<CR>", opts)
+map("n", "<Leader>dso", ":lua require('dap').step_out()<CR>", opts)
+
+map("n", "<Leader>dhh", ":lua require('dap.ui.variables').hover()<CR>", opts)
+map("v", "<Leader>dhv", ":lua require('dap.ui.variables').visual_hover()<CR>", opts)
+
+map("n", "<Leader>duh", ":lua require('dap.ui.widgets').hover()<CR>", opts)
+map("n", "<Leader>duf", ":lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", opts)
+
+map("n", "<Leader>dro", ":lua require('dap').repl.open()<CR>", opts)
+map("n", "<Leader>drl", ":lua require('dap').repl.run_last()<CR>", opts)
+
+map("n", "<Leader>dbc", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+map(
+  "n",
+  "<Leader>dbm",
+  ":lua require('dap').set_breakpoint({ nil, nil, vim.fn.input('Log point message: ') })<CR>",
+  opts
+)
+map("n", "<Leader>dbt", ":lua require('dap').toggle_breakpoint()<CR>", opts)
+
+map("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", opts)
+map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", opts)

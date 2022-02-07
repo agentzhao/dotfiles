@@ -281,7 +281,7 @@ require("packer").startup(function(use)
   })
 
   -- Debugging
-  use("mfussenegger/nvim-dap") --debugging
+  use("mfussenegger/nvim-dap")
   use({ -- installing debuggers
     "Pocco81/DAPInstall.nvim",
     config = function()

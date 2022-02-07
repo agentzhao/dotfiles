@@ -53,3 +53,7 @@ gitcreate(){
     echo "gh repo create name --public --gitignore"
   fi;
 }
+
+tess(){
+  tesseract "$1" stdout | clip.exe
+}

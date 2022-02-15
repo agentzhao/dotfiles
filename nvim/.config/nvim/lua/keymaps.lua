@@ -49,6 +49,9 @@ map("x", "K", ":move '<-2<CR>zzgv-gv", opts2)
 --map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 --map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+-- LightSpeed.nvim
+map("n", "s", "<Plug>Lightspeed_omni_s", {})
+
 -- Trouble.nvim
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", opts2)
 vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts2)
@@ -86,7 +89,7 @@ map(
   ":lua require('dap').set_breakpoint({ nil, nil, vim.fn.input('Log point message: ') })<CR>",
   opts
 )
-map("n", "<Leader>dbt", ":lua require('dap').toggle_breakpoint()<CR>", opts)
+map("n", "<Leader>dbp", ":lua require('dap').toggle_breakpoint()<CR>", opts)
 
 map("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", opts)
 map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", opts)

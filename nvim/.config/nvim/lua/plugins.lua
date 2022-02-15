@@ -1,5 +1,4 @@
 -- Define utils functions
-local utils = {}
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -281,11 +280,13 @@ require("packer").startup(function(use)
   })
 
   -- Debugging
-  use("mfussenegger/nvim-dap")
-  use({ -- installing debuggers
+  use({
+    "mfussenegger/nvim-dap",
+  })
+  use({
     "Pocco81/DAPInstall.nvim",
     config = function()
-      require("config.DAPInstall")
+      require("config.debug.DAPInstall")
     end,
   })
 
@@ -301,6 +302,13 @@ require("packer").startup(function(use)
     "theHamsta/nvim-dap-virtual-text",
     config = function()
       require("nvim-dap-virtual-text").setup()
+    end,
+  })
+
+  use({
+    "nvim-telescope/telescope-dap.nvim",
+    config = function()
+      require("telescope").load_extension("dap")
     end,
   })
 

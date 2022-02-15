@@ -57,3 +57,10 @@ pip3 install pynvim
 https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 ```
+
+# wsl2 backup and import
+
+```
+wsl --export Ubuntu-20.04 ubuntubackup.tar
+wsl --import Ubuntu-20.04 C:\Users\MyPC\AppData\Local\Packages\Ubuntu C:\Users\MyPC\Documents\ubuntubackup.tar
+```

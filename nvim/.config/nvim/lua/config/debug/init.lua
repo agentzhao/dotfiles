@@ -1,0 +1,5 @@
+require("go")
+require("lua")
+require("node")
+require("python")
+require("rust")

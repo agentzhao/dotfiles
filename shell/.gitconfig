@@ -24,6 +24,7 @@
   undo = reset HEAD~1 --mixed    # reset to last commit
   res = !git reset --hard        # hard reset to last save point
   done = !git push origin HEAD
+  amend = !git commit --amend
 
   # logs
   last = log -1 HEAD

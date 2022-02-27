@@ -28,6 +28,7 @@ local lssources = {
   }),
   formatter.black.with({ extra_args = { "--fast" } }), --python
   formatter.rustywind, -- tailwindcss
+  formatter.asmfmt, -- assembly
   -- formatter.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
 
   -- null_ls.builtins.formatting.cmake_format, --foramt listfiiles

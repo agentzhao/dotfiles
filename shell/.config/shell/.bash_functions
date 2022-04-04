@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Functions
 allfunctions(){
   bat ~/.config/shell/.bash_functions
@@ -8,11 +10,11 @@ stowsync() {
   cd ~/dotfiles
   stow -nvt ~ */
   echo "Are you sure you want to sync dotfiles? [y/n]"
-  read input
+  read -r input
   if [ "$input" == "y" ]; then
     stow -vt ~ */
   else
-    echo "Abouting..."
+    echo "Aborting..."
   fi
 }
 
@@ -20,24 +22,34 @@ stowsync() {
 cpprun() {
   g++ -o "$1" "$1.cpp"
   echo "Compiled! Enter input:"
-  time ./"$1"
+  if [ -z "$2" ]
+  then
+    time ./"$1"
+  else
+    time ./"$1" < "$2"
+  fi
 }
 
 crun() {
   gcc -o "$1" "$1.c"
   echo "Compiled! Enter input:"
-  time ./"$1"
+  if [ -z "$2" ]
+  then
+    time ./"$1"
+  else
+    time ./"$1" < "$2"
+  fi
 }
 
 # size of dir/file
 sizeof() {
   depth=${2:-0}
-  du -h --max-depth=$depth $1
+  du -h --max-depth="$depth" "$1"
 }
 
 mkdircd() {
-  mkdir -v -p $1
-  cd $1
+  mkdir -v -p "$1"
+  cd "$1"
 }
 
 gitcreate(){
@@ -56,4 +68,9 @@ gitcreate(){
 
 tess(){
   tesseract "$1" stdout | clip.exe
+}
+
+getpubkey(){
+  # cat ~/.ssh/id_rsa.pub | clip.exe
+  clip.exe < ~/.ssh/id_rsa.pub
 }

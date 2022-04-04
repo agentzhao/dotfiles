@@ -100,6 +100,7 @@ require("packer").startup(function(use)
       require("lualine").setup({
         options = {
           theme = "onedark",
+          globalstatus = "true",
         },
         sections = { lualine_d = { require("auto-session-library").current_session_name } },
       })
@@ -123,6 +124,7 @@ require("packer").startup(function(use)
       require("notify").setup({})
     end,
   })
+
   -- Tools
   use("sindrets/winshift.nvim") -- Windows
   use("simonefranza/nvim-conv") -- Converts things
@@ -130,6 +132,20 @@ require("packer").startup(function(use)
   use("ggandor/lightspeed.nvim") -- motions at lightspeed
   use("tpope/vim-repeat") -- dot-repeat for lightspeed
   use("tpope/vim-surround") -- add surround noun
+  use("ellisonleao/glow.nvim") -- markdown
+
+  -- use({ --Explains regular expressions
+  --   "bennypowers/nvim-regexplainer",
+  --   config = function()
+  --     require("regexplainer").setup({
+  --       auto = true,
+  --     })
+  --   end,
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  -- })
 
   -- use({ -- nvim fzf
   --   "vijaymarupudi/nvim-fzf",

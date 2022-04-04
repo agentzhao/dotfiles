@@ -6,6 +6,8 @@
 [user]
 	email = 20024592+agentzhao@users.noreply.github.com
   name = agentzhao
+[init]
+    templateDir = ~/.config/git/template/
 [alias]
   s = status
   rao = remote add origin

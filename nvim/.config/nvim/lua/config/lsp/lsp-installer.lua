@@ -11,7 +11,7 @@ local lsp_servers = {
   "dockerls",
   --"efm",
   -- "gopls",
-  "html",
+  -- "html", -- using prettier from null-ls
   "jsonls",
   "tsserver",
   "sumneko_lua",

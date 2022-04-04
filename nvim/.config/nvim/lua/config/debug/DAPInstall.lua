@@ -5,8 +5,8 @@ dap_install.setup({
 })
 
 dap_install.config("python", {})
--- dap_install.config("ccppr_vsc", {})
-dap_install.config("ccppr_lldb", {})
+dap_install.config("ccppr_vsc", {})
+-- dap_install.config("ccppr_lldb", {})
 dap_install.config("chrome", {})
 
 -- local dap = require("dap")

@@ -62,3 +62,6 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 -- nvim-notify
 vim.notify = require("notify")
+
+-- Glow
+vim.g.glow_border = "rounded"

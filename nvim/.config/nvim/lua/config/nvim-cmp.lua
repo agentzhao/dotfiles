@@ -13,9 +13,6 @@ cmp.setup({
       require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, -- in a clockwise order
-  },
   mapping = {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),

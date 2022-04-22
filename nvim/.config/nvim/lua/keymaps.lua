@@ -52,6 +52,12 @@ map("x", "K", ":move '<-2<CR>zzgv-gv", opts2)
 -- LightSpeed.nvim
 map("n", "s", "<Plug>Lightspeed_omni_s", {})
 
+-- Snippets
+map("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+map("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+map("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+map("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+
 -- Trouble.nvim
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", opts2)
 vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts2)

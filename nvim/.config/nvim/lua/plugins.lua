@@ -99,7 +99,7 @@ require("packer").startup(function(use)
     config = function()
       require("lualine").setup({
         options = {
-          theme = "onedark",
+          theme = "auto",
           globalstatus = "true",
         },
         sections = { lualine_d = { require("auto-session-library").current_session_name } },
@@ -121,9 +121,19 @@ require("packer").startup(function(use)
   use({
     "rcarriga/nvim-notify",
     config = function()
-      require("notify").setup({})
+      require("notify").setup({
+        background_colour = "#000000",
+      })
     end,
   })
+
+  -- Smooth scrolling
+  -- use({
+  --   "karb94/neoscroll.nvim",
+  --   config = function()
+  --     require("neoscroll").setup()
+  --   end,
+  -- })
 
   -- Tools
   use("sindrets/winshift.nvim") -- Windows
@@ -134,18 +144,18 @@ require("packer").startup(function(use)
   use("tpope/vim-surround") -- add surround noun
   use("ellisonleao/glow.nvim") -- markdown
 
-  -- use({ --Explains regular expressions
-  --   "bennypowers/nvim-regexplainer",
-  --   config = function()
-  --     require("regexplainer").setup({
-  --       auto = true,
-  --     })
-  --   end,
-  --   requires = {
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --   },
-  -- })
+  use({ --Explains regular expressions
+    "bennypowers/nvim-regexplainer",
+    config = function()
+      require("regexplainer").setup({
+        auto = true,
+      })
+    end,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+  })
 
   -- use({ -- nvim fzf
   --   "vijaymarupudi/nvim-fzf",
@@ -214,7 +224,7 @@ require("packer").startup(function(use)
     run = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = "maintained",
+        ensure_installed = "all",
         sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
         ignore_install = {},
         highlight = {

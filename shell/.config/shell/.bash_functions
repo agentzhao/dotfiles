@@ -74,3 +74,7 @@ getpubkey(){
   # cat ~/.ssh/id_rsa.pub | clip.exe
   clip.exe < ~/.ssh/id_rsa.pub
 }
+
+copy(){
+  cat "$1" | nvim -c 'normal ggVG"+yZQ' --headless - 
+}

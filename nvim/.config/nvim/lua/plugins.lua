@@ -311,7 +311,7 @@ require("packer").startup(function(use)
     "mfussenegger/nvim-dap",
   })
   use({
-    "Pocco81/DAPInstall.nvim",
+    "ravenxrz/DAPInstall.nvim",
     config = function()
       require("config.debug.DAPInstall")
     end,

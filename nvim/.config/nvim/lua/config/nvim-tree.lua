@@ -53,7 +53,6 @@ local tree_cb = require("nvim-tree.config").nvim_tree_callback
 require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
   disable_netrw = false,
-  hide_root_folder = false,
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
@@ -66,6 +65,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
   view = {
     width = 30,
     height = 30,
+    hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
     number = false,
@@ -74,7 +74,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
     mappings = {
       custom_only = false,
       list = {
-        -- user mappings go here
+        { key = "v", cb = tree_cb("vsplit") },
       },
     },
   },
@@ -139,6 +139,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
     change_dir = {
       enable = true,
       global = false,
+      restrict_above_cwd = false,
     },
     open_file = {
       quit_on_open = false,

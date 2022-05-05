@@ -1,3 +1,13 @@
+-- Some diagnostics shit
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  virtual_text = {
+    spacing = 5,
+    severity_limit = "Warning",
+  },
+  update_in_insert = true,
+})
+
 -- Define utils functions
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -23,7 +33,8 @@ vim.cmd([[
 
 vim.cmd([[packadd packer.nvim]])
 
-require("packer").startup(function(use)
+return require("packer").startup(function(use)
+  -- require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Environment
@@ -371,12 +382,3 @@ require("packer").startup(function(use)
     require("packer").sync()
   end
 end)
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  virtual_text = {
-    spacing = 5,
-    severity_limit = "Warning",
-  },
-  update_in_insert = true,
-})

@@ -78,3 +78,50 @@ getpubkey(){
 copy(){
   cat "$1" | nvim -c 'normal ggVG"+yZQ' --headless - 
 }
+
+# Docker
+drea(){
+  docker restart "$1"
+  docker attach "$1"
+}
+
+# List RAM used by container
+dmem() {
+    if [ -f /sys/fs/cgroup/memory/docker/"$1"/memory.usage_in_bytes ]; then
+        echo $(( $(cat /sys/fs/cgroup/memory/docker/"$1"/memory.usage_in_bytes) / 1024 / 1024 )) 'MB'
+    else
+        echo 'n/a'
+    fi
+}
+
+# Return id of container given name
+did() {
+  ID=$( $DSUDO docker inspect --format="{{.Id}}" "$1" 2> /dev/null);
+  if (( $? >= 1 )); then
+      # Container doesn't exist
+      ID=''
+  fi
+  echo $ID
+}
+
+# List all IP addresses used by container
+dip() {
+    IP=$($DSUDO docker inspect --format="{{.NetworkSettings.IPAddress}}" "$1" 2> /dev/null)
+    if (( $? >= 1 )); then
+        # Container doesn't exist
+        IP='n/a'
+    fi
+    echo $IP
+}
+
+# List Volume used by container
+dvol() {
+    vols=$($DSUDO docker inspect --format="{{.HostConfig.Binds}}" "$1")
+    vols=${vols:1:-1}
+    for vol in $vols
+    do
+      echo "$vol"
+    done
+}
+
+

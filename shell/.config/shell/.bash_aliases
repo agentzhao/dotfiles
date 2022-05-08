@@ -26,6 +26,24 @@ alias cd....="cd ../../.."
 alias cd.....="cd ../../../.."
 alias cd......="cd ../../../../.."
 
+# Rerun last command with sudo
+# alias please='sudo "$BASH" -c "$(history -p !!)"'
+alias please="_ !!"
+
+# Docker
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dim="docker images"
+alias dps="docker ps -s"
+alias dpsa="docker ps -as"
+alias dsp="docker system prune --all"
+alias dre="docker restart"
+alias dat="docker attach"
+alias dstop="docker stop"
+alias dvls="docker volume ls"
+alias drm="docker remove"
+alias drmi="docker rmi"
+
 # Plugins
 alias fd=fdfind
 

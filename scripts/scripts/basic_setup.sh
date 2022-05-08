@@ -7,13 +7,9 @@ sudo apt-get update && apt-get install git zsh xclip -y
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# nvim
+# Neovim
 sudo curl -L https://github.com/neovim/neovim/releases/download/v0.6.1/nvim.appimage -o /usr/local/bin/nvim
 sudo chmod +x /usr/local/bin/nvim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-#sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-#       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 

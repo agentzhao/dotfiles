@@ -238,7 +238,22 @@ return require("packer").startup(function(use)
     run = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = "all",
+        ensure_installed = {
+          "bash",
+          "c",
+          "cpp",
+          "css",
+          "dockerfile",
+          "html",
+          "json",
+          "javascript",
+          "lua",
+          "python",
+          "rust",
+          "go",
+          "typescript",
+          "vue",
+        },
         sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
         ignore_install = {},
         highlight = {

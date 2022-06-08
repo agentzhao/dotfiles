@@ -41,7 +41,6 @@ alias dre="docker restart"
 alias dat="docker attach"
 alias dstop="docker stop"
 alias dvls="docker volume ls"
-alias drm="docker rm"
 alias drmi="docker rmi"
 
 # Plugins

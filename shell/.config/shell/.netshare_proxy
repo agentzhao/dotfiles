@@ -1,0 +1,3 @@
+export HTTPS_PROXY="http://192.168.49.1:8282/"
+export HTTP_PROXY="http://192.168.49.1:8282"
+export NO_PROXY="http://192.168.49.1:8282"

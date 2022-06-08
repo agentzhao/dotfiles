@@ -124,4 +124,11 @@ dvol() {
     done
 }
 
+drm(){
+  docker stop "$1"
+  docker rm "$1"
+}
 
+dit(){
+  docker exec -it "$1" /bin/sh
+}

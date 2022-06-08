@@ -1,8 +1,7 @@
 [core]
 	autocrlf = input
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+  helper = !gh auth git-credential
 [user]
 	email = 20024592+agentzhao@users.noreply.github.com
   name = agentzhao
@@ -29,5 +28,6 @@
   amend = !git commit --amend
 
   # logs
-  last = log -1 HEAD
+  last = git log -1 --stat
+  changes = git show HEAD
   logs = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30

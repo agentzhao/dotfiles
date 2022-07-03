@@ -157,6 +157,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-repeat") -- dot-repeat for lightspeed
   use("tpope/vim-surround") -- add surround noun
   use("ellisonleao/glow.nvim") -- markdown
+  use("Djancyp/cheat-sheet") -- cht.sh cheatsheet
 
   use({ --Explains regular expressions
     "bennypowers/nvim-regexplainer",

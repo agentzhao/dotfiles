@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  tmux:
+    image: agentzhao/arch-linux:latest
+    container_name: arch-linux-tmux
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "~/:/home/$USER"
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+      - "$HOME/.Xauthority:/home/$USER/.Xauthority"
+      - /workspace:/workspace
+    environment:
+      - DISPLAY=$DISPLAY
+      - HOME=/home/$USER
+    network_mode: host

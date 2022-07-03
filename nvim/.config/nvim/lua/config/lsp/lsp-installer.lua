@@ -2,7 +2,8 @@ local util = require("lspconfig.util")
 local lsp = require("config/lsp")
 
 local lsp_servers = {
-  -- "arduino_language_server",
+  "arduino_language_server",
+  "asm_lsp",
   "bashls",
   -- "ccls",
   "clangd",
@@ -10,18 +11,18 @@ local lsp_servers = {
   -- "dartls",
   "dockerls",
   --"efm",
-  -- "gopls",
+  "gopls",
   -- "html", -- using prettier from null-ls
   "jsonls",
-  "tsserver",
-  "sumneko_lua",
-  --"powershell_es",
-  "pyright",
-  -- "rust_analyzer",
-  --"sqlls",
-  "tailwindcss",
-  "volar",
   "lemminx",
+  "pyright",
+  "rust_analyzer",
+  "sumneko_lua",
+  "tailwindcss",
+  "tsserver",
+  --"powershell_es",
+  --"sqlls",
+  "volar",
   "yamlls",
 }
 

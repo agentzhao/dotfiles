@@ -42,6 +42,8 @@ alias dat="docker attach"
 alias dstop="docker stop"
 alias dvls="docker volume ls"
 alias drmi="docker rmi"
+alias lzdr='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /dotfiles/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
+alias lzd='lazydocker'
 
 # Plugins
 alias fd=fdfind

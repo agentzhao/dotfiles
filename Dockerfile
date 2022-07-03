@@ -30,11 +30,11 @@ RUN git clone https://aur.archlinux.org/yay.git \
   && rm -Rf yay
 
 RUN yay -Syu --noprogressbar --noconfirm --needed \
-  python3 python-pip nodejs-lts-fermium npm clang \
+  python3 python-pip nodejs-lts-gallium npm clang \
   eslint_d prettier stylua git-delta github-cli \
   tmux bat fzf fd ripgrep kitty-terminfo \
   neovim neovim-remote nvim-packer-git \
-  oh-my-zsh-git spaceship-prompt zsh-autosuggestions \
+  oh-my-zsh-git zsh-theme-powerlevel10k-git spaceship-prompt zsh-autosuggestions \
   dotnet-host-bin dotnet-sdk-3.1-bin aspnet-runtime-3.1-bin \
   # dotnet-runtime-bin netcoredbg \
   # mssql-tools maven \
@@ -48,6 +48,10 @@ RUN yay -Syu --noprogressbar --noconfirm --needed \
 # netcoredbg has conflicts when it's part of the block above
 RUN yay -Syu --noprogressbar --noconfirm --needed netcoredbg \
   && yay -Scc --noprogressbar --noconfirm
+
+# oh my zsh and powerlevel10k
+# RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+# RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # I don't know why I have to set this again, but I do...
 RUN sudo sed -i '/en_US.UTF-8 UTF-8/s/^#//g' /etc/locale.gen \

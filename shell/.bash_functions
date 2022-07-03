@@ -2,17 +2,17 @@
 
 # Functions
 allfunctions(){
-  bat ~/.config/shell/.bash_functions
+  bat ~/.bash_functions
 }
 
 # Sync dotfiles
 stowsync() {
-  cd ~/dotfiles
-  stow -nvt ~ */
+  cd ~/dotfiles || exit
+  stow -nvt ~ .*/
   echo "Are you sure you want to sync dotfiles? [y/n]"
   read -r input
   if [ "$input" == "y" ]; then
-    stow -vt ~ */
+    stow -vt ~ .*/
   else
     echo "Aborting..."
   fi
@@ -38,6 +38,18 @@ crun() {
     time ./"$1"
   else
     time ./"$1" < "$2"
+  fi
+}
+
+# java files
+jrun() {
+  javac "$1.java"
+  echo "Compiled! Enter input:"
+  if [ -z "$2" ]
+  then
+    time java "$1"
+  else
+    time java "$1" < "$2"
   fi
 }
 

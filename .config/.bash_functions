@@ -8,11 +8,11 @@ allfunctions(){
 # Sync dotfiles
 stowsync() {
   cd ~/dotfiles || exit
-  stow -nvt ~ .*/
+  stow -nvt ~ .
   echo "Are you sure you want to sync dotfiles? [y/n]"
   read -r input
   if [ "$input" == "y" ]; then
-    stow -vt ~ .*/
+    stow -vt ~ .
   else
     echo "Aborting..."
   fi

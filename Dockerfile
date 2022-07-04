@@ -34,7 +34,7 @@ RUN yay -Syu --noprogressbar --noconfirm --needed \
   eslint_d prettier stylua git-delta github-cli \
   tmux bat fzf fd ripgrep kitty-terminfo \
   neovim neovim-remote nvim-packer-git \
-  oh-my-zsh-git zsh-theme-powerlevel10k-git spaceship-prompt zsh-autosuggestions \
+  oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-autosuggestions \
   dotnet-host-bin dotnet-sdk-3.1-bin aspnet-runtime-3.1-bin \
   # dotnet-runtime-bin netcoredbg \
   # mssql-tools maven \

@@ -23,9 +23,9 @@ end
 local lssources = {
   -- formatting
   formatter.prettier,
-  formatter.stylua.with({
-    args = { "--indent-width", "2", "--indent-type", "Spaces", "-" },
-  }),
+  -- formatter.stylua.with({
+  --   args = { "--indent-width", "2", "--indent-type", "Spaces", "-" },
+  -- }),
   formatter.black.with({ extra_args = { "--fast" } }), --python
   formatter.rustywind, -- tailwindcss
   formatter.asmfmt, -- assembly

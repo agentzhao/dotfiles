@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+alias os=lsb_release -sd
 alias sudo="sudo " # Allows for aliases to work with sudo
 alias apt-get='apt-get -q -o Dpkg::Progress=true -o Dpkg::Progress-Fancy=true -o APT::Get::AutomaticRemove=true ' # Nicer ouput
 alias grep='grep -sI --color=auto' # Colorful (auto) 'grep' output.

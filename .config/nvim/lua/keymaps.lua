@@ -2,13 +2,24 @@ local map = vim.api.nvim_set_keymap
 local bufmap = vim.api.nvim_buf_set_keymap
 local opts = { noremap = true }
 local opts2 = { noremap = true, silent = true }
+local opts3 = { noremap = true, expr = true }
 
 map("n", "<C-c>", "<Esc>", opts)
 map("x", "i", "<C-c>i", opts)
-
 map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
-
 map("n", "<leader>gb", "<c-^>", opts)
+
+-- Deleting empty lines in normal/visual mode
+local function smart_dd()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return "\"_dd"
+  else
+    return "dd"
+  end
+end
+
+vim.keymap.set("n", "dd", smart_dd, opts3)
+vim.keymap.set("v", "d", smart_dd, opts3)
 
 -- Delete word
 map("i", "<M-BS>", "<C-w>", opts)
@@ -35,7 +46,7 @@ map("n", "<A-w>", "<cmd>WinShift<cr>", opts)
 
 --Telescope
 map("n", "<leader>pp", "<cmd>Telescope projects<cr>", opts)
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
+map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts)
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)

@@ -1,9 +1,10 @@
 #!/bin/bash
-EXISTING=$(docker container ls | grep arch-linux:stable | awk '{ print $1}')
+# --rm - container is removed when it exits
+EXISTING=$(docker container ls | grep arch-linux:latest | awk '{ print $1}')
 if [[ $EXISTING ]]; then
     docker attach "$EXISTING"
 else
-    EXISTING=$(docker run --rm -d -it \
+    EXISTING=$(docker run -d -it \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/:/home/"$USER" \
         -e HOME="/home/$USER" \

@@ -70,3 +70,8 @@ wsl --import Ubuntu-20.04 C:\Users\MyPC\AppData\Local\Packages\Ubuntu C:\Users\M
 ```
 https://askubuntu.com/questions/760896/how-can-i-fix-apt-error-w-target-packages-is-configured-multiple-times
 ```
+
+# Debugging
+
+`docker:1: maximum nested function level reached; increase FUNCNEST?`
+`unset -f docker`

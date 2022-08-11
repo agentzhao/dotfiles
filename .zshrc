@@ -6,12 +6,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 OS=`uname -s`
-DIST=`lsb_release -sd`
+# DIST=`lsb_release -sd`
 # DIST=cat /etc/*-release | grep "Distributor ID:" | sed 's/Distributor ID://g' | sed 's/"//g'
+DIST=$(grep 'PRETTY_NAME=' /etc/*-release)
 
 plugins=(alias-finder
           asdf
           autoenv
+          docker
           dotenv
           git
           ripgrep
@@ -23,7 +25,7 @@ plugins=(alias-finder
 export ZSH="/home/zhao/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
 # source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch linux
@@ -45,6 +47,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# bitwarden zsh-completions
+eval "$(bw completion --shell zsh); compdef _bw bw;"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

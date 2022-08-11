@@ -34,20 +34,21 @@ RUN yay -Syu --noprogressbar --noconfirm --needed \
   eslint_d prettier stylua git-delta github-cli \
   tmux bat fzf fd ripgrep kitty-terminfo \
   neovim neovim-remote nvim-packer-git \
-  oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-autosuggestions \
-  dotnet-host-bin dotnet-sdk-3.1-bin aspnet-runtime-3.1-bin \
+  oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-autosuggestions zsh-completions-git zsh-syntax-highlighting-git \
+  docker docker-compose lazydocker \
+  zoxide-git ncdu \
+  # dotnet-host-bin dotnet-sdk-3.1-bin aspnet-runtime-3.1-bin \
   # dotnet-runtime-bin netcoredbg \
   # mssql-tools maven \
   # aws-cli-v2-bin aws-session-manager-plugin aws-vault pass \
-  docker docker-compose lazydocker \
-  ncdu glances nnn-nerd jq zoxide-git \
   && sudo pip --disable-pip-version-check install pynvim \
-  && sudo npm install -g neovim ng wip \
+  && sudo npm install -g neovim @bitwarden/cli \
   && yay -Scc --noprogressbar --noconfirm
 
-# netcoredbg has conflicts when it's part of the block above
-RUN yay -Syu --noprogressbar --noconfirm --needed netcoredbg \
-  && yay -Scc --noprogressbar --noconfirm
+# not sure if package is needed
+# # netcoredbg has conflicts when it's part of the block above
+# RUN yay -Syu --noprogressbar --noconfirm --needed netcoredbg \
+#   && yay -Scc --noprogressbar --noconfirm
 
 # oh my zsh and powerlevel10k
 # RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

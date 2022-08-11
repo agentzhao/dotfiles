@@ -1,4 +1,5 @@
-sudo apt install zoxide git curl zsh xclip unzip bat python3 python3-pip fd-find
+sudo apt update
+sudo apt install zoxide git curl zsh xclip unzip bat python3 python3-pip fd-find ncdu ripgrep
 
 # nodejs 16 lts Using Ubuntu
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -11,8 +12,15 @@ apt-get install -y nodejs
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install gh ripgrep
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# brew install gh ripgrep
+
+# gh cli
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+sudo apt update
+sudo apt install gh
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

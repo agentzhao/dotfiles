@@ -28,7 +28,7 @@ local lssources = {
   -- }),
   formatter.black.with({ extra_args = { "--fast" } }), --python
   formatter.rustywind, -- tailwindcss
-  formatter.asmfmt, -- assembly
+  -- formatter.asmfmt, -- assembly
   formatter.shfmt, -- bash shell
   -- formatter.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
 
@@ -37,9 +37,6 @@ local lssources = {
 
   diagnostics.shellcheck, -- bash/sh shell scripts
   --diagnostics.cppcheck, --fast static analysis of C/C++ code
-
-  -- Code actions
-  actions.gitsigns, -- git commit
 
   -- Completion
   completion.luasnip,

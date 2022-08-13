@@ -12,12 +12,14 @@ local lsp_servers = {
   "dockerls",
   --"efm",
   "gopls",
-  -- "html", -- using prettier from null-ls
+  "html",
   "jsonls",
+  "jdtls",
   "lemminx",
   "pyright",
   "rust_analyzer",
   "sumneko_lua",
+  "marksman", -- Markdown
   "tailwindcss",
   "tsserver",
   --"powershell_es",
@@ -25,7 +27,6 @@ local lsp_servers = {
   "volar",
   "yamlls",
 }
-
 for _, name in ipairs(lsp_servers) do
   local ok, server = require("nvim-lsp-installer.servers").get_server(name)
 
@@ -58,6 +59,9 @@ local servers = {
     on_attach = null_ls_formatting,
   },
   volar = {
+    on_attach = null_ls_formatting,
+  },
+  html = {
     on_attach = null_ls_formatting,
   },
   tsserver = {

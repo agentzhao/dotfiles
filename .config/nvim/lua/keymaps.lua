@@ -18,6 +18,7 @@ local function smart_dd()
   end
 end
 
+-- Don't keep empty lines in register
 vim.keymap.set("n", "dd", smart_dd, opts3)
 vim.keymap.set("v", "d", smart_dd, opts3)
 

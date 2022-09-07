@@ -1,3 +1,5 @@
+-- h nvim-tree-default-mappings
+
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", {
   noremap = true,
   silent = true,
@@ -25,7 +27,7 @@ require("nvim-tree").setup({
     mappings = {
       custom_only = false,
       list = {
-        { key = "v", cb = tree_cb("vsplit") },
+        { key = "<C-x>", cb = tree_cb("vsplit") },
       },
     },
   },

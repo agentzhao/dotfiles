@@ -50,6 +50,11 @@ return require("packer").startup(function(use)
 
   -- Environment
   use "danilamihailov/beacon.nvim"
+  use { "justinhj/battery.nvim",
+    config = function()
+      require("config.battery")
+    end,
+  }
 
   use {
     "rmagatti/auto-session",
@@ -119,13 +124,7 @@ return require("packer").startup(function(use)
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = function()
-      require("lualine").setup({
-        options = {
-          theme = "auto",
-          globalstatus = "true",
-        },
-        sections = { lualine_d = { require("auto-session-library").current_session_name } },
-      })
+      require("config.lualine")
     end,
   }
 
@@ -146,7 +145,15 @@ return require("packer").startup(function(use)
       require("notify").setup({
         background_colour = "#000000",
       })
+      require("telescope").load_extension("notify")
     end,
+  }
+
+  use { 'mrshmllow/document-color.nvim', config = function()
+    require("document-color").setup {
+      mode = "background", -- "background" | "foreground"
+    }
+  end
   }
 
   -- Smooth scrolling
@@ -166,7 +173,15 @@ return require("packer").startup(function(use)
   use "tpope/vim-surround" -- add surround verb
   use "ellisonleao/glow.nvim" -- markdown
   use "Djancyp/cheat-sheet" -- cht.sh cheatsheet
-  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' } -- Code Folding
+
+  use { -- tabline plugin
+    'romgrk/barbar.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons',
+      config = function()
+        require("config.barbar")
+      end,
+    }
+  }
 
   use { --Explains regular expressions
     "bennypowers/nvim-regexplainer",
@@ -224,6 +239,11 @@ return require("packer").startup(function(use)
       require("colorizer").setup({
         "*",
         "vue",
+        -- disable because of document-color
+        '!css';
+        '!html';
+        '!tsx';
+        '!dart';
         css = { names = true },
       }, {
         mode = "background",
@@ -249,6 +269,7 @@ return require("packer").startup(function(use)
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
+          "astro",
           "bash",
           "c",
           "cpp",
@@ -261,17 +282,19 @@ return require("packer").startup(function(use)
           "json",
           "latex",
           "lua",
+          "markdown",
           "php",
           "python",
           "rust",
           "regex",
           "rust",
           "scss",
+          "sql",
           "typescript",
           "vue",
           "yaml",
         },
-        sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+        sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
         ignore_install = {},
         highlight = {
           enable = true,
@@ -303,13 +326,17 @@ return require("packer").startup(function(use)
   use {
     "L3MON4D3/LuaSnip",
     config = function()
-      require("config.lua_snip")
+      require("config.luasnip")
     end,
   }
   use "saadparwaiz1/cmp_luasnip"
   use "ray-x/lsp_signature.nvim"
   use "rafamadriz/friendly-snippets"
-  use "simrat39/rust-tools.nvim" --extra tools over rust_analyzer
+  use { "simrat39/rust-tools.nvim", --extra tools over rust_analyzer
+    config = function()
+      require("config.rust-tools")
+    end,
+  }
 
   use {
     "hrsh7th/nvim-cmp",
@@ -318,19 +345,12 @@ return require("packer").startup(function(use)
     end,
   }
 
-  -- use { -- deprecated
-  --   "williamboman/nvim-lsp-installer",
-  --   config = function()
-  --     require("config.lsp.lsp-installer")
-  --   end,
-  -- }
-
   -- migrate to mason
-  use {    "williamboman/mason.nvim",
-config = function()
-  require("mason").setup()
-end,
-}
+  use { "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  }
   use {
     "williamboman/mason-lspconfig.nvim",
     config = function()
@@ -368,11 +388,8 @@ end,
   -- Debugging
   use {
     "mfussenegger/nvim-dap",
-  }
-  use {
-    "ravenxrz/DAPInstall.nvim",
     config = function()
-      require("config.debug.DAPInstall")
+      require("config.dap")
     end,
   }
 
@@ -412,6 +429,12 @@ end,
     config = function()
       require("config.copilot")
     end,
+  }
+  use { 'sindrets/diffview.nvim',
+    config = function()
+      require("config.diffview")
+    end,
+    requires = 'nvim-lua/plenary.nvim'
   }
 
   use {

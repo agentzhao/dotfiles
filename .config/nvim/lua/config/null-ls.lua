@@ -29,13 +29,14 @@ local lssources = {
   formatter.black.with({ extra_args = { "--fast" } }), --python
   formatter.rustywind, -- tailwindcss
   -- formatter.asmfmt, -- assembly
-  formatter.shfmt, -- bash shell
+  -- formatter.shfmt, -- bash shell
+  -- formatter.google_java_format, -- java
   -- formatter.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
 
   -- null_ls.builtins.formatting.cmake_format, --foramt listfiiles
   -- null_ls.builtins.formatting.gofmt, -- format go programs
 
-  diagnostics.shellcheck, -- bash/sh shell scripts
+  -- diagnostics.shellcheck, -- bash/sh shell scripts
   --diagnostics.cppcheck, --fast static analysis of C/C++ code
 
   -- Completion

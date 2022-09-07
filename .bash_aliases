@@ -9,6 +9,7 @@ alias lsa='ls -A' # show all files.
 alias lsl='ls -nph' # lots of information.
 alias lsla='ls -Anph' # but also show all files.
 alias exp='explorer.exe .'
+alias home='cd ~'
 
 # files
 alias rm='rm -v'
@@ -51,6 +52,8 @@ alias fd=fdfind
 
 # My stuff
 alias chksum='md5sum --ignore-missing --quiet -c' # check md5 hash
+alias ifconfig='ip address'
+alias ipconfig='ip address'
 
 # Bitwarden
 alias bwp="bw list item --response --search"

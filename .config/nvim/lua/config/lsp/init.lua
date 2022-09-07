@@ -1,9 +1,49 @@
+local lspconfig = require("lspconfig")
+
+-- null-ls
+-- local lsp_formatting = function(bufnr)
+--   vim.lsp.buf.format({
+--     filter = function(client)
+--       -- apply whatever logic you want (in this example, we'll only use null-ls)
+--       return client.name == "null-ls"
+--     end,
+--     bufnr = bufnr,
+--   })
+-- end
+
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+  -- null-ls -- 0.8 update
+  -- if client.supports_method("textDocument/formatting") then
+  --   vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  --   vim.api.nvim_create_autocmd("BufWritePre", {
+  --     group = augroup,
+  --     buffer = bufnr,
+  --     callback = function()
+  --       lsp_formatting(bufnr)
+  --     end,
+  --   })
+  -- end
+
+  -- if client.name == "tsserver" or client.name == "volar" then
+  --   client.server_capabilities.document_formatting = false -- 0.7 and earlier
+  --   -- client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+  -- end
+
+  -- document-color.nvim
+  if client.server_capabilities.colorProvider then
+    -- Attach document colour support
+    require("document-color").buf_attach(bufnr)
+  end
+
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
+
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -13,6 +53,9 @@ local on_attach = function(_, bufnr)
 
   -- Mappings.
   local opts = { noremap = true, silent = true }
+
+  -- <C-c>
+  buf_set_keymap("n", "<C-c>", "<Esc>", opts)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -42,6 +85,15 @@ local on_attach = function(_, bufnr)
   buf_set_keymap("n", "gR", "<cmd>Trouble lsp_references<CR>", opts)
 end
 
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities.textDocument.colorProvider = {
+  dynamicRegistration = true
+}
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 return {
   on_attach = on_attach,
+  capabilities = capabilities,
 }

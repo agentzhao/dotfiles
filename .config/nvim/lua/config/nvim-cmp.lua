@@ -14,52 +14,74 @@ cmp.setup({
     end,
   },
   mapping = {
-    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-e>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ["<C-l>"] = cmp.mapping.confirm({
+    --   behavior = cmp.ConfirmBehavior.Replace,
+    --   select = false,
+    -- }),
+    -- ['<CR>'] = cmp.mapping({
+    --   i = cmp.mapping.confirm({ select = true }),
+    --   c = cmp.mapping.confirm({ select = true }),
+    -- }),
 
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        local copilot_keys = vim.fn["copilot#Accept"]()
-        if copilot_keys ~= "" then
-          vim.api.nvim_feedkeys(copilot_keys, "i", true)
-        else
-          fallback()
-        end
-      end
-    end, { "i", "s" }),
-
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    --{ "i", "s" },
+    -- testing
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+    -- ["<Tab>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_next_item()
+    --   elseif luasnip.expand_or_jumpable() then
+    --     luasnip.expand_or_jump()
+    --   elseif has_words_before() then
+    --     cmp.complete()
+    --   else
+    --     local copilot_keys = vim.fn["copilot#Accept"]()
+    --     if copilot_keys ~= "" then
+    --       vim.api.nvim_feedkeys(copilot_keys, "i", true)
+    --     else
+    --       fallback()
+    --     end
+    --   end
+    -- end, { "i", "s" }),
+    --
+    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { "i", "s" }),
   },
+  -- sources = cmp.config.sources {
   sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
     { name = "path" },
+    { name = "nvim_lsp" }, -- this aint working
+    { name = "luasnip" },
     { name = "nvim_lua" },
     { name = "buffer", keyword_length = 3 },
+  },
+  window = {
+    documentation = cmp.config.window.bordered()
+  },
+  formatting = {
+    fields = { 'menu', 'abbr', 'kind' },
+    format = function(entry, item)
+      local menu_icon = {
+        nvim_lsp = 'λ',
+        luasnip = '⋗',
+        buffer = 'Ω',
+        path = '🖫',
+      }
+
+      item.menu = menu_icon[entry.source.name]
+      return item
+    end,
   },
 })
 
@@ -78,13 +100,3 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
-
--- Setup lspconfig.
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
---   capabilities = capabilities
--- }

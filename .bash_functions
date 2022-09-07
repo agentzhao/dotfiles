@@ -59,7 +59,7 @@ sizeof() {
   du -h --max-depth="$depth" "$1"
 }
 
-mkdircd() {
+mcd() {
   mkdir -v -p "$1"
   cd "$1"
 }
@@ -92,10 +92,6 @@ copy(){
 }
 
 # Docker
-drea(){
-  docker restart "$1"
-  docker attach "$1"
-}
 
 # List RAM used by container
 dmem() {
@@ -136,11 +132,16 @@ dvol() {
     done
 }
 
-drm(){
-  docker stop "$1"
-  docker rm "$1"
+drea(){
+   docker restart "$1"
+   docker attach "$1"
 }
 
-dit(){
-  docker exec -it "$1" /bin/sh
+dsrm(){
+   docker stop "$1"
+   docker rm "$1"
+}
+
+dis(){
+   docker exec -it "$1" /bin/sh
 }

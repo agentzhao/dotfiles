@@ -18,11 +18,14 @@ local function smart_dd()
   end
 end
 
+-- Delete all empty lines
+map("n", "<Leader>del", ":g/^$/d | noh<CR>", opts)
+
 -- Don't keep empty lines in register
 vim.keymap.set("n", "dd", smart_dd, opts3)
 vim.keymap.set("v", "d", smart_dd, opts3)
 
--- Delete word
+-- Delete word by word
 map("i", "<M-BS>", "<C-w>", opts)
 map("i", "<M-d>", "<cmd>norm! dw<CR>", opts)
 
@@ -31,12 +34,6 @@ map("n", "<A-Up>", ":wincmd k<CR>", {})
 map("n", "<A-Down>", ":wincmd j<CR>", {})
 map("n", "<A-Left>", ":wincmd h<CR>", {})
 map("n", "<A-Right>", ":wincmd l<CR>", {})
-
--- Tabs
-map("n", "<C-Left>", ":tabprevious<CR>", opts)
-map("n", "<C-Right>", ":tabnext<CR>", opts)
-map("n", "<C-t>", ":tabnew<CR>", opts)
-map("n", "<C-w>", ":tabclose<CR>", opts)
 
 -- Sessions
 map("n", "<Leader>ss", ":<C-u>SaveSession<CR>", {})
@@ -111,3 +108,18 @@ map("n", "<Leader>dbp", ":lua require('dap').toggle_breakpoint()<CR>", opts)
 
 map("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", opts)
 map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", opts)
+
+-- barbar
+map('n', '<C-Left>', '<Cmd>BufferPrevious<CR>', opts2)
+map('n', '<C-Right>', '<Cmd>BufferNext<CR>', opts2)
+-- map("n", "<C-Left>", ":tabprevious<CR>", opts2)
+-- map("n", "<C-Right>", ":tabnext<CR>", opts2)
+map("n", "<C-t>", ":tabnew<CR>", opts2)
+map('n', '<C-w>', '<Cmd>BufferClose<CR>', opts2)
+-- map("n", "<C-w>", ":tabclose<CR>", opts2)
+map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts2) -- Magic buffer-picking mode
+-- Sort automatically by...
+map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts2)
+map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts2)
+map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts2)
+map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts2)

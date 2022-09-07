@@ -27,6 +27,7 @@ local lsp_servers = {
   "volar",
   "yamlls",
 }
+
 for _, name in ipairs(lsp_servers) do
   local ok, server = require("nvim-lsp-installer.servers").get_server(name)
 

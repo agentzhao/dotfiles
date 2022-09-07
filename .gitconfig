@@ -3,7 +3,7 @@
 [credential "https://github.com"]
   helper = !gh auth git-credential
 [user]
-	email = 20024592+agentzhao@users.noreply.github.com
+	email = tan.hongzhao@dhs.sg
   name = agentzhao
 [init]
     templateDir = ~/.config/git/template/

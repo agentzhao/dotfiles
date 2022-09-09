@@ -8,7 +8,7 @@ local nvimbattery = {
 require("lualine").setup({
   options = {
     theme = "auto",
-    globalstatus = "false",
+    globalstatus = "true",
   },
   sections = {
     lualine_d = { require("auto-session-library").current_session_name },

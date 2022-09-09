@@ -75,3 +75,12 @@ https://askubuntu.com/questions/760896/how-can-i-fix-apt-error-w-target-packages
 
 `docker:1: maximum nested function level reached; increase FUNCNEST?`
 `unset -f docker`
+
+# Git filter-repo
+
+```
+https://github.com/newren/git-filter-repo
+git clone --mirror https://github.com/<username>/<repo>.git
+git filter-repo --invert-paths --path <folder>/<file>
+git push --no-verify --mirror
+```

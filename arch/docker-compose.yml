@@ -9,7 +9,7 @@ services:
       - "~/:/home/$USER"
       - "/tmp/.X11-unix:/tmp/.X11-unix"
       - "$HOME/.Xauthority:/home/$USER/.Xauthority"
-      - /workspace:/workspace
+      - "~/workspace:/workspace"
     environment:
       - DISPLAY=$DISPLAY
       - HOME=/home/$USER

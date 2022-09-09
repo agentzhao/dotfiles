@@ -64,3 +64,4 @@ RUN sudo sed -i '/en_US.UTF-8 UTF-8/s/^#//g' /etc/locale.gen \
 #      && sudo sysctl --system
 
 ENV TERM="xterm-256color"
+CMD ["tmux"]

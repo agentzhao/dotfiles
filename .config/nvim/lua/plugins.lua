@@ -11,20 +11,18 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 -- might fix something
 -- vim.o.runtimepath = vim.fn.stdpath("data") .. "/site/pack/*/start/*," .. vim.o.runtimepath
 
--- Automatically install packer
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  })
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 -- Helper function for config
 local function c(name)
@@ -42,8 +40,6 @@ vim.cmd([[
   augroup end
 ]])
 
-vim.cmd([[packadd packer.nvim]])
-
 return require("packer").startup(function(use)
   -- require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
@@ -59,6 +55,7 @@ return require("packer").startup(function(use)
   use {
     "rmagatti/auto-session",
     config = function()
+      vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
       require("auto-session").setup({
         log_level = "info",
         auto_session_suppress_dirs = { "~/", "~/workspace" },
@@ -171,8 +168,14 @@ return require("packer").startup(function(use)
   use "ggandor/lightspeed.nvim" -- motions at lightspeed
   use "tpope/vim-repeat" -- dot-repeat
   use "tpope/vim-surround" -- add surround verb
-  use "ellisonleao/glow.nvim" -- markdown
   use "Djancyp/cheat-sheet" -- cht.sh cheatsheet
+  use {
+    "ellisonleao/glow.nvim", -- markdown
+    require('glow').setup({
+      style = "dark",
+      border = "rounded",
+    })
+  }
 
   use { -- tabline plugin
     'romgrk/barbar.nvim',

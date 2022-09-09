@@ -37,9 +37,6 @@ vim.cmd("set backspace=indent,eol,start")
 
 vim.opt.list = true
 --vim.opt.listchars:append("eol:↴")
---
--- auto-session
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 -- -- coc nvim
 -- vim.o.backup = false
@@ -47,21 +44,16 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 -- vim.o.updatetime = 500
 
 -- lightspeed default highlighting
+-- vim.cmd([[
+-- autocmd ColorScheme * lua require'lightspeed'.init_highlight(true)
+-- autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+--
+-- augroup highlight_yank
+--     autocmd!
+--     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+-- augroup END
+-- ]])
+
 vim.cmd([[
-autocmd ColorScheme * lua require'lightspeed'.init_highlight(true)
-autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
-
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup END
+au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=300}
 ]])
-
--- auto session
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-
--- nvim-notify
-vim.notify = require("notify")
-
--- Glow
-vim.g.glow_border = "rounded"

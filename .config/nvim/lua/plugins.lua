@@ -192,10 +192,12 @@ return require("packer").startup(function(use)
 
   use {
     "ellisonleao/glow.nvim", -- markdown
+    config = function()
     require('glow').setup({
       style = "dark",
       border = "rounded",
     })
+  end,
   }
 
   use { -- tabline plugin
@@ -331,10 +333,12 @@ return require("packer").startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter-context',
-    require 'treesitter-context'.setup {
-      enable = true,
-      max_lines = -1,
-    }
+    config = function()
+      require'treesitter-context'.setup {
+        enable = true,
+        max_lines = -1,
+      }
+    end,
   }
 
   use {

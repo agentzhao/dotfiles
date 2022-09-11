@@ -41,8 +41,33 @@ vim.cmd([[
 ]])
 
 return require("packer").startup(function(use)
-  -- require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
+
+  -- themes
+  -- use {
+  --   "navarasu/onedark.nvim",
+  --   config = function()
+  --     require("onedark").setup({
+  --       style = "darker",
+  --       transparent = false,
+  --     })
+  --     require("onedark").load()
+  --   end,
+  -- }
+
+  -- use {
+  --   'sam4llis/nvim-tundra',
+  --   config = function()
+  --     require("config.tundra")
+  --   end,
+  -- }
+
+  use { "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require("config.catppuccin")
+    end,
+  }
 
   -- Environment
   use "danilamihailov/beacon.nvim"
@@ -107,17 +132,6 @@ return require("packer").startup(function(use)
   }
 
   use {
-    "navarasu/onedark.nvim",
-    config = function()
-      require("onedark").setup({
-        style = "darker",
-        transparent = false,
-      })
-      require("onedark").load()
-    end,
-  }
-
-  use {
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = function()
@@ -164,11 +178,18 @@ return require("packer").startup(function(use)
   -- Tools
   use "sindrets/winshift.nvim" -- Windows
   use "simonefranza/nvim-conv" -- Converts things
-  use "liuchengxu/vista.vim"
   use "ggandor/lightspeed.nvim" -- motions at lightspeed
   use "tpope/vim-repeat" -- dot-repeat
   use "tpope/vim-surround" -- add surround verb
   use "Djancyp/cheat-sheet" -- cht.sh cheatsheet
+
+  use {
+    'stevearc/aerial.nvim',
+    config = function()
+      require("config.aerial")
+    end,
+  }
+
   use {
     "ellisonleao/glow.nvim", -- markdown
     require('glow').setup({
@@ -306,6 +327,14 @@ return require("packer").startup(function(use)
         },
       })
     end,
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter-context',
+    require 'treesitter-context'.setup {
+      enable = true,
+      max_lines = -1,
+    }
   }
 
   use {

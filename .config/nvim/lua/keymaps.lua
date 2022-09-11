@@ -9,6 +9,8 @@ map("x", "i", "<C-c>i", opts)
 map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
 map("n", "<leader>gb", "<c-^>", opts)
 
+map("n", "<C-s>", "<C-u>", opts) -- <C-s> to scroll up and <C-d> to scroll down
+
 -- Deleting empty lines in normal/visual mode
 local function smart_dd()
   if vim.api.nvim_get_current_line():match("^%s*$") then

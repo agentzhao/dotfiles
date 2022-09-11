@@ -22,7 +22,11 @@ plugins=(alias-finder
           zsh-syntax-highlighting
           )
 
-export ZSH="/home/zhao/.oh-my-zsh"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  export ZSH="/home/zhao/.oh-my-zsh"
+elif [[ "$OSTYPE" == "linux-android" ]]; then
+  export ZSH="/data/data/com.termux/files/home/.oh-my-zsh"
+fi
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # source ~/powerlevel10k/powerlevel10k.zsh-theme

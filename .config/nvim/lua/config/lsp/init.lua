@@ -40,6 +40,9 @@ local on_attach = function(client, bufnr)
     require("document-color").buf_attach(bufnr)
   end
 
+  -- aerial.nvim
+  require("aerial").on_attach(client, bufnr)
+
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end

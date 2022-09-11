@@ -3,17 +3,17 @@
 ```
 cd ~
 sudo apt update
-sudo apt install -y git stow
+sudo apt install -y git stow zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/hyperupcall/autoenv ~/.autoenv
+
 git clone https://github.com/agentzhao/dotfiles.git
 cd ~/dotfiles
 stow -nvt ~ .
 stow -vt ~ .
-
-curl https://raw.githubusercontent.com/agentzhao/dotfiles/main/scripts/basic_setup.sh -o basic_setup.sh
-chmod +x basic_setup.sh
-./basic_setup.sh
-chsh -s $(which zsh)
-rm basic_setup.sh
 ```
 
 # Brew

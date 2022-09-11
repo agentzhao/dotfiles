@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+alias nv='nvim'
+
 alias os=lsb_release -sd
 alias sudo="sudo " # Allows for aliases to work with sudo
 alias cl="clear"
@@ -44,6 +46,7 @@ alias dat="docker attach"
 alias dstop="docker stop"
 alias dvls="docker volume ls"
 alias drmi="docker rmi"
+alias dex="docker exec -it"
 alias lzdr='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /dotfiles/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
 alias lzd='lazydocker'
 

@@ -19,9 +19,11 @@ vim.opt.encoding = "UTF-8"
 vim.opt.shortmess:append({ c = true })
 vim.opt.inccommand = "nosplit"
 
+vim.opt.cursorline = true
+
 -- Number on side bar
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.bo.autoindent = true
 vim.bo.tabstop = 2

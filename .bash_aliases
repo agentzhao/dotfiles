@@ -35,8 +35,8 @@ alias cd......="cd ../../../../.."
 alias pls="sudo !!"
 
 # Docker
-alias dcu="docker-compose up -d"
-alias dcd="docker-compose down"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
 alias dim="docker images"
 alias dps="docker ps -s"
 alias dpsa="docker ps -as"

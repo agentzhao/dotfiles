@@ -169,7 +169,7 @@ mason_lspconfig.setup_handlers({
     }
 
     lspconfig.jsonls.setup({
-      on_attach = opts.on_attach,
+      on_attach = null_ls,
       capabilities = opts.capabilities,
 
       settings = {

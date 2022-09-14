@@ -25,12 +25,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Helper function for config
-local function c(name)
-  local success, func = pcall(require, "config." .. name)
-  if success then
-    return "require('" .. name .. "').setup({})"
-  end
-end
+-- local function c(name)
+--   local success, func = pcall(require, "config." .. name)
+--   if success then
+--     return "require('" .. name .. "').setup({})"
+--   end
+-- end
 
 -- Rerun PackerCompile everytime plugins.lua is updated
 vim.cmd([[
@@ -193,11 +193,11 @@ return require("packer").startup(function(use)
   use {
     "ellisonleao/glow.nvim", -- markdown
     config = function()
-    require('glow').setup({
-      style = "dark",
-      border = "rounded",
-    })
-  end,
+      require('glow').setup({
+        style = "dark",
+        border = "rounded",
+      })
+    end,
   }
 
   use { -- tabline plugin
@@ -334,7 +334,7 @@ return require("packer").startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter-context',
     config = function()
-      require'treesitter-context'.setup {
+      require 'treesitter-context'.setup {
         enable = true,
         max_lines = -1,
       }
@@ -408,6 +408,8 @@ return require("packer").startup(function(use)
     config = function()
       require("telescope").setup({
         defaults = {
+          file_ignore_patterns = { "node_modules", ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv",
+            "%.mp4", "%.zip" },
           mappings = {
             i = {
               ["<C-x>"] = "select_vertical",

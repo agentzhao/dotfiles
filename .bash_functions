@@ -142,6 +142,9 @@ dsrm(){
    docker rm "$1"
 }
 
-dis(){
-   docker exec -it "$1" /bin/sh
+dcp(){
+  docker compose --profile "$1" up -d
+}
+dcpd(){
+  docker compose --profile "$1" down
 }

@@ -4,6 +4,7 @@
 cd ~
 sudo apt update
 sudo apt install -y git stow zsh
+
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
@@ -52,13 +53,6 @@ sudo apt install python3-pip -y
 pip3 install pynvim
 ```
 
-# zsh tools
-
-```
-https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-```
-
 # wsl2 backup and import
 
 ```
@@ -68,13 +62,12 @@ wsl --import Ubuntu-20.04 C:\Users\MyPC\AppData\Local\Packages\Ubuntu C:\Users\M
 
 # Target packages ... is configured multiple times
 
-```
 https://askubuntu.com/questions/760896/how-can-i-fix-apt-error-w-target-packages-is-configured-multiple-times
-```
 
 # Debugging
 
 `docker:1: maximum nested function level reached; increase FUNCNEST?`
+
 `unset -f docker`
 
 # Git filter-repo

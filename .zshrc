@@ -28,10 +28,13 @@ elif [[ "$OSTYPE" == "linux-android" ]]; then
   export ZSH="/data/data/com.termux/files/home/.oh-my-zsh"
 fi
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# change theme when ssh
+if [[ -n "$SSH_CONNECTION" ]]; then
+  ZSH_THEME="agnoster"
+else
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+fi
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
-# source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch linux
 
 source $ZSH/oh-my-zsh.sh

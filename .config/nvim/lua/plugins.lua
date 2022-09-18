@@ -180,8 +180,18 @@ return require("packer").startup(function(use)
   use "simonefranza/nvim-conv" -- Converts things
   use "ggandor/lightspeed.nvim" -- motions at lightspeed
   use "tpope/vim-repeat" -- dot-repeat
-  use "tpope/vim-surround" -- add surround verb
+  -- use "tpope/vim-surround" -- add surround verb
   use "Djancyp/cheat-sheet" -- cht.sh cheatsheet
+
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  })
 
   use {
     'stevearc/aerial.nvim',
@@ -264,7 +274,6 @@ return require("packer").startup(function(use)
     config = function()
       require("colorizer").setup({
         "*",
-        "vue",
         -- disable because of document-color
         '!css';
         '!html';

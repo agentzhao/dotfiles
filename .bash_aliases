@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-alias nv='nvim'
+alias v='nvim'
 
 alias os=lsb_release -sd
 alias sudo="sudo " # Allows for aliases to work with sudo

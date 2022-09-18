@@ -4,4 +4,3 @@ export TESSDATA_PREFIX='/usr/local/share/tessdata'
 
 source .bash_aliases
 source .bash_functions
-. "$HOME/.cargo/env"

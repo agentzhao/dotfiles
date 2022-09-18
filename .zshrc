@@ -33,6 +33,10 @@ if [[ -n "$SSH_CONNECTION" ]]; then
   ZSH_THEME="agnoster"
 else
   ZSH_THEME="powerlevel10k/powerlevel10k"
+  # other settings
+  . "$HOME/.cargo/env"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # brew
+  eval "$(bw completion --shell zsh); compdef _bw bw;" # bitwarden zsh-completions
 fi
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch linux
@@ -51,12 +55,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# bitwarden zsh-completions
-eval "$(bw completion --shell zsh); compdef _bw bw;"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

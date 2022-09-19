@@ -62,3 +62,9 @@ alias ipconfig='ip address'
 alias bwp="bw list item --response --search"
 alias bwg="bw generate -ulns --length 16"
 alias bws="bw status"
+
+# tmux
+alias t='tmux'
+alias ta='tmux attach -t'
+alias tls='tmux ls'
+alias trs='tmux rename-session -t'

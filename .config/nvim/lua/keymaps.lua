@@ -11,6 +11,10 @@ map("n", "<leader>gb", "<c-^>", opts)
 
 map("n", "<C-s>", "<C-u>", opts) -- <C-s> to scroll up and <C-d> to scroll down
 
+map("x", "<leader>p", "\"_dP", opts) -- paste over selection
+
+map("n", "<C-4>", "<Nop>", opts) -- why does C-4 open toggleterm
+
 -- Deleting empty lines in normal/visual mode
 local function smart_dd()
   if vim.api.nvim_get_current_line():match("^%s*$") then
@@ -32,10 +36,10 @@ map("i", "<M-BS>", "<C-w>", opts)
 map("i", "<M-d>", "<cmd>norm! dw<CR>", opts)
 
 -- Window navigation :ball :vert ball
-map("n", "<A-Up>", ":wincmd k<CR>", {})
-map("n", "<A-Down>", ":wincmd j<CR>", {})
-map("n", "<A-Left>", ":wincmd h<CR>", {})
-map("n", "<A-Right>", ":wincmd l<CR>", {})
+map("n", "<M-k>", ":wincmd k<CR>", opts)
+map("n", "<M-j>", ":wincmd j<CR>", opts)
+map("n", "<M-h>", ":wincmd h<CR>", opts)
+map("n", "<M-l>", ":wincmd l<CR>", opts)
 
 -- Sessions
 map("n", "<Leader>ss", ":<C-u>SaveSession<CR>", {})
@@ -112,8 +116,8 @@ map("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", opts)
 map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", opts)
 
 -- barbar
-map('n', '<C-Left>', '<Cmd>BufferPrevious<CR>', opts2)
-map('n', '<C-Right>', '<Cmd>BufferNext<CR>', opts2)
+map('n', '<C-h>', '<Cmd>BufferPrevious<CR>', opts2)
+map('n', '<C-l>', '<Cmd>BufferNext<CR>', opts2)
 -- map("n", "<C-Left>", ":tabprevious<CR>", opts2)
 -- map("n", "<C-Right>", ":tabnext<CR>", opts2)
 map("n", "<C-t>", ":tabnew<CR>", opts2)

@@ -11,7 +11,7 @@ RUN sudo sed -i '/en_US.UTF-8 UTF-8/s/^#//g' /etc/locale.gen \
   && sudo locale-gen
 
 RUN pacman -Syu --noprogressbar --noconfirm --needed \
-  cmake clang unzip ninja git curl wget openssh zsh reflector \
+  cmake clang unzip ninja git curl wget openssh zsh reflector htop \
   archlinux-keyring \
   && useradd -m -s "${SHELL}" "${UNAME}" \
   && echo "${UNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
@@ -31,7 +31,7 @@ RUN git clone https://aur.archlinux.org/yay.git \
 
 RUN yay -Syu --noprogressbar --noconfirm --needed \
   python3 python-pip nodejs-lts-gallium npm clang \
-  eslint_d prettier stylua git-delta github-cli \
+  eslint_d prettier stylua git-delta github-cli lazygit \
   tmux bat fzf fd ripgrep kitty-terminfo \
   neovim neovim-remote nvim-packer-git \
   oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-autosuggestions zsh-completions-git zsh-syntax-highlighting-git \

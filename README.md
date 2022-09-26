@@ -18,6 +18,20 @@ stow -nvt ~ .
 stow -vt ~ .
 ```
 
+# Docker Images
+
+```
+docker pull agentzhao/ctf-box
+```
+
+```
+docker pull agentzhao/arch-linux
+```
+
+```
+docker pull agentzhao/ubuntu
+```
+
 # Brew
 
 ```
@@ -73,3 +87,7 @@ git clone --mirror https://github.com/<username>/<repo>.git
 git filter-repo --invert-paths --path <folder>/<file>
 git push --no-verify --mirror
 ```
+
+# TIL
+
+- Renumbering windows in tmux: <C-a>:movew -r (move-window renumber)

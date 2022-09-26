@@ -68,3 +68,6 @@ alias t='tmux'
 alias ta='tmux attach -t'
 alias tls='tmux ls'
 alias trs='tmux rename-session -t'
+
+alias npmadd='npm install --save --package-lock-only --no-package-lock'
+

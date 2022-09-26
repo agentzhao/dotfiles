@@ -56,7 +56,7 @@ jrun() {
 # size of dir/file
 sizeof() {
   depth=${2:-0}
-  du -h --max-depth="$depth" "$1"
+  du -h --max-depth="$depth" "$1" 2> /dev/null | sort -hr
 }
 
 mcd() {
@@ -82,17 +82,11 @@ tess(){
   tesseract "$1" stdout | clip.exe
 }
 
-getpubkey(){
-  # cat ~/.ssh/id_rsa.pub | clip.exe
-  clip.exe < ~/.ssh/id_rsa.pub
-}
-
 copy(){
   cat "$1" | nvim -c 'normal ggVG"+yZQ' --headless - 
 }
 
 # Docker
-
 # List RAM used by container
 dmem() {
     if [ -f /sys/fs/cgroup/memory/docker/"$1"/memory.usage_in_bytes ]; then
@@ -145,6 +139,67 @@ dsrm(){
 dcp(){
   docker compose --profile "$1" up -d
 }
+
 dcpd(){
   docker compose --profile "$1" down
+}
+
+lg(){
+  export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+  lazygit "$@"
+
+  if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+          cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+          rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+  fi
+}
+
+# turn this into git alias someday
+fatfiles(){
+  git rev-list --all --objects | \
+  sed -n $(git rev-list --objects --all | \
+  cut -f1 -d' ' | \
+  git cat-file --batch-check | \
+  grep blob | \
+  sort -n -k 3 | \
+  tail -n40 | \
+  while read hash type size; do 
+       echo -n "-e s/$hash/$size/p ";
+  done) | \
+  sort -n -k1
+}
+
+eradicate(){
+  git filter-branch -f  --index-filter "git rm --force --cached --ignore-unmatch '$1'" -- --all
+  rm -Rf .git/refs/original && \
+  rm -Rf .git/logs/ && \
+  git reflog expire --expire=now --all && \
+  git gc --aggressive && \
+  git prune && \
+  
+  git count-objects -v
+}
+
+function ssh() {
+  # tmux起動時
+  if [[ -n $(printenv TMUX) ]] ; then
+    # 現在のペインIDを記録
+    local pane_id=$(tmux display -p '#{pane_id}')
+    # 接続先ホスト名に応じて背景色を切り替え
+    # https://www.ditig.com/256-colors-cheat-sheet
+    if [[ `echo $1 | grep 'digitalocean'` ]] ; then
+        tmux select-pane -P 'bg=colour17,fg=white'
+    elif [[ `echo $1 | grep 'otherssh'` ]] ; then
+        tmux select-pane -P 'bg=colour25,fg=white'
+    fi
+
+    # 通常通りssh続行
+    command ssh $@
+
+    # デフォルトの背景色に戻す
+    tmux select-pane -t $pane_id -P 'default'
+  else
+    command ssh $@
+  fi
 }

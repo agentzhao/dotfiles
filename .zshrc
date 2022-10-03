@@ -30,7 +30,8 @@ fi
 
 # change theme when ssh
 if [[ -n "$SSH_CONNECTION" ]]; then
-  ZSH_THEME="agnoster"
+  # ZSH_THEME="agnoster"
+  ZSH_THEME="powerlevel10k/powerlevel10k"
 else
   ZSH_THEME="powerlevel10k/powerlevel10k"
   # other settings

@@ -49,6 +49,7 @@ alias drmi="docker rmi"
 alias dex="docker exec -it"
 alias lzdr='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /dotfiles/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
 alias lzd='lazydocker'
+alias dcrb="docker-compose build --no-cache"
 
 # Plugins
 alias fd=fdfind

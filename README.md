@@ -91,3 +91,11 @@ git push --no-verify --mirror
 # TIL
 
 - Renumbering windows in tmux: <C-a>:movew -r (move-window renumber)
+
+# gdrive
+
+`brew install gdrive`
+
+# tar files
+
+`tar xzvf file.tar.gz`

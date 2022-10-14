@@ -190,8 +190,8 @@ function ssh() {
     # https://www.ditig.com/256-colors-cheat-sheet
     if [[ `echo $1 | grep 'digitalocean'` ]] ; then
         tmux select-pane -P 'bg=colour17,fg=white'
-    elif [[ `echo $1 | grep 'otherssh'` ]] ; then
-        tmux select-pane -P 'bg=colour25,fg=white'
+    elif [[ `echo $1 | grep 'ntulab'` ]] ; then
+        tmux select-pane -P 'bg=colour16,fg=white'
     fi
 
     # 通常通りssh続行

@@ -5,5 +5,7 @@ Bitwarden CLI/
 **/gh
 **/github-copilot
 **/yarn
+**/htop
+**/lazygit
 hosts.yml
 hosts.json

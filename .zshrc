@@ -66,3 +66,8 @@ export NVM_DIR="$HOME/.nvm"
 #     sudo tailscaled > /dev/null 2>&1 &
 #     disown
 # fi
+
+# start tmux && [[ -n "$SSH_CONNECTION" ]]
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
+  tmux attach-session -t $USER || tmux new-session -s $USER
+fi

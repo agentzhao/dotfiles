@@ -61,8 +61,8 @@ local opts = {
 }
 
 local null_ls = function(client)
-  client.server_capabilities.document_formatting = false
-  client.server_capabilities.document_range_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
 end
 
 mason_lspconfig.setup_handlers({

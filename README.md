@@ -66,6 +66,11 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt install python3.9 -y
 sudo apt install python3-pip -y
 pip3 install pynvim
+
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 110
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 100
+sudo update-alternatives --config python3
+sudo update-alternatives --remove python3 /usr/bin/python3.10
 ```
 
 # wsl2 backup and import

@@ -120,7 +120,7 @@ map('n', '<C-h>', '<Cmd>BufferPrevious<CR>', opts2)
 map('n', '<C-l>', '<Cmd>BufferNext<CR>', opts2)
 -- map("n", "<C-Left>", ":tabprevious<CR>", opts2)
 -- map("n", "<C-Right>", ":tabnext<CR>", opts2)
-map("n", "<C-t>", ":tabnew<CR>", opts2)
+-- map("n", "<C-t>", ":tabnew<CR>", opts2)
 map('n', '<C-w>', '<Cmd>BufferClose<CR>', opts2)
 -- map("n", "<C-w>", ":tabclose<CR>", opts2)
 map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts2) -- Magic buffer-picking mode

@@ -90,6 +90,7 @@ capabilities.textDocument.colorProvider = {
   dynamicRegistration = true
 }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.offsetEncoding = "utf-8"
 
 return {
   on_attach = on_attach,

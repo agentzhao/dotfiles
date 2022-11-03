@@ -68,6 +68,6 @@ export NVM_DIR="$HOME/.nvm"
 # fi
 
 # start tmux && [[ -n "$SSH_CONNECTION" ]]
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
-  tmux attach-session -t $USER || tmux new-session -s $USER
+if [[ -z "$TMUX" ]] && [[ -n $SSH_TTY ]]; then
+  tmux new-session -A -s zhao
 fi

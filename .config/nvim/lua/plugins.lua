@@ -193,12 +193,12 @@ return require("packer").startup(function(use)
     end
   })
 
-  use {
-    'stevearc/aerial.nvim',
-    config = function()
-      require("config.aerial")
-    end,
-  }
+  -- use {
+  --   'stevearc/aerial.nvim',
+  --   config = function()
+  --     require("config.aerial")
+  --   end,
+  -- }
 
   use {
     "ellisonleao/glow.nvim", -- markdown

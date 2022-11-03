@@ -9,3 +9,4 @@ Bitwarden CLI/
 **/lazygit
 hosts.yml
 hosts.json
+packer_compiled.lua

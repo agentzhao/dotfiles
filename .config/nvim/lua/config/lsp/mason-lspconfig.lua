@@ -76,6 +76,15 @@ mason_lspconfig.setup_handlers({
     }
   end,
 
+  -- You can also specify a handler for a specific server
+  ["jdtls"] = function()
+    lspconfig.jdtls.setup({
+      on_attach = opts.on_attach,
+      capabilities = opts.capabilities,
+      root_dir = lspconfig.util.root_pattern("pom.xml", "build.gradle", ".git") or vim.fn.getcwd()
+    })
+  end,
+
   ["volar"] = function()
     lspconfig.volar.setup({
       on_attach = null_ls,

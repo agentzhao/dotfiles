@@ -76,8 +76,16 @@ sudo update-alternatives --remove python3 /usr/bin/python3.10
 # wsl2 backup and import
 
 ```
-wsl --export Ubuntu-20.04 ubuntubackup.tar
-wsl --import Ubuntu-20.04 C:\Users\MyPC\AppData\Local\Packages\Ubuntu C:\Users\MyPC\Documents\ubuntubackup.tar
+wsl -l -v
+wsl --export Ubuntu-22.04 ubuntubackup.tar
+wsl --import Ubuntu-22.04 C:\Users\user\AppData\Local\Packages\Ubuntu C:\Users\user\Documents\ubuntubackup.tar
+```
+
+# wsl
+
+```
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
 
 # Target packages ... is configured multiple times

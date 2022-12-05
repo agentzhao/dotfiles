@@ -10,10 +10,9 @@ map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
 map("n", "<leader>gb", "<c-^>", opts)
 
 map("n", "<C-s>", "<C-u>", opts) -- <C-s> to scroll up and <C-d> to scroll down
-
 map("x", "<leader>p", "\"_dP", opts) -- paste over selection
-
 map("n", "<C-4>", "<Nop>", opts) -- why does C-4 open toggleterm
+map("n", "<CR>", "o<ESC>", opts) -- <CR> add new line below
 
 -- Deleting empty lines in normal/visual mode
 local function smart_dd()
@@ -65,21 +64,13 @@ map("x", "K", ":move '<-2<CR>zzgv-gv", opts2)
 --map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- LightSpeed.nvim
-map("n", "s", "<Plug>Lightspeed_omni_s", {})
+-- map("n", "s", "<Plug>Lightspeed_omni_s", {})
 
 -- Snippets
 map("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
 map("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
 map("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 map("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
-
--- Trouble.nvim
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", opts2)
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts2)
-vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", opts2)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts2)
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts2)
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", opts2)
 
 -- Debugging
 map("n", "<F1>", ":lua require('dap').step_over()<CR>", opts)
@@ -129,3 +120,6 @@ map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts2)
 map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts2)
 map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts2)
 map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts2)
+
+-- LazyGit
+map("n", "<leader>gg", ":LazyGit<CR>", opts2)

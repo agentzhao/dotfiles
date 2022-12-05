@@ -53,6 +53,11 @@ jrun() {
   fi
 }
 
+jpcompile(){
+  find . -type f -name "*.java" > sources.txt
+  javac -d ./out/ @sources.txt
+}
+
 # size of dir/file
 sizeof() {
   depth=${2:-0}

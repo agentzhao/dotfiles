@@ -7,6 +7,10 @@ Bitwarden CLI/
 **/yarn
 **/htop
 **/lazygit
+**/google-chrome
+**/pulse
+**/ngrok
+**/flutter
 hosts.yml
 hosts.json
 packer_compiled.lua

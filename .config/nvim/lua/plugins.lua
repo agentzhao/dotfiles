@@ -23,7 +23,6 @@ local ensure_packer = function()
 end
 
 local packer_bootstrap = ensure_packer()
-
 -- Helper function for config
 -- local function c(name)
 --   local success, func = pcall(require, "config." .. name)
@@ -34,7 +33,7 @@ local packer_bootstrap = ensure_packer()
 
 -- Rerun PackerCompile everytime plugins.lua is updated
 vim.cmd([[
-  augroup packer_user_config
+  augroup packer_user_wconfig
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
@@ -176,13 +175,35 @@ return require("packer").startup(function(use)
   -- })
 
   -- Tools
+  -- use "Djancyp/cheat-sheet" -- cht.sh cheatsheet
+  use "tpope/vim-repeat" -- dot-repeat
   use "sindrets/winshift.nvim" -- Windows
   use "simonefranza/nvim-conv" -- Converts things
-  use "ggandor/lightspeed.nvim" -- motions at lightspeed
-  use "tpope/vim-repeat" -- dot-repeat
-  -- use "tpope/vim-surround" -- add surround verb
-  use "Djancyp/cheat-sheet" -- cht.sh cheatsheet
-
+  use { "ggandor/leap.nvim", -- successor of lightspeed
+    config = function()
+      require('leap').add_default_mappings()
+      -- require('leap').leap { target_windows = { vim.fn.win_getid() } }
+    end,
+  }
+  use { "ggandor/leap-spooky.nvim",
+    config = function()
+      require('leap-spooky').setup {
+        affixes = {
+          -- These will generate mappings for all native text objects, like:
+          -- (ir|ar|iR|aR|im|am|iM|aM){obj}.
+          -- Special line objects will also be added, by repeating the affixes.
+          -- E.g. `yrr<leap>` and `ymm<leap>` will yank a line in the current
+          -- window.
+          -- You can also use 'rest' & 'move' as mnemonics.
+          remote   = { window = 'r', cross_window = 'R' },
+          magnetic = { window = 'm', cross_window = 'M' },
+        },
+        -- If this option is set to true, the yanked text will automatically be pasted
+        -- at the cursor position if the unnamed register is in use.
+        paste_on_remote_yank = false,
+      }
+    end,
+  }
   use({
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -193,12 +214,12 @@ return require("packer").startup(function(use)
     end
   })
 
-  -- use {
-  --   'stevearc/aerial.nvim',
-  --   config = function()
-  --     require("config.aerial")
-  --   end,
-  -- }
+  use {
+    'stevearc/aerial.nvim',
+    config = function()
+      require("config.aerial")
+    end,
+  }
 
   use {
     "ellisonleao/glow.nvim", -- markdown
@@ -319,7 +340,7 @@ return require("packer").startup(function(use)
           "latex",
           "lua",
           "markdown",
-          "php",
+          -- "php",
           "python",
           "rust",
           "regex",
@@ -394,7 +415,12 @@ return require("packer").startup(function(use)
   -- migrate to mason
   use { "williamboman/mason.nvim",
     config = function()
-      require("mason").setup()
+      require("mason").setup {
+        -- providers = {
+        --   "mason.providers.client",
+        --   "mason.providers.registry-api",
+        -- }
+      }
     end,
   }
   use {
@@ -412,9 +438,16 @@ return require("packer").startup(function(use)
     requires = { "nvim-lua/plenary.nvim" },
   }
 
+  use { 'akinsho/flutter-tools.nvim',
+    config = function()
+      require("flutter-tools").setup {}
+    end,
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
+
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
+    requires = { "nvim-lua/plenary.nvim", "kdheepak/lazygit.nvim" },
     config = function()
       require("telescope").setup({
         defaults = {
@@ -471,7 +504,12 @@ return require("packer").startup(function(use)
   }
 
   -- Github
-  use "tpope/vim-fugitive"
+  use { "kdheepak/lazygit.nvim",
+    config = function()
+      require("telescope").load_extension("lazygit")
+    end,
+  }
+
   use {
     "github/copilot.vim",
     config = function()

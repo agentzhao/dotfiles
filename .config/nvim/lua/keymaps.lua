@@ -50,6 +50,7 @@ map("n", "<A-w>", "<cmd>WinShift<cr>", opts)
 --Telescope
 map("n", "<leader>pp", "<cmd>Telescope projects<cr>", opts)
 map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts)
+map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", opts)
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)

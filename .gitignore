@@ -1,16 +1,21 @@
 .DS_Store
-**/'Bitwarden CLI'
-Bitwarden CLI/
-**/Bitwarden CLI/
-**/gh
-**/github-copilot
-**/yarn
-**/htop
-**/lazygit
-**/google-chrome
-**/pulse
-**/ngrok
-**/flutter
+
+# folders
+Bitwarden CLI
+gh
+github-copilot
+yarn
+htop
+lazygit
+google-chrome
+pulse
+ngrok
+flutter
+Google
+gedit
+enchant
+dconf
+
 hosts.yml
 hosts.json
 packer_compiled.lua

@@ -440,7 +440,14 @@ return require("packer").startup(function(use)
 
   use { 'akinsho/flutter-tools.nvim',
     config = function()
-      require("flutter-tools").setup {}
+      require("flutter-tools").setup {
+        decorations = {
+          statusline = {
+            app_version = true,
+            device = true,
+          }
+        },
+      }
     end,
     requires = { 'nvim-lua/plenary.nvim' },
   }

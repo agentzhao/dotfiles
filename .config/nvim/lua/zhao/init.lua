@@ -15,7 +15,7 @@ vim.o.list           = true -- show whitespaces
 -- todo fix this as default ftplugin overrides :verbose set formatoptions
 vim.opt.formatoptions:remove { "c", "r", "o" } -- don't auto-wrap comments
 -- vim.o.cmdheight = 0 -- cmdheight
--- vim.o.laststatus        = 0 -- laststatus
+-- vim.o.laststatus = 0 -- laststatus
 -- vim.o.autochdir = true
 
 -- Tabs

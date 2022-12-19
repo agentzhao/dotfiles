@@ -56,8 +56,8 @@ if not lspconfig_status_ok then
 end
 
 local opts = {
-  on_attach = require("config.lsp").on_attach,
-  capabilities = require("config.lsp").capabilities,
+  on_attach = require("zhao.config.lsp").on_attach,
+  capabilities = require("zhao.config.lsp").capabilities,
 }
 
 local null_ls = function(client)

@@ -64,7 +64,7 @@ return require("packer").startup(function(use)
   use { "catppuccin/nvim",
     as = "catppuccin",
     config = function()
-      require("config.catppuccin")
+      require("zhao.config.catppuccin")
     end,
   }
 
@@ -72,7 +72,7 @@ return require("packer").startup(function(use)
   use "danilamihailov/beacon.nvim"
   use { "justinhj/battery.nvim",
     config = function()
-      require("config.battery")
+      require("zhao.config.battery")
     end,
   }
 
@@ -112,7 +112,7 @@ return require("packer").startup(function(use)
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
     config = function()
-      require("config.alpha")
+      require("zhao.config.alpha")
     end,
   }
 
@@ -134,7 +134,7 @@ return require("packer").startup(function(use)
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = function()
-      require("config.lualine")
+      require("zhao.config.lualine")
     end,
   }
 
@@ -217,7 +217,7 @@ return require("packer").startup(function(use)
   use {
     'stevearc/aerial.nvim',
     config = function()
-      require("config.aerial")
+      require("zhao.config.aerial")
     end,
   }
 
@@ -235,7 +235,7 @@ return require("packer").startup(function(use)
     'romgrk/barbar.nvim',
     requires = { 'kyazdani42/nvim-web-devicons',
       config = function()
-        require("config.barbar")
+        require("zhao.config.barbar")
       end,
     }
   }
@@ -281,7 +281,7 @@ return require("packer").startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
-      require("config.whichkey")
+      require("zhao.config.whichkey")
     end,
   }
 
@@ -324,41 +324,7 @@ return require("packer").startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "astro",
-          "bash",
-          "c",
-          "cpp",
-          "css",
-          "dockerfile",
-          "go",
-          "html",
-          "java",
-          "javascript",
-          "json",
-          "latex",
-          "lua",
-          "markdown",
-          -- "php",
-          "python",
-          "rust",
-          "regex",
-          "rust",
-          "scss",
-          "sql",
-          "typescript",
-          "vue",
-          "yaml",
-        },
-        sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
-        ignore_install = {},
-        highlight = {
-          enable = true,
-          disable = {},
-          additional_vim_regex_highlighting = false,
-        },
-      })
+      require("zhao.config.nvim-treesitter")
     end,
   }
 
@@ -378,7 +344,7 @@ return require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
     config = function()
-      require("config.nvim-tree")
+      require("zhao.config.nvim-tree")
     end,
   }
 
@@ -393,7 +359,7 @@ return require("packer").startup(function(use)
   use {
     "L3MON4D3/LuaSnip",
     config = function()
-      require("config.luasnip")
+      require("zhao.config.luasnip")
     end,
   }
   use "saadparwaiz1/cmp_luasnip"
@@ -401,14 +367,14 @@ return require("packer").startup(function(use)
   use "rafamadriz/friendly-snippets"
   use { "simrat39/rust-tools.nvim", --extra tools over rust_analyzer
     config = function()
-      require("config.rust-tools")
+      require("zhao.config.rust-tools")
     end,
   }
 
   use {
     "hrsh7th/nvim-cmp",
     config = function()
-      require("config.nvim-cmp")
+      require("zhao.config.nvim-cmp")
     end,
   }
 
@@ -426,14 +392,14 @@ return require("packer").startup(function(use)
   use {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require("config.lsp.mason-lspconfig")
+      require("zhao.config.lsp.mason-lspconfig")
     end,
   }
 
   use {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      require("config.null-ls")
+      require("zhao.config.null-ls")
     end,
     requires = { "nvim-lua/plenary.nvim" },
   }
@@ -477,7 +443,7 @@ return require("packer").startup(function(use)
   use {
     "mfussenegger/nvim-dap",
     config = function()
-      require("config.dap")
+      require("zhao.config.dap")
     end,
   }
 
@@ -520,12 +486,13 @@ return require("packer").startup(function(use)
   use {
     "github/copilot.vim",
     config = function()
-      require("config.copilot")
+      require("zhao.config.copilot")
     end,
   }
+
   use { 'sindrets/diffview.nvim',
     config = function()
-      require("config.diffview")
+      require("zhao.config.diffview")
     end,
     requires = 'nvim-lua/plenary.nvim'
   }

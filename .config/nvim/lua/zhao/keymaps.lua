@@ -5,7 +5,7 @@ local opts2 = { noremap = true, silent = true }
 local opts3 = { noremap = true, expr = true }
 
 map("n", "<C-c>", "<Esc>", opts)
-map("x", "i", "<C-c>i", opts)
+-- map("x", "i", "<C-c>i", opts)
 map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
 map("n", "<leader>gb", "<c-^>", opts)
 
@@ -14,6 +14,14 @@ map("x", "<leader>p", "\"_dP", opts) -- paste over selection
 map("n", "<C-4>", "<Nop>", opts) -- why does C-4 open toggleterm
 map("n", "<CR>", "o<ESC>", opts) -- <CR> add new line below
 
+map("n", "J", "mzJ`z", opts) -- join lines
+
+map("n", "n", "nzzzv", opts) -- keep cursor in the middle when searching
+map("n", "N", "Nzzzv", opts) -- also backwards
+
+-- quickfix
+map("n", "<leader>k", "<cmd>lnext<CR>", opts) -- next quickfix
+map("n", "<leader>j", "<cmd>lprev<CR>", opts) -- previous quickfix
 -- Deleting empty lines in normal/visual mode
 local function smart_dd()
   if vim.api.nvim_get_current_line():match("^%s*$") then

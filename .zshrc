@@ -35,9 +35,9 @@ if [[ -n "$SSH_CONNECTION" ]]; then
 else
   ZSH_THEME="powerlevel10k/powerlevel10k"
   # other settings
-  . "$HOME/.cargo/env"
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # brew
-  eval "$(bw completion --shell zsh); compdef _bw bw;" # bitwarden zsh-completions
+  # . "$HOME/.cargo/env"
+  # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # brew
+  # eval "$(bw completion --shell zsh); compdef _bw bw;" # bitwarden zsh-completions
 fi
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch linux

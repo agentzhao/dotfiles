@@ -296,10 +296,10 @@ return require("packer").startup(function(use)
       require("colorizer").setup({
         "*",
         -- disable because of document-color
-        '!css';
-        '!html';
-        '!tsx';
-        '!dart';
+        -- '!css';
+        -- '!html';
+        -- '!tsx';
+        -- '!dart';
         css = { names = true },
       }, {
         mode = "background",
@@ -382,10 +382,10 @@ return require("packer").startup(function(use)
   use { "williamboman/mason.nvim",
     config = function()
       require("mason").setup {
-        -- providers = {
-        --   "mason.providers.client",
-        --   "mason.providers.registry-api",
-        -- }
+        providers = {
+          -- "mason.providers.client", -- if second one doesn't work
+          "mason.providers.registry-api",
+        }
       }
     end,
   }

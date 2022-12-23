@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 alias v='nvim'
 
 alias os=lsb_release -sd
@@ -10,7 +11,6 @@ alias grep='grep -sI --color=auto' # Colorful (auto) 'grep' output.
 alias lsa='ls -A' # show all files.
 alias lsl='ls -nph' # lots of information.
 alias lsla='ls -Anph' # but also show all files.
-alias exp='explorer.exe .'
 alias home='cd ~'
 
 # files
@@ -73,3 +73,6 @@ alias 256colors='for i in {0..255}; do  printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m"
 
 alias npmadd='npm install --save --package-lock-only --no-package-lock'
 
+# Misc
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+alias screen0='swaymsg output eDP-1 toggle'

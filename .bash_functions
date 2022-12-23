@@ -5,6 +5,16 @@ allfunctions(){
   bat ~/.bash_functions
 }
 
+exp(){
+  if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ];
+  then
+    explorer.exe .
+  else
+    nautilus .
+  fi
+
+}
+
 # Sync dotfiles
 stowsync() {
   cd ~/dotfiles || exit

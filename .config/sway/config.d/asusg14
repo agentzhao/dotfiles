@@ -1,0 +1,34 @@
+# config on Asus G14 2021
+
+# for $laptop trackpad
+input "type:touchpad" {
+  tap enabled
+  natural_scroll enabled   # who the fuck uses inverted
+  dwt enabled              # disable while typing
+  accel_profile "flat"     # no mouse accel
+  pointer_accel 0.5        # sensitivity
+  scroll_factor 0.2        # scroll sens
+}
+
+#temp
+bindsym F6 exec grimshot copy area --notify
+
+
+# Asus keybinds (use wev to figure out the keys)
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 1%+
+bindsym XF86AudioLowerVolume exec amixer -q set Master 1%-
+bindsym XF86AudioMicMute exec amixer -q set Capture toggle
+bindsym XF86Launch2 exec rog-control-center
+
+bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/asus::kbd_backlight -U 33.34
+bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/asus::kbd_backlight -A 33.34
+bindsym XF86Launch3 exec 
+bindsym XF86Launch4 exec 
+# bindsym S exec grimshot copy area --notify
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+
+bindsym XF86TouchpadToggle input "/devices/platform/AMDI0010:03/i2c-0/i2c-ELAN1201:00/0018:04F3:3098.0006/input/input22" events toggle enabled disabled
+bindsym XF86Sleep exec killall -s SIGUSR1 swayidle
+bindsym XF86Launch1 exec nmcli radio wifi off

@@ -19,9 +19,19 @@ map("n", "J", "mzJ`z", opts) -- join lines
 map("n", "n", "nzzzv", opts) -- keep cursor in the middle when searching
 map("n", "N", "Nzzzv", opts) -- also backwards
 
+-- copy to system clipboard
+map("n", "<leader>yy", "\"+yy", opts)
+map("n", "<leader>Y", "\"+Y", opts)
+map("v", "<leader>y", "\"+y", opts)
+-- paste from system clipboard
+map("n", "<leader>p", "\"+p", opts)
+map("v", "<leader>p", "\"+p", opts)
+map("i", "<C-v>", "<c-r>+", opts) -- insert contents of + register
+
 -- quickfix
 map("n", "<leader>k", "<cmd>lnext<CR>", opts) -- next quickfix
 map("n", "<leader>j", "<cmd>lprev<CR>", opts) -- previous quickfix
+
 -- Deleting empty lines in normal/visual mode
 local function smart_dd()
   if vim.api.nvim_get_current_line():match("^%s*$") then

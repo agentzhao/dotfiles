@@ -1,3 +1,79 @@
 ### fedora
 
 https://spins.fedoraproject.org/en/kde/
+
+todo
+
+- view files from windows
+- sway (rounded windows)
+
+```
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf copr enable atim/lazygit -y
+
+sudo dnf update
+
+sudo dnf install dnf-plugins-core gh nvim snapd lazygit clipman
+sudo dnf install discord stow zsh tmux kitty NetworkManager-tui clipman
+
+sudo ln -s /var/lib/snapd/snap /snap # enable classic snap support
+snap install spotify
+```
+
+# sway
+
+```
+sudo dnf install sway waybar swaylock swayidle grimshot light pavucontrol azote
+```
+
+# docker
+
+```
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/hyperupcall/autoenv ~/.autoenv
+```
+
+# nvim stuff
+
+```
+npm install --save-dev --save-exact prettier
+pip3 install black
+npm install -g tree-sitter-cli prettier
+```
+
+# hack font
+
+```
+git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+git sparse-checkout add patched-fonts/Hack
+./install.sh Hack
+```
+
+# languages
+
+```
+sudo dnf install python3.11 python3-pip
+pip3 install pynvim
+
+sudo dnf install gcc clang golang java-17-openjdk.x86_64
+
+sudo dnf install nodejs npm
+```
+
+# bluetooth
+
+```
+rfkill unblock all
+bluetoothctl power on
+```

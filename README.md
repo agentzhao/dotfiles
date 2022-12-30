@@ -1,5 +1,17 @@
 # dotfiles
 
+## What I use
+
+- OS • Win11 + Fedora Linux
+- Window Manager • swaywm
+- Status Bar • waybar
+- Shell • Zsh + oh-my-zsh
+- Terminal Multiplexer • tmux
+- Terminal • kitty
+- Text Editor • Neovim
+
+### Random notes
+
 ```
 cd ~
 sudo apt update
@@ -19,7 +31,13 @@ stow -nvt ~ .
 stow -vt ~ .
 ```
 
-# Docker Images
+### Docker Images
+
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
 
 ```
 docker pull agentzhao/ctf-box
@@ -33,32 +51,32 @@ docker pull agentzhao/arch-linux
 docker pull agentzhao/ubuntu
 ```
 
-# Brew
+### Brew
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-# Github cli Debian, Ubuntu Linux, Raspberry Pi OS (apt)
+### Github cli Debian, Ubuntu Linux, Raspberry Pi OS (apt)
 
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 sudo apt update
 sudo apt install gh
 
-# Powershell copy to $profile
+### Powershell copy to $profile
 
 ```
 C:\Users\zhao\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 ```
 
-# Get all saved wifi network and passwords
+### Get all saved wifi network and passwords
 
 ```
 (netsh wlan show profiles) | Select-String “\:(.+)$” | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name=”$name” key=clear)} | Select-String “Key Content\W+\:(.+)$” | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize
 ```
 
-# python
+### python
 
 ```
 cd ~
@@ -74,7 +92,7 @@ sudo update-alternatives --config python3
 sudo update-alternatives --remove python3 /usr/bin/python3.10
 ```
 
-# wsl2 backup and import
+### wsl2 backup and import
 
 ```
 wsl -l -v
@@ -82,18 +100,18 @@ wsl --export Ubuntu-22.04 ubuntubackup.tar
 wsl --import Ubuntu-22.04 C:\Users\user\AppData\Local\Packages\Ubuntu C:\Users\user\Documents\ubuntubackup.tar
 ```
 
-# wsl
+### wsl
 
 ```
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
 
-# Target packages ... is configured multiple times
+### Target packages ... is configured multiple times
 
 https://askubuntu.com/questions/760896/how-can-i-fix-apt-error-w-target-packages-is-configured-multiple-times
 
-# Git filter-repo
+### Git filter-repo
 
 ```
 https://github.com/newren/git-filter-repo
@@ -102,14 +120,14 @@ git filter-repo --invert-paths --path <folder>/<file>
 git push --no-verify --mirror
 ```
 
-# TIL
+### TIL
 
 - Renumbering windows in tmux: <C-a>:movew -r (move-window renumber)
 
-# gdrive
+### gdrive
 
 `brew install gdrive`
 
-# tar files
+### tar files
 
 `tar xzvf file.tar.gz`

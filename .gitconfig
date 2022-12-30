@@ -1,5 +1,7 @@
 [core]
 	autocrlf = input
+	editor = nvim
+	excludesfile = /home/zhao/.config/git/template/.gitignore_global
 [credential "https://github.com"]
   helper = !gh auth git-credential
 [user]
@@ -31,3 +33,7 @@
   last = !git log -1 --stat
   changes = !git show HEAD
   logs = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit
+[commit]
+	template = /home/zhao/.config/git/template/.gitmessage.txt
+[help]
+	autocorrect = 1

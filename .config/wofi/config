@@ -1,0 +1,5 @@
+mode=drun
+allow_images=true
+insensitive=true
+mode=drun
+#gtk_dark=true

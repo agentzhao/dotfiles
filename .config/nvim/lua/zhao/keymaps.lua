@@ -10,6 +10,7 @@ map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
 map("n", "<leader>gb", "<c-^>", opts)
 
 map("n", "<C-s>", "<C-u>", opts) -- <C-s> to scroll up and <C-d> to scroll down
+map("n", "<leader>dd", "\"_dd", opts) -- delete into black hole
 map("x", "<leader>p", "\"_dP", opts) -- paste over selection
 map("n", "<C-4>", "<Nop>", opts) -- why does C-4 open toggleterm
 map("n", "<CR>", "o<ESC>", opts) -- <CR> add new line below

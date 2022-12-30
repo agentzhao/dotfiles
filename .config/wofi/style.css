@@ -1,0 +1,60 @@
+* {
+  border: none;
+  outline: none;
+}
+
+#window {
+  background-color: transparent;
+}
+
+#input {
+  background-color: rgba(26, 26, 26, 0.85);
+  color: #fff;
+  margin: 5px;
+}
+
+#entry {
+  border: none;
+}
+
+#entry * {
+  overflow-wrap: break-word;
+}
+
+#scroll {
+  margin: 5px;
+  background-color: rgba(26, 26, 26, 0.8);
+  border-radius: 2px;
+  font-size: 1.25em;
+  padding: 10px;
+  box-shadow: 0 8px 6px -6px rgba(246, 246, 239, 0.55);
+  /* padding-right: 100px; */
+}
+
+#outer-box {
+  margin: 5px;
+  border: none;
+  border-radius: 2px;
+}
+
+#inner-box {
+  padding: 5px;
+  border: none;
+}
+
+#text {
+  padding: 5px;
+  border: none;
+  font-size: 15px;
+}
+
+#entry {
+  color: #cdd6f4;
+}
+
+#entry:selected {
+  background-color: rgba(26, 26, 26, 0.75);
+  color: #fa8419;
+  font-weight: 600;
+  word-wrap: break-word;
+}

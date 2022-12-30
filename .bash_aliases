@@ -73,6 +73,12 @@ alias 256colors='for i in {0..255}; do  printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m"
 
 alias npmadd='npm install --save --package-lock-only --no-package-lock'
 
+# network wifi
+alias wifi='nmcli radio wifi on && nmcli device wifi list'
+alias wifipw='nmcli -s -g 802-11-wireless-security.psk connection show'
+alias hotspot='nmcli dev wifi hotspot ifname wlp2s0 ssid manatabi password "88403930"'
+
 # Misc
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias screen0='swaymsg output eDP-1 toggle'
+

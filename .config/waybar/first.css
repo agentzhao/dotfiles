@@ -26,19 +26,24 @@ window#waybar {
 
 /* color when active */
 #workspaces button:nth-child(1).focused.current_output {
-  color: White;
+  color: Yellow;
+  background-color: @surface0;
 }
 #workspaces button:nth-child(2).focused.current_output {
   color: #e66000;
+  background-color: @surface0;
 }
 #workspaces button:nth-child(3).focused.current_output {
   color: White;
+  background-color: @surface0;
 }
 #workspaces button:nth-child(4).focused.current_output {
   color: @yellow;
+  background-color: @surface0;
 }
 #workspaces button:nth-child(5).focused.current_output {
   color: #1db954;
+  background-color: @surface0;
 }
 
 /* #workspaces button.focused.current_output { */
@@ -50,18 +55,11 @@ window#waybar {
   color: @text;
   padding: 5px 15px 5px 10px;
   margin: 1px 0;
+  border: 0px;
 }
 
 #workspaces button:hover {
   background: @surface1;
-}
-
-button {
-  border: 0px;
-  margin: 2px 0;
-}
-
-button:hover {
   border-radius: 0;
   box-shadow: none;
   border-width: 0px;

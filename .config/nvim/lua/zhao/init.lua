@@ -37,3 +37,23 @@ vim.cmd("set backspace=indent,eol,start")
 vim.cmd([[
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=300}
 ]])
+
+-- Customizing how diagnostics are displayed
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
+
+-- Opens markdown preview in new window
+vim.cmd(
+  [[
+function OpenMarkdownPreview (url)
+  execute "silent ! firefox --new-window " . a:url
+endfunction
+]]
+)
+
+vim.g.mkdp_browserfunc = 'OpenMarkdownPreview'

@@ -221,14 +221,21 @@ return require("packer").startup(function(use)
     end,
   }
 
-  use {
-    "ellisonleao/glow.nvim", -- markdown
-    config = function()
-      require('glow').setup({
-        style = "dark",
-        border = "rounded",
-      })
+  -- use {
+  --   "ellisonleao/glow.nvim", -- markdown
+  --   config = function()
+  --     require('glow').setup({
+  --       style = "dark",
+  --       border = "rounded",
+  --     })
+  --   end,
+  -- }
+
+  use { "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
+    ft = { "markdown" }
   }
 
   use { -- tabline plugin
@@ -483,10 +490,24 @@ return require("packer").startup(function(use)
     end,
   }
 
+  -- use {
+  --   "github/copilot.vim",
+  --   config = function()
+  --     require("zhao.config.copilot")
+  --   end,
+  -- }
+
   use {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
+    event = "VimEnter",
     config = function()
-      require("zhao.config.copilot")
+      vim.defer_fn(function()
+        require("copilot").setup({
+          suggestion = {
+            auto_trigger = true,
+          }
+        })
+      end, 100)
     end,
   }
 

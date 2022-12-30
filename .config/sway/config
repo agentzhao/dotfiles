@@ -3,15 +3,16 @@
 # Colorscheme (catppuccin)
 include catppuccin-mocha
 # target                 title     bg    text   indicator  border
-client.focused           $pink     $base $text  $rosewater $pink
-client.focused_inactive  $mauve    $base $text  $rosewater $mauve
-client.unfocused         $mauve    $base $text  $rosewater $mauve
+client.focused           $pink     $base $text  $rosewater $lavender
+client.focused_inactive  $mauve    $base $text  $rosewater $blue
+client.unfocused         $mauve    $base $text  $rosewater $blue
 client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 
 ### Variables
+# XDG_CURRENT_DESKTOP=sway
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -25,7 +26,8 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi --show run
+# set $menu wofi --show drun, run
+set $menu wofi
 
 # Clipboard (clipman)
 set $clipboard "~/.local/share/clipman.json"
@@ -36,14 +38,14 @@ bindsym $mod+y exec clipman pick --tool="wofi" --max-items=30
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 exec ~/.azotebg
 
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+# Monitor outputs: swaymsg -t get_outputs
 set $laptop eDP-1
 set $monitor1 HDMI-A-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-# output $laptop pos 1920 0 res 1920x1080
-output $monitor1 pos 0 0 res 1920x1080
+output $laptop pos 1920 0 res 1920x1080@60Hz
+output $monitor1 pos 0 0 res 1920x1080@144Hz
 
 exec_always ~/.config/sway/clamshell.sh
 
@@ -61,8 +63,9 @@ gaps inner 5
 gaps outer 5
 
 # disable window titlebar
-default_border pixel 2
-# Activate smart borders
+default_border pixel 1
+# default_border none
+# only visible when more than one window is open
 smart_borders on
 
 # swaymsg -t get_tree
@@ -82,11 +85,15 @@ for_window [app_id="toolbox"]                            floating enable
 for_window [app_id="page-info"]                          floating enable	
 for_window [app_id="webconsole"]                         floating enable
 for_window [app_id="Authy"]                              floating enable
+for_window [app_id="zoom"]                               floating enable
+for_window [class="vlc"]                                 floating enable
+for_window [app_id="org.gnome.clocks"]                   floating enable
+for_window [app_id="eog"]                                floating enable, resize set height 540, resize set width 960
 for_window [app_id="termfloat"]                          floating enable, resize set height 540, resize set width 960
 for_window [app_id="mpv"]                                floating enable, resize set height 540, resize set width 960
 for_window [app_id="Nautilus"]                           floating enable, resize set height 540, resize set width 960
 # for_window [app_id="Spotify"]                           floating enable, resize set height 540, resize set width 960
-for_window [app_id="pavecontrol"]                        floating enable, resize set height 540, resize set width 700
+for_window [app_id="pavucontrol"]                        floating enable, resize set height 540, resize set width 700
 
 # Opacity
 # for_window [app_id="kitty"] opacity 0.95
@@ -129,14 +136,17 @@ exec swayidle -w \
 
 ### Key bindings
 # Custom key bindings
-bindsym Print exec grimshot copy area --notify
-bindsym $mod+Print exec grimshot save area
+bindsym Print exec flameshot gui
+bindsym F6 exec flameshot gui
+bindsym $mod+Print exec flameshot full --path ~/Pictures/Screenshots
 
 #
 # Basics:
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    #todo
+    bindsym $mod+Shift+Return exec ~/.config/sway/scripts/slurp_term.sh
 
     # Kill focused window
     bindsym $mod+w kill
@@ -156,7 +166,8 @@ bindsym $mod+Print exec grimshot save area
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec ~/.config/sway/scripts/wofipowermenu.py
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #

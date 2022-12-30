@@ -7,13 +7,25 @@ todo
 - view files from windows
 - sway (rounded windows)
 
+# Wifi
+
+```
+nmcli radio wifi on
+nmcli radio wwan off
+nmcli device wifi list
+nmcli device connect SSID_or_BSSID password password hidden yes
+nmcli device disconnect ifname eth0
+nmcli con
+nmcli con up name_or_uuid
+```
+
 ```
 sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf copr enable atim/lazygit -y
 
 sudo dnf update
 
-sudo dnf install dnf-plugins-core gh nvim snapd lazygit clipman
+sudo dnf install dnf-plugins-core gh nvim snapd lazygit clipman ripgrep bat
 sudo dnf install discord stow zsh tmux kitty NetworkManager-tui clipman
 
 sudo ln -s /var/lib/snapd/snap /snap # enable classic snap support
@@ -48,7 +60,7 @@ git clone https://github.com/hyperupcall/autoenv ~/.autoenv
 ```
 npm install --save-dev --save-exact prettier
 pip3 install black
-npm install -g tree-sitter-cli prettier
+npm install -g tree-sitter-cli prettier eslint_d
 ```
 
 # hack font
@@ -76,4 +88,18 @@ sudo dnf install nodejs npm
 ```
 rfkill unblock all
 bluetoothctl power on
+```
+
+# vlc media player
+
+```
+dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf install vlc
+```
+
+# misc
+
+```
+flatpak install flathub us.zoom.Zoom
 ```

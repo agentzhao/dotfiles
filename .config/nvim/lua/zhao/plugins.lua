@@ -376,6 +376,8 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use { "onsails/lspkind.nvim" }
+
   -- migrate to mason
   use { "williamboman/mason.nvim",
     config = function()

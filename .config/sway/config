@@ -10,11 +10,21 @@ client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
+set $mod Mod4
+
+# On startup
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway
+
+exec flameshot
+
+# Notification Daemon
+# exec swaync
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 ### Variables
 # XDG_CURRENT_DESKTOP=sway
 # Logo key. Use Mod1 for Alt.
-set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -53,11 +63,17 @@ exec_always ~/.config/sway/clamshell.sh
 input * accel_profile flat
 
 # Set the default workspace layout for each output
-workspace 1 output $monitor1 
-workspace 2 output $monitor1 
-workspace 3 output $monitor1 
-workspace 4 output $monitor1 
-workspace 5 output $monitor1 
+workspace 1 output $monitor1 $laptop
+workspace 2 output $monitor1 $laptop
+workspace 3 output $monitor1 $laptop
+workspace 4 output $monitor1 $laptop
+workspace 5 output $monitor1 $laptop
+workspace 6 output $laptop
+
+assign [app_id="firefox"] workspace number 2
+assign [app_id="kitty"] workspace number 3
+assign [class="discord"] workspace number 4
+assign [class="Spotify"] workspace number 5
 
 gaps inner 5
 gaps outer 5
@@ -70,30 +86,37 @@ smart_borders on
 
 # swaymsg -t get_tree
 # Always float these windows
-for_window [title="(?:Open|Save) (?:File|Folder|As)"]    floating enable, resize set width 1030 height 710
-for_window [title="Picture-in-Picture"]                  floating enable, sticky on
-for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, resize set width 600 px height 300 px, move position 830 px 565 px, sticky on
-for_window [app_id="pop-up"]                             floating enable
-for_window [app_id="bubble"]                             floating enable 
-for_window [app_id="task_dialog"]                        floating enable
-for_window [app_id="Preferences"]                        floating enable
-for_window [app_id="dialog"]                             floating enable 
-for_window [app_id="menu"]                               floating enable
-for_window [app_id="Organizer"]                          floating enable
-for_window [app_id="About"]                              floating enable
-for_window [app_id="toolbox"]                            floating enable
-for_window [app_id="page-info"]                          floating enable	
-for_window [app_id="webconsole"]                         floating enable
-for_window [app_id="Authy"]                              floating enable
-for_window [app_id="zoom"]                               floating enable
-for_window [class="vlc"]                                 floating enable
-for_window [app_id="org.gnome.clocks"]                   floating enable
-for_window [app_id="eog"]                                floating enable, resize set height 540, resize set width 960
-for_window [app_id="termfloat"]                          floating enable, resize set height 540, resize set width 960
-for_window [app_id="mpv"]                                floating enable, resize set height 540, resize set width 960
-for_window [app_id="Nautilus"]                           floating enable, resize set height 540, resize set width 960
-# for_window [app_id="Spotify"]                           floating enable, resize set height 540, resize set width 960
-for_window [app_id="pavucontrol"]                        floating enable, resize set height 540, resize set width 700
+for_window [app_id=".*"] floating enable, border pixel 1, focus_on_window_activation, smart_borders on
+
+for_window [app_id="firefox"]                              floating disable
+for_window [app_id="Discord"]                              floating disable
+for_window [app_id="kitty"]                                floating disable
+for_window [app_id="nmtui"]                                floating enable, move position center
+
+# for_window [title="(?:Open|Save) (?:File|Folder|As)"]    floating enable, resize set width 1030 height 710
+# for_window [title="Picture-in-Picture"]                  floating enable, sticky on
+# for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, resize set width 600 px height 300 px, move position 830 px 565 px, sticky on
+# for_window [app_id="pop-up"]                             floating enable
+# for_window [app_id="bubble"]                             floating enable 
+# for_window [app_id="task_dialog"]                        floating enable
+# for_window [app_id="Preferences"]                        floating enable
+# for_window [app_id="dialog"]                             floating enable 
+# for_window [app_id="menu"]                               floating enable
+# for_window [app_id="Organizer"]                          floating enable
+# for_window [app_id="About"]                              floating enable
+# for_window [app_id="toolbox"]                            floating enable
+# for_window [app_id="page-info"]                          floating enable	
+# for_window [app_id="webconsole"]                         floating enable
+# for_window [app_id="Authy"]                              floating enable
+# for_window [app_id="zoom"]                               floating enable
+# for_window [class="vlc"]                                 floating enable
+# for_window [app_id="org.gnome.clocks"]                   floating enable
+# for_window [app_id="eog"]                                floating enable, resize set height 540, resize set width 960
+# for_window [app_id="termfloat"]                          floating enable, resize set height 540, resize set width 960
+# for_window [app_id="mpv"]                                floating enable, resize set height 540, resize set width 960
+# for_window [app_id="Nautilus"]                           floating enable, resize set height 540, resize set width 960
+# # for_window [app_id="Spotify"]                           floating enable, resize set height 540, resize set width 960
+# for_window [app_id="pavucontrol"]                        floating enable, resize set height 540, resize set width 700
 
 # Opacity
 # for_window [app_id="kitty"] opacity 0.95
@@ -111,10 +134,10 @@ input type:keyboard {
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -136,9 +159,11 @@ exec swayidle -w \
 
 ### Key bindings
 # Custom key bindings
-bindsym Print exec flameshot gui
 bindsym F6 exec flameshot gui
+bindsym Print exec flameshot gui
 bindsym $mod+Print exec flameshot full --path ~/Pictures/Screenshots
+
+# bindsym Alt+Tab exec
 
 #
 # Basics:

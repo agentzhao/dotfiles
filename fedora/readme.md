@@ -10,6 +10,7 @@ todo
 # Wifi
 
 ```
+nmtui
 nmcli radio wifi on
 nmcli radio wwan off
 nmcli device wifi list
@@ -25,7 +26,7 @@ sudo dnf copr enable atim/lazygit -y
 
 sudo dnf update
 
-sudo dnf install dnf-plugins-core gh nvim snapd lazygit clipman ripgrep bat
+sudo dnf install dnf-plugins-core gh nvim snapd lazygit clipman ripgrep bat syncthing
 sudo dnf install discord stow zsh tmux kitty NetworkManager-tui clipman
 
 sudo ln -s /var/lib/snapd/snap /snap # enable classic snap support
@@ -35,7 +36,7 @@ snap install spotify
 # sway
 
 ```
-sudo dnf install sway waybar swaylock swayidle grimshot light pavucontrol azote
+sudo dnf install sway waybar swaylock swayidle grimshot light pavucontrol azote mako
 ```
 
 # docker
@@ -97,6 +98,11 @@ dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$
 dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf install vlc
 ```
+
+# wofi
+
+- drun - searches $XDG_DATA_HOME/applications and $XDG_DATA_DIRS/applications for desktop files and allows them to be run by selecting them.
+- In the event $XDG_DATA_HOME is not specified it defaults to ~/.local/share. If $XDG_DATA_DIRS is not specified it defaults to /usr/local/share:/usr/share.
 
 # misc
 

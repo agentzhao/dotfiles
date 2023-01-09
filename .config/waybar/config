@@ -20,7 +20,8 @@
     "memory",
     "temperature",
     "battery",
-    "custom/power",
+    /* "custom/power", */
+    "custom/notification"
   ],
 
   // Modules configuration 
@@ -41,6 +42,7 @@
       "3": "",
       "4": "",
       "5": "",
+      "6": "",
       /* "urgent": "", */
       /* "focused": "", */
       /* "default": "" */
@@ -165,6 +167,8 @@
     "format-disconnected": "Disconnected ⚠",
     "tooltip-format": "{ipaddr} via {gwaddr} \nFrequency: {frequency} MHz\nSignal: {signalStrength} dB\nUp: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}",
     "tooltip-format-disconnected": "",
+    /* "on-click": "kitty --hold sh -c 'nmtui'" */
+    "on-click": "swaymsg exec \"kitty --class nmtui --hold sh -c 'nmtui'\""
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float 
@@ -238,4 +242,21 @@
     //"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
     "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
   }
+  "custom/notification": {
+    "tooltip": true,
+    /* "format": "{icon}", */
+    "format": "<span size='x-large' font_family='FiraCode Nerd Font Mono'>{icon}</span>",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
 }

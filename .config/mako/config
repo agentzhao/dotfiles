@@ -1,0 +1,5 @@
+background-color=#1e1e2e
+default-timeout=3000
+
+[mode=do-not-disturb]
+invisible=1

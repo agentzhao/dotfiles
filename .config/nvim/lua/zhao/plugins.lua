@@ -166,6 +166,8 @@ return require("packer").startup(function(use)
   end
   }
 
+  use { 'p00f/nvim-ts-rainbow' }
+
   -- Smooth scrolling
   -- use({
   --   "karb94/neoscroll.nvim",
@@ -298,20 +300,9 @@ return require("packer").startup(function(use)
   }
 
   use {
-    "norcalli/nvim-colorizer.lua",
+    "NvChad/nvim-colorizer.lua",
     config = function()
-      require("colorizer").setup({
-        "*",
-        -- disable because of document-color
-        -- '!css';
-        -- '!html';
-        -- '!tsx';
-        -- '!dart';
-        css = { names = true },
-      }, {
-        mode = "background",
-        names = true,
-      })
+      require("zhao.config.nvim-colorizer")
     end,
   }
 

@@ -45,6 +45,10 @@ window#waybar {
   color: #1db954;
   background-color: @surface0;
 }
+#workspaces button:nth-child(6).focused.current_output {
+  color: White;
+  background-color: @surface0;
+}
 
 /* #workspaces button.focused.current_output { */
 /*   background-color: @blue; */

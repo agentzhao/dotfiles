@@ -27,6 +27,7 @@ bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/asus::kbd_backlight -A 33.3
 # bindsym XF86Launch3 exec 
 # bindsym XF86Launch4 exec 
 # bindsym S exec grimshot copy area --notify
+# bindsym S exec flameshot gui
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp exec light -A 5
 

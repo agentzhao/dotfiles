@@ -1,4 +1,6 @@
 background-color=#1e1e2e
+border-color=#1e1e2e
+border-radius=3
 default-timeout=3000
 
 [mode=do-not-disturb]

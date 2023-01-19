@@ -72,7 +72,3 @@ if [[ -z "$TMUX" ]] && [[ -n $SSH_TTY ]]; then
   tmux new-session -A -s zhao
 fi
 
-# sway
-if [[ -n "$SWAYSOCK" ]] then
-  export XDG_CURRENT_DESKTOP=sway
-fi

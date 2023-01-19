@@ -72,6 +72,7 @@ window#waybar {
 #clock,
 #backlight,
 #battery,
+#bluetooth,
 #cpu,
 #idle_inhibitor,
 #language,
@@ -115,4 +116,17 @@ window#waybar {
 }
 #network.disconnected {
   color: @red;
+}
+#network.disabled {
+  color: @overlay2;
+}
+
+#bluetooth {
+  color: @blue;
+}
+#bluetooth.disconnected {
+  color: @red;
+}
+#bluetooth.disabled {
+  color: @overlay2;
 }

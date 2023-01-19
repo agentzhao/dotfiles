@@ -8,7 +8,8 @@ import os
 def run_menu():
     keys = (
         "\uf023   Log Out",
-        "\uf186   Suspend",
+        "\uf4b2   Sleep",
+        # "\uf186   Suspend",
         "\uf2dc   Hibernate",
         "\uf021   Reboot",
         "\uf011   Shutdown",
@@ -16,7 +17,8 @@ def run_menu():
 
     actions = (
         "swaymsg exit",
-        "systemctl suspend",
+        "killall -SIGUSR1 swayidle",
+        # "systemctl suspend",
         "systemctl hibernate",
         "systemctl reboot",
         "systemctl poweroff",
@@ -27,7 +29,7 @@ def run_menu():
         os.popen(
             "echo -e '"
             + options
-            + "' | wofi -d -i -p 'Power Menu' -W 200 -H 250 -k /dev/null"
+            + "' | wofi -d -i -p 'Power Menu' -W 200 -H 280 -k /dev/null"
         )
         .readline()
         .strip()

@@ -97,15 +97,16 @@
       "bat": "BAT2"
   },
   "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "",
-    "format-connected": " {num_connections} connected",
+    "format": "",
+    "format-disabled": "",
+    "format-connected": "",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "~/.config/sway/scripts/toggle_bluetooth.sh",
   },
   "clock": {
     "interval": 1,
@@ -161,13 +162,13 @@
   },
   "network": {
     "interval": 5,
+    "format": "{icon}",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "format-wifi": "{essid} ({signalStrength}%) ",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
+    "format-disconnected": "睊",
     "tooltip-format": "{ipaddr} via {gwaddr} \nFrequency: {frequency} MHz\nSignal: {signalStrength} dB\nUp: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}",
-    "tooltip-format-disconnected": "",
-    /* "on-click": "kitty --hold sh -c 'nmtui'" */
+    /* "tooltip-format-disconnected": "", */
     "on-click": "swaymsg exec \"kitty --class nmtui --hold sh -c 'nmtui'\""
   },
   "pulseaudio": {
@@ -187,7 +188,8 @@
       "car": "",
       "default": ["", "", ""]
     },
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
+    "max-volume": 150,
   },
   "idle_inhibitor": {
     "format": "{icon}",

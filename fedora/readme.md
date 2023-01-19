@@ -26,11 +26,14 @@ sudo dnf copr enable atim/lazygit -y
 
 sudo dnf update
 
-sudo dnf install dnf-plugins-core gh nvim snapd lazygit clipman ripgrep bat syncthing
+sudo dnf install dnf-plugins-core gh nvim snapd lazygit clipman ripgrep bat syncthing p7zip
 sudo dnf install discord stow zsh tmux kitty NetworkManager-tui clipman
 
 sudo ln -s /var/lib/snapd/snap /snap # enable classic snap support
 snap install spotify
+
+# optional
+p7zip-plugins
 ```
 
 # sway

@@ -10,8 +10,14 @@ input "type:touchpad" {
   scroll_factor 0.1        # scroll sens
 }
 
+input "2821:6582:Asus_Keyboard" {
+  xkb_layout "us,cn,kr"
+  xkb_options "grp:lalt_lshift_toggle"
+}
+
 #temp
-# bindsym F6 exec flameshot gui
+bindsym F6 exec export XDG_CURRENT_DESKTOP=sway && flameshot gui
+bindsym F7 exec grimshot save area
 
 # finding keyboard
 
@@ -26,11 +32,10 @@ bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/asus::kbd_backlight -U 33
 bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/asus::kbd_backlight -A 33.34
 # bindsym XF86Launch3 exec 
 # bindsym XF86Launch4 exec 
-# bindsym S exec grimshot copy area --notify
-# bindsym S exec flameshot gui
+# bindsym screenshotkey exec
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp exec light -A 5
 
 bindsym XF86TouchpadToggle input "/devices/platform/AMDI0010:03/i2c-0/i2c-ELAN1201:00/0018:04F3:3098.0006/input/input22" events toggle enabled disabled
-bindsym XF86Sleep exec killall -s SIGUSR1 swayidle
-bindsym XF86Launch1 exec nmcli radio wifi off
+bindsym XF86Sleep exec killall -SIGUSR1 swayidle
+bindsym XF86RFKill exec ~/.config/sway/scripts/toggle_wifi.sh

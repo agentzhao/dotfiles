@@ -3,5 +3,10 @@ export PATH=$PATH:$(pwd):~/.local/bin:/usr/local/go/bin:~/.cargo/bin:/usr/lib/da
 export TESSDATA_PREFIX='/usr/local/share/tessdata'
 export GOPATH="$HOME/go"
 
+# sway
+if [[ -n "$SWAYSOCK" ]] then
+  export XDG_CURRENT_DESKTOP=sway
+fi
+
 source ~/.bash_aliases
 source ~/.bash_functions

@@ -25,7 +25,7 @@ bindsym F7 exec grimshot save area
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 1%+
 bindsym XF86AudioLowerVolume exec amixer -q set Master 1%-
 bindsym XF86AudioMicMute exec amixer -q set Capture toggle
-bindsym XF86Launch2 exec rog-control-center
+bindsym XF86Launch1 exec rog-control-center
 
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/asus::kbd_backlight -U 33.34

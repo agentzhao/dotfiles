@@ -1,6 +1,6 @@
 # https://github.com/swaywm/sway/wiki
 
-# Colorscheme (catppuccin)
+### Colorscheme (catppuccin)
 include catppuccin-mocha
 # target                 title     bg    text   indicator  border
 client.focused           $pink     $base $text  $rosewater $lavender

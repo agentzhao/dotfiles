@@ -130,3 +130,7 @@ window#waybar {
 #bluetooth.disabled {
   color: @overlay2;
 }
+
+#idle_inhibitor.deactivated {
+  color: @overlay2;
+}

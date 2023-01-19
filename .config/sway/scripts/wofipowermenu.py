@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 
 # edit style at ~/.config/wofi/style.css
+# icons uses Nerd Font
+# https://www.nerdfonts.com/cheat-sheet
 import os
 
 
 def run_menu():
     keys = (
         "\uf023   Log Out",
-        "\uf4b2   Sleep",
-        # "\uf186   Suspend",
+        "\uf9b1   Sleep",
+        "\uf186   Suspend",
         "\uf2dc   Hibernate",
         "\uf021   Reboot",
         "\uf011   Shutdown",
@@ -18,7 +20,7 @@ def run_menu():
     actions = (
         "swaymsg exit",
         "killall -SIGUSR1 swayidle",
-        # "systemctl suspend",
+        "systemctl suspend",
         "systemctl hibernate",
         "systemctl reboot",
         "systemctl poweroff",

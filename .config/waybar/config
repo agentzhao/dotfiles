@@ -166,10 +166,12 @@
     "format-ethernet": "{ipaddr}/{cidr} ",
     "format-wifi": "{essid} ({signalStrength}%) ",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "睊",
+    "format-disconnected": "{icon}",
+    "format-disabled": "睊",
     "tooltip-format": "{ipaddr} via {gwaddr} \nFrequency: {frequency} MHz\nSignal: {signalStrength} dB\nUp: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}",
     /* "tooltip-format-disconnected": "", */
-    "on-click": "swaymsg exec \"kitty --class nmtui --hold sh -c 'nmtui'\""
+    "on-click": "swaymsg exec \"kitty --class nmtui --hold sh -c 'nmtui'\"",
+    "on-click-right": "~/.config/sway/scripts/toggle_wifi.sh",
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float 
@@ -195,7 +197,7 @@
     "format": "{icon}",
     "format-icons": {
       "activated": "",
-      "deactivated": ""
+      "deactivated": "",
     }
   },
   "temperature": {

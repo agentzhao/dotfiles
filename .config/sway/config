@@ -18,6 +18,8 @@ exec flameshot
 exec syncthing
 # Notification
 exec mako
+# Wallpapers
+exec ~/.azotebg
 
 # Notification Daemon
 # exec swaync
@@ -48,23 +50,43 @@ set $menu wofi
 # Clipboard (clipman)
 set $clipboard "~/.local/share/clipman.json"
 exec wl-paste -t text --watch clipman store --max-items 1024
-bindsym $mod+y exec clipman pick --tool="wofi" --max-items=30
+bindsym $mod+y exec clipman pick --tool="wofi"
+
+# Toggle hide all floating windows
+bindsym $mod+shift+minus [floating workspace=__focused__] move scratchpad
+bindsym $mod+minus [floating] scratchpad show
 
 ### Output configuration
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-exec ~/.azotebg
-
 # Monitor outputs: swaymsg -t get_outputs
 set $laptop eDP-1
 set $monitor1 HDMI-A-1
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
 
 output $laptop pos 1920 0 res 1920x1080@60Hz
 output $monitor1 pos 0 0 res 1920x1080@144Hz
 
+# bindswitch --reload --locked lid:on output $laptop disable
+# bindswitch --reload --locked lid:off output $laptop enable
+bindswitch lid:off exec ~/.config/sway/scripts/swayidle.sh
+
+
 # prevent display reset when reloading sway
-exec_always ~/.config/sway/scripts/clamshell.sh
+# exec_always ~/.config/sway/scripts/clamshell.sh
+
+### Idle configuration
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+         after-resume 'swaymsg "output * enable"' \
+         before-sleep 'swaylock -f -c 000000'
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
 
 # Disable mouse accel
 input * accel_profile flat
@@ -96,14 +118,16 @@ for_window [app_id=".*"] floating enable, border pixel 1, focus_on_window_activa
 for_window [class=".*"] floating enable, border pixel 1, focus_on_window_activation, smart_borders on
 
 for_window [app_id="firefox"]                              floating disable
+for_window [app_id="firefox" title="File Upload"]          floating enable, move position center
 for_window [app_id="Discord"]                              floating disable
 for_window [app_id="kitty"]                                floating disable
 for_window [class="discord"]                               floating disable
 for_window [class="Spotify"]                               floating disable
 for_window [app_id="nmtui"]                                floating enable, move position center
 
-# for_window [title="(?:Open|Save) (?:File|Folder|As)"]    floating enable, resize set width 1030 height 710
+for_window [title="(?:Open|Save) (?:File|Folder|As)"]      floating enable, resize set width 1030 height 710
 for_window [title="Picture-in-Picture"]                    floating enable, sticky on
+for_window [title="Android Emulator - Pixel_4_API_30:5554"] floating enable
 # for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, resize set width 600 px height 300 px, move position 830 px 565 px, sticky on
 # for_window [app_id="pop-up"]                             floating enable
 # for_window [app_id="bubble"]                             floating enable 
@@ -134,38 +158,7 @@ for_window [title="Picture-in-Picture"]                    floating enable, stic
 for_window [class="discord"] move --no-auto-back-and-forth container to workspace 4
 for_window [class="Spotify"] move --no-auto-back-and-forth container to workspace 5
 
-# languages
-
-input "9494:32:CM_Storm_Quickfire_Rapid_i" {
-  xkb_layout "us,cn,kr"
-  xkb_options "grp:lalt_lshift_toggle"
-}
-
-# 2821:6582:Asus_Keyboard
-# 9494:32:CM_Storm_Quickfire_Rapid_i
-
-### Idle configuration
-#
-# Example configuration:
-#
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
-
-# swayidle -w 'swaylock -f -c 000000' 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -c 000000'
-
-# bindsym F10 exec swayidle -w \
-#          timeout 1 'swaylock -f -c 000000' \
-#          timeout 1 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-
-
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
+### Input configuration languages
 #
 # Example configuration:
 #
@@ -178,6 +171,13 @@ exec swayidle -w \
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input "9494:32:CM_Storm_Quickfire_Rapid_i" {
+  xkb_layout "us,cn,kr"
+  xkb_options "grp:lalt_lshift_toggle"
+}
+
+# 2821:6582:Asus_Keyboard
+# 9494:32:CM_Storm_Quickfire_Rapid_i
 
 ### Key bindings
 # Custom key bindings
@@ -202,7 +202,7 @@ bindsym $mod+Print exec export XDG_CURRENT_DESKTOP=sway && flameshot full --path
     bindsym $mod+q exec $menu
 
     bindsym $mod+e exec nautilus
-    bindsym $mod+l exec killall -SIGUSR1 swayidle
+    # bindsym $mod+l exec killall -SIGUSR1 swayidle
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -221,10 +221,10 @@ bindsym $mod+Print exec export XDG_CURRENT_DESKTOP=sway && flameshot full --path
 # Moving around:
 #
     # Move your focus around
-    # bindsym $mod+$left focus left
-    # bindsym $mod+$down focus down
-    # bindsym $mod+$up focus up
-    # bindsym $mod+$right focus right
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -300,11 +300,11 @@ bindsym $mod+Print exec export XDG_CURRENT_DESKTOP=sway && flameshot full --path
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    # bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    # bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #

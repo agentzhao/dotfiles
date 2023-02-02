@@ -19,7 +19,7 @@ def run_menu():
 
     actions = (
         "swaymsg exit",
-        "killall -SIGUSR1 swayidle",
+        "~/.config/sway/scripts/swayidle.sh",
         "systemctl suspend",
         "systemctl hibernate",
         "systemctl reboot",

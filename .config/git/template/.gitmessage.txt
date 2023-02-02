@@ -7,5 +7,7 @@ blank line separating the summary from the body is critical (unless
 you omit the body entirely); various tools like `log`, `shortlog`
 and `rebase` can get confused if you run the two together.
 
-Resolves: #123
-See also: #456
+# Resolves: #
+# See also: #
+
+# :set tw=72

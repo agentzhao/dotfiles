@@ -70,6 +70,15 @@ return require("packer").startup(function(use)
 
   -- Environment
   use "danilamihailov/beacon.nvim"
+
+  -- code folding
+  use { 'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async',
+    config = function()
+      require("zhao.config.ufo")
+    end,
+  }
+
   use { "justinhj/battery.nvim",
     config = function()
       require("zhao.config.battery")
@@ -184,9 +193,11 @@ return require("packer").startup(function(use)
   use { "ggandor/leap.nvim", -- successor of lightspeed
     config = function()
       require('leap').add_default_mappings()
+      -- Bidireectional search
       -- require('leap').leap { target_windows = { vim.fn.win_getid() } }
     end,
   }
+
   use { "ggandor/leap-spooky.nvim",
     config = function()
       require('leap-spooky').setup {
@@ -406,14 +417,7 @@ return require("packer").startup(function(use)
 
   use { 'akinsho/flutter-tools.nvim',
     config = function()
-      require("flutter-tools").setup {
-        decorations = {
-          statusline = {
-            app_version = true,
-            device = true,
-          }
-        },
-      }
+      require("zhao.config.flutter-tools")
     end,
     requires = { 'nvim-lua/plenary.nvim' },
   }
@@ -521,6 +525,11 @@ return require("packer").startup(function(use)
       require("gitsigns").setup()
     end,
   }
+
+  use({
+    'terror/chatgpt.nvim',
+    run = 'pip3 install -r requirements.txt'
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

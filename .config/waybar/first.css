@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   border-width: 2px;
   /* border-color: #5f27cd; */
   /* border-style: solid; */
@@ -132,5 +132,9 @@ window#waybar {
 }
 
 #idle_inhibitor.deactivated {
+  color: @overlay2;
+}
+
+#pulseaudio.muted {
   color: @overlay2;
 }

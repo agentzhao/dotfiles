@@ -83,7 +83,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 end
 
-
+-- Capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.colorProvider = {
@@ -91,6 +91,16 @@ capabilities.textDocument.colorProvider = {
 }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.offsetEncoding = "utf-8"
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
+
+-- dartls
+require('lspconfig')['dartls'].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 return {
   on_attach = on_attach,

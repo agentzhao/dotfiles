@@ -7,7 +7,7 @@ input "type:touchpad" {
   dwt enabled              # disable while typing
   accel_profile "flat"     # no mouse accel
   pointer_accel 0.5        # sensitivity
-  scroll_factor 0.1        # scroll sens
+  scroll_factor 0.5        # scroll sens
 }
 
 input "2821:6582:Asus_Keyboard" {
@@ -38,4 +38,5 @@ bindsym XF86MonBrightnessUp exec light -A 5
 
 bindsym XF86TouchpadToggle input "/devices/platform/AMDI0010:03/i2c-0/i2c-ELAN1201:00/0018:04F3:3098.0006/input/input22" events toggle enabled disabled
 bindsym XF86Sleep exec killall -SIGUSR1 swayidle
+# bindsym XF86Sleep exec ~/.config/sway/scripts/swayidle.sh
 bindsym XF86RFKill exec ~/.config/sway/scripts/toggle_wifi.sh

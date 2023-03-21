@@ -54,7 +54,8 @@ bindsym $mod+y exec clipman pick --tool="wofi"
 
 # Toggle hide all floating windows
 bindsym $mod+shift+minus [floating workspace=__focused__] move scratchpad
-bindsym $mod+minus [floating] scratchpad show
+bindsym $mod+minus       [floating] scratchpad show
+bindsym Alt+Tab          [floating] scratchpad show
 
 ### Output configuration
 # Monitor outputs: swaymsg -t get_outputs
@@ -119,6 +120,8 @@ for_window [class=".*"] floating enable, border pixel 1, focus_on_window_activat
 
 for_window [app_id="firefox"]                              floating disable
 for_window [app_id="firefox" title="File Upload"]          floating enable, move position center
+# todo: make save as floating
+# for_window [app_id="firefox" title="Save As"]          floating enable, move position center
 for_window [app_id="Discord"]                              floating disable
 for_window [app_id="kitty"]                                floating disable
 for_window [class="discord"]                               floating disable
@@ -183,6 +186,7 @@ input "9494:32:CM_Storm_Quickfire_Rapid_i" {
 # Custom key bindings
 bindsym Print exec export XDG_CURRENT_DESKTOP=sway && flameshot gui
 bindsym $mod+Print exec export XDG_CURRENT_DESKTOP=sway && flameshot full --path ~/Pictures/Screenshots
+bindsym  $mod+question exec exec ~/.config/sway/scripts/sway-prop.sh
 
 # bindsym Alt+Tab exec
 

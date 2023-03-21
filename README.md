@@ -111,15 +111,6 @@ sudo apt install ./google-chrome-stable_current_amd64.deb
 
 https://askubuntu.com/questions/760896/how-can-i-fix-apt-error-w-target-packages-is-configured-multiple-times
 
-### Git filter-repo
-
-```
-https://github.com/newren/git-filter-repo
-git clone --mirror https://github.com/<username>/<repo>.git
-git filter-repo --invert-paths --path <folder>/<file>
-git push --no-verify --mirror
-```
-
 ### TIL
 
 - Renumbering windows in tmux: <C-a>:movew -r (move-window renumber)

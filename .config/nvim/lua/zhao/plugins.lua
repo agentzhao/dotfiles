@@ -177,6 +177,7 @@ return require("packer").startup(function(use)
 
   use { 'p00f/nvim-ts-rainbow' }
 
+
   -- Smooth scrolling
   -- use({
   --   "karb94/neoscroll.nvim",

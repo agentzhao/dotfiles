@@ -14,14 +14,6 @@
   margin: 5px;
 }
 
-#entry {
-  border: none;
-}
-
-#entry * {
-  overflow-wrap: break-word;
-}
-
 #scroll {
   margin: 5px;
   background-color: rgba(26, 26, 26, 0.8);
@@ -34,18 +26,15 @@
 
 #outer-box {
   margin: 5px;
-  border: none;
   border-radius: 2px;
 }
 
 #inner-box {
   padding: 5px;
-  border: none;
 }
 
 #text {
   padding: 5px;
-  border: none;
   font-size: 15px;
 }
 
@@ -53,9 +42,12 @@
   color: #cdd6f4;
 }
 
+#entry * {
+  overflow-wrap: break-word;
+}
+
 #entry:selected {
   background-color: rgba(26, 26, 26, 0.75);
   color: #fa8419;
   font-weight: 600;
-  word-wrap: break-word;
 }

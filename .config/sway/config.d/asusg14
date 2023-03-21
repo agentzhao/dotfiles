@@ -18,6 +18,7 @@ input "2821:6582:Asus_Keyboard" {
 #temp
 bindsym F6 exec export XDG_CURRENT_DESKTOP=sway && flameshot gui
 bindsym F7 exec grimshot save area
+bindsym F8 exec grimshot copy area
 
 # finding keyboard
 

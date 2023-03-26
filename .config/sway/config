@@ -98,7 +98,6 @@ workspace 2 output $monitor1 $laptop
 workspace 3 output $monitor1 $laptop
 workspace 4 output $monitor1 $laptop
 workspace 5 output $monitor1 $laptop
-workspace 6 output $laptop
 
 # assign [app_id="firefox"] workspace number 2
 assign [class="discord"] workspace number 4

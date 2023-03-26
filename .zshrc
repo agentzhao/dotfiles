@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export LC_ALL="en_SG.UTF-8"
+export LANG="en_SG.UTF-8"
+export LC_CTYPE="en_SG.UTF-8"
+
 OS=`uname -s`
 # DIST=`lsb_release -sd`
 # DIST=cat /etc/*-release | grep "Distributor ID:" | sed 's/Distributor ID://g' | sed 's/"//g'

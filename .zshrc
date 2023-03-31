@@ -34,10 +34,11 @@ fi
 
 # change theme when ssh
 if [[ -n "$SSH_CONNECTION" ]]; then
-  # ZSH_THEME="agnoster"
-  ZSH_THEME="powerlevel10k/powerlevel10k"
+  ZSH_THEME="agnoster"
+  # ZSH_THEME="powerlevel10k/powerlevel10k"
 else
-  ZSH_THEME="powerlevel10k/powerlevel10k"
+  ZSH_THEME="agnoster"
+  # ZSH_THEME="powerlevel10k/powerlevel10k"
   # other settings
   # . "$HOME/.cargo/env"
   # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # brew
@@ -49,7 +50,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.bash_profile
 

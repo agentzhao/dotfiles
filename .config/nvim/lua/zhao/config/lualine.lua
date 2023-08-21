@@ -11,7 +11,7 @@ require("lualine").setup({
     globalstatus = "true",
   },
   sections = {
-    lualine_d = { require("auto-session-library").current_session_name },
+    lualine_d = { require("auto-session.lib").current_session_name },
     -- lualine_y = nvimbattery, -- not working on wsl
   },
 })

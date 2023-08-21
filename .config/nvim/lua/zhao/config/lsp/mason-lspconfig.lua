@@ -17,7 +17,7 @@ local servers = {
   "jsonls",
   "jdtls",
   "tsserver",
-  "sumneko_lua",
+  "lua_ls",
   "pyright",
   "rust_analyzer",
   "marksman", -- Markdown
@@ -111,8 +111,8 @@ mason_lspconfig.setup_handlers({
   end,
 
 
-  ["sumneko_lua"] = function()
-    lspconfig.sumneko_lua.setup({
+  ["lua_ls"] = function()
+    lspconfig.lua_ls.setup({
       on_attach = opts.on_attach,
       capabilities = opts.capabilities,
 

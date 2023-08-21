@@ -188,10 +188,10 @@ return require("packer").startup(function(use)
 
   -- Tools
   -- use "Djancyp/cheat-sheet" -- cht.sh cheatsheet
-  use "tpope/vim-repeat" -- dot-repeat
+  use "tpope/vim-repeat"       -- dot-repeat
   use "sindrets/winshift.nvim" -- Windows
   use "simonefranza/nvim-conv" -- Converts things
-  use { "ggandor/leap.nvim", -- successor of lightspeed
+  use { "ggandor/leap.nvim",   -- successor of lightspeed
     config = function()
       require('leap').add_default_mappings()
       -- Bidireectional search
@@ -254,7 +254,8 @@ return require("packer").startup(function(use)
 
   use { -- tabline plugin
     'romgrk/barbar.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
       config = function()
         require("zhao.config.barbar")
       end,
@@ -403,6 +404,7 @@ return require("packer").startup(function(use)
   }
   use {
     "williamboman/mason-lspconfig.nvim",
+    after = "mason.nvim",
     config = function()
       require("zhao.config.lsp.mason-lspconfig")
     end,

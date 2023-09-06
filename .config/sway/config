@@ -185,7 +185,8 @@ input "9494:32:CM_Storm_Quickfire_Rapid_i" {
 # Custom key bindings
 bindsym Print exec export XDG_CURRENT_DESKTOP=sway && flameshot gui
 bindsym $mod+Print exec export XDG_CURRENT_DESKTOP=sway && flameshot full --path ~/Pictures/Screenshots
-bindsym  $mod+question exec exec ~/.config/sway/scripts/sway-prop.sh
+bindsym $mod+question exec ~/.config/sway/scripts/sway-prop.sh
+bindsym $mod+Shift+s exec grimshot copy area
 
 # bindsym Alt+Tab exec
 

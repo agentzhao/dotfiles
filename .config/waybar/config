@@ -110,7 +110,7 @@
   },
   "clock": {
     "interval": 1,
-    "timezone": "Asia/Singapore",
+    "timezone": "Europe/Madrid",
     "format": "{:%a %d %b, %H:%M:%S}",
     //"format-alt": "{:%d/%m/%Y}",
     "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><big>{calendar}</big></tt>",

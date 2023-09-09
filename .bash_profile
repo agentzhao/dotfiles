@@ -9,5 +9,7 @@ if [[ -n "$SWAYSOCK" ]] then
   export XDG_CURRENT_DESKTOP=sway
 fi
 
+export TERM=xterm-256color
+
 source ~/.bash_aliases
 source ~/.bash_functions

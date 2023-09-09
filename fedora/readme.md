@@ -7,6 +7,29 @@ todo
 - view files from windows
 - sway (rounded windows)
 
+# finding missing commands
+
+```
+dnf provides chsh
+dnf provides */chsh
+```
+
+# changing shell
+
+```
+chsh -s /bin/zsh
+oat /etc/passwd | grep `cd; pwd` # check which shell is listed
+```
+
+`chsh -l` # run this, if you see
+
+```
+/usr/bin/zsh
+/bin/zsh
+```
+
+then use `chsh -s /usr/bin/zsh`
+
 # Wifi
 
 ```

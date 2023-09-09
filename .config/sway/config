@@ -99,7 +99,7 @@ workspace 3 output $monitor1 $laptop
 workspace 4 output $monitor1 $laptop
 workspace 5 output $monitor1 $laptop
 
-# assign [app_id="firefox"] workspace number 2
+assign [app_id="firefox"] workspace number 2
 assign [class="discord"] workspace number 4
 assign [class="Spotify"] workspace number 5
 

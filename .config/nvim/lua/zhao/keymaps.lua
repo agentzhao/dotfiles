@@ -9,16 +9,16 @@ map("n", "<C-c>", "<Esc>", opts)
 map("n", "<leader>cd", ":cd %:p:h<CR>", opts)
 map("n", "<leader>gb", "<c-^>", opts)
 
-map("n", "<C-s>", "<C-u>", opts) -- <C-s> to scroll up and <C-d> to scroll down
+map("n", "<C-s>", "<C-u>", opts)      -- <C-s> to scroll up and <C-d> to scroll down
 map("n", "<leader>dd", "\"_dd", opts) -- delete into black hole
-map("x", "<leader>p", "\"_dP", opts) -- paste over selection
-map("n", "<C-4>", "<Nop>", opts) -- why does C-4 open toggleterm
-map("n", "<CR>", "o<ESC>", opts) -- <CR> add new line below
+map("x", "<leader>p", "\"_dP", opts)  -- paste over selection
+map("n", "<C-4>", "<Nop>", opts)      -- why does C-4 open toggleterm
+map("n", "<CR>", "o<ESC>", opts)      -- <CR> add new line below
 
-map("n", "J", "mzJ`z", opts) -- join lines
+map("n", "J", "mzJ`z", opts)          -- join lines
 
-map("n", "n", "nzzzv", opts) -- keep cursor in the middle when searching
-map("n", "N", "Nzzzv", opts) -- also backwards
+map("n", "n", "nzzzv", opts)          -- keep cursor in the middle when searching
+map("n", "N", "Nzzzv", opts)          -- also backwards
 
 -- copy to system clipboard
 map("n", "<leader>yy", "\"+yy", opts)
@@ -59,32 +59,11 @@ map("n", "<M-j>", ":wincmd j<CR>", opts)
 map("n", "<M-h>", ":wincmd h<CR>", opts)
 map("n", "<M-l>", ":wincmd l<CR>", opts)
 
--- Sessions
-map("n", "<Leader>ss", ":<C-u>SaveSession<CR>", {})
-map("n", "<Leader>rs", ":<C-u>RestoreSession<CR>", {})
-map("n", "<Leader>sl", ":<C-u>SearchSession<CR>", {})
-
-map("n", "<A-w>", "<cmd>WinShift<cr>", opts)
-
---Telescope
-map("n", "<leader>pp", "<cmd>Telescope projects<cr>", opts)
-map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts)
-map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", opts)
-map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
-
---copilot
---map('i', '<C-L>', '<cmd>copilot#Accept()<CR>', { silent = true })
-
 -- Shift + J/K moves selected lines down/up in visual mode
 map("x", "J", ":move '>+1<CR>zzgv-gv", opts2)
 map("x", "K", ":move '<-2<CR>zzgv-gv", opts2)
 --map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 --map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
--- LightSpeed.nvim
--- map("n", "s", "<Plug>Lightspeed_omni_s", {})
 
 -- Snippets
 map("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
@@ -125,21 +104,3 @@ map("n", "<Leader>dbp", ":lua require('dap').toggle_breakpoint()<CR>", opts)
 
 map("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", opts)
 map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", opts)
-
--- barbar
-map('n', '<C-h>', '<Cmd>BufferPrevious<CR>', opts2)
-map('n', '<C-l>', '<Cmd>BufferNext<CR>', opts2)
--- map("n", "<C-Left>", ":tabprevious<CR>", opts2)
--- map("n", "<C-Right>", ":tabnext<CR>", opts2)
--- map("n", "<C-t>", ":tabnew<CR>", opts2)
-map('n', '<C-w>', '<Cmd>BufferClose<CR>', opts2)
--- map("n", "<C-w>", ":tabclose<CR>", opts2)
-map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts2) -- Magic buffer-picking mode
--- Sort automatically by...
-map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts2)
-map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts2)
-map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts2)
-map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts2)
-
--- LazyGit
-map("n", "<leader>gg", ":LazyGit<CR>", opts2)

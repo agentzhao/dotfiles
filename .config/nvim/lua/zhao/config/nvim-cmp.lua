@@ -1,6 +1,7 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
+local compare = cmp.config.compare
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -70,13 +71,22 @@ cmp.setup({
       end
     end, { "i", "s" }),
   },
-  -- sources = cmp.config.sources {
   sources = {
+    { name = "jupynium", priority = 1000 }, -- consider higher priority than LSP
     { name = "path" },
     { name = "luasnip" },
     { name = "nvim_lsp" }, -- this aint working
     { name = "nvim_lua" },
-    { name = "buffer", keyword_length = 3 },
+    { name = "buffer",   keyword_length = 3 },
+  },
+  -- added from jupynium
+  sorting = {
+    priority_weight = 1.0,
+    comparators = {
+      compare.score, -- Jupyter kernel completion shows prior to LSP
+      compare.recently_used,
+      compare.locality,
+    },
   },
   window = {
     documentation = cmp.config.window.bordered()
@@ -85,8 +95,8 @@ cmp.setup({
     fields = { "kind", "abbr", "menu" },
     format = lspkind.cmp_format({
       mode = 'symbol_text', -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      menu = ({ -- showing type in menu
+      maxwidth = 50,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      menu = ({             -- showing type in menu
         nvim_lsp = "[LSP]",
         path = "[Path]",
         buffer = "[Buffer]",

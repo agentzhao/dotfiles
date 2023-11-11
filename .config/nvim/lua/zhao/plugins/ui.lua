@@ -1,6 +1,6 @@
 return {
   "danilamihailov/beacon.nvim",
-
+  "stevearc/dressing.nvim", -- Improve default vim UI
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -21,11 +21,10 @@ return {
     main = "ibl",
     config = function()
       require("ibl").setup({
-        -- todo: migrate to 3
-        -- :set buftype
-        -- buftype_exclude = { "terminal", "help", "nofile" },
-        -- filetype_exclude = { "alpha", "packer" },
-        --
+        exclude = {
+          filetypes = { "alpha" },
+        },
+
         -- space_char_blankline = " ",
         -- show_current_context = true,
         -- show_current_context_start = true,

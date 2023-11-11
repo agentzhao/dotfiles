@@ -29,7 +29,8 @@ return {
   },
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to  `main` branch for the latest features
+    version = "*", -- Use for stability; omit to  `main` branch for the latest features
+    event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to  defaults
@@ -78,5 +79,14 @@ return {
     config = function()
       require("zhao.config.ufo")
     end,
-  }
+  },
+  {
+    "kiyoon/jupynium.nvim",
+    build = "pip3 install --user .",
+    -- build = "conda run --no-capture-output -n jupynium pip install .",
+    -- enabled = vim.fn.isdirectory(vim.fn.expand "~/miniconda3/envs/jupynium"),
+    config = function()
+      require("zhao.config.jupynium")
+    end,
+  },
 }

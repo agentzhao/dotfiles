@@ -172,7 +172,7 @@
     "format-disabled": "睊",
     "tooltip-format": "{ipaddr} via {gwaddr} \nFrequency: {frequency} MHz\nSignal: {signalStrength} dB\nUp: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}",
     /* "tooltip-format-disconnected": "", */
-    "on-click": "swaymsg exec \"kitty --class nmtui --hold sh -c 'nmtui'\"",
+    "on-click": "swaymsg exec \"foot --title 'nmtui' sh -c 'nmtui'\"",
     "on-click-right": "~/.config/sway/scripts/toggle_wifi.sh",
   },
   "pulseaudio": {

@@ -7,7 +7,7 @@
 - Status Bar • waybar
 - Shell • Zsh + oh-my-zsh
 - Terminal Multiplexer • tmux
-- Terminal • kitty
+- Terminal • foot
 - Text Editor • Neovim
 
 ### Random notes
@@ -29,6 +29,7 @@ git clone https://github.com/agentzhao/dotfiles.git
 cd ~/dotfiles
 stow -nvt ~ .
 stow -vt ~ .
+stow -Dvt ~ .
 ```
 
 ### Docker Images

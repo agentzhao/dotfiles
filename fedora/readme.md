@@ -135,3 +135,16 @@ dnf install vlc
 ```
 flatpak install flathub us.zoom.Zoom
 ```
+
+# cleaning up system
+
+`ncdu /home/zhao`
+
+# sway and workstation shenanigans
+
+`sudo dnf group install Sway Workstation`
+
+`sudo dnf swap fedora-release-identity-sway fedora-release-identity-workstation`
+
+[checking installed kernels using grubby](https://www.baeldung.com/linux/grub-menu-management)
+`sudo grubby --info=ALL`

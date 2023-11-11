@@ -10,7 +10,7 @@ exp(){
   then
     explorer.exe .
   else
-    nautilus .
+    nautilus . &
   fi
 
 }

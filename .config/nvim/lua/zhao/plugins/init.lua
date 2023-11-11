@@ -53,11 +53,9 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    config = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    ft = { "markdown" }
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
   { --Explains regular expressions
     "bennypowers/nvim-regexplainer",
@@ -83,7 +81,7 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
-    tag = '*',
+    version = '*',
     config = function()
       require("toggleterm").setup({
         size = 10,
@@ -130,6 +128,7 @@ return {
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",              "n", desc = "live grep" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",                "n", desc = "buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",              "n", desc = "help tags" },
+      { "<leader>cm", "<cmd>Telescope commands<cr>",               "n", desc = "commands" },
     },
     config = function()
       require("telescope").setup({

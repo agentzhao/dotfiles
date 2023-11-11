@@ -9,6 +9,9 @@ if [[ -n "$SWAYSOCK" ]] then
   export XDG_CURRENT_DESKTOP=sway
 fi
 
+# If running from tty1 start sway
+[ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
+
 export TERM=xterm-256color
 
 source ~/.bash_aliases

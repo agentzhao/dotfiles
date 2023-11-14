@@ -123,6 +123,7 @@ for_window [app_id="firefox" title="File Upload"]          floating enable, move
 # for_window [app_id="firefox" title="Save As"]          floating enable, move position center
 for_window [app_id="Discord"]                              floating disable
 for_window [app_id="kitty"]                                floating disable
+for_window [app_id="foot"]                                floating disable
 for_window [class="discord"]                               floating disable
 for_window [class="Spotify"]                               floating disable
 for_window [app_id="nmtui"]                                floating enable, move position center

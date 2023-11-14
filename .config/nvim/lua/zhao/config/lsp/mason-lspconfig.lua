@@ -85,6 +85,14 @@ mason_lspconfig.setup_handlers({
     })
   end,
 
+  ["clangd"] = function()
+    lspconfig.clangd.setup({
+      on_attach = null_ls,
+      capabilities = opts.capabilities,
+      -- namespaceIndentation = true,
+    })
+  end,
+
   ["volar"] = function()
     lspconfig.volar.setup({
       on_attach = null_ls,

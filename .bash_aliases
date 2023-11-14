@@ -81,4 +81,4 @@ alias hotspot='nmcli dev wifi hotspot ifname wlp2s0 ssid manatabi password "8840
 # Misc
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias screen0='swaymsg output eDP-1 toggle'
-
+alias getterm='basename "$(cat "/proc/$PPID/comm")"'

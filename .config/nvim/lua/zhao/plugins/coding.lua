@@ -89,4 +89,11 @@ return {
       require("zhao.config.jupynium")
     end,
   },
+  { -- coding in docker container
+    'https://codeberg.org/esensar/nvim-dev-container',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require("devcontainer").setup {}
+    end,
+  }
 }

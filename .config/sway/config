@@ -102,6 +102,7 @@ workspace 5 output $monitor1 $laptop
 assign [app_id="firefox"] workspace number 2
 assign [class="discord"] workspace number 4
 assign [class="Spotify"] workspace number 5
+assign [class="steam"] workspace number 4
 
 gaps inner 5
 gaps outer 5

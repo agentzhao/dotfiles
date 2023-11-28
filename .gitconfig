@@ -6,7 +6,7 @@
   helper = !gh auth git-credential
 [user]
 	email = 20024592+agentzhao@users.noreply.github.com
-  name = agentzhao
+  name = zhao
 [init]
     templateDir = ~/.config/git/template/
 [alias]

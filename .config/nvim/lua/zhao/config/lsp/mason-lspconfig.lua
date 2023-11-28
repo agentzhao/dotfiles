@@ -87,9 +87,10 @@ mason_lspconfig.setup_handlers({
 
   ["clangd"] = function()
     lspconfig.clangd.setup({
-      on_attach = null_ls,
+      on_attach = opts.on_attach,
       capabilities = opts.capabilities,
       -- namespaceIndentation = true,
+      cmd = { "clangd", '--background-index', '--clang-tidy' }
     })
   end,
 

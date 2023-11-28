@@ -184,5 +184,36 @@ return {
     config = function()
       require("gitsigns").setup()
     end,
+  },
+
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = false,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "zhao",
+          path = "/home/zhao/obsidian/zhao",
+        },
+      },
+      templates = {
+        subdir = "templates",
+      },
+      notes_subdir = "zettlekasten",
+      daily_notes = {
+        folder = "journal",
+        date_format = "%Y-%m-%d",
+        template = "journal.md"
+      },
+      completion = {
+        nvim_cmp = true,
+      },
+      finder = "telescope.nvim",
+    },
   }
 }

@@ -64,6 +64,9 @@ alias bwp="bw list item --response --search"
 alias bwg="bw generate -ulns --length 16"
 alias bws="bw status"
 
+# kitty
+alias icat="kitty +kitten icat"
+
 # tmux
 alias t='tmux'
 alias ta='tmux attach -t'

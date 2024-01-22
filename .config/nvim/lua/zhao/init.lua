@@ -1,17 +1,17 @@
-vim.g.mapleader = "," -- using comma as leader
+vim.g.mapleader      = "," -- using comma as leader
 
 -- Standard stuff
 vim.opt.encoding     = "UTF-8"
-vim.o.mouse          = "a" -- mouse
-vim.o.cursorline     = true -- highlight current line
-vim.o.autoindent     = true -- auto indent
-vim.o.showmatch      = true -- show matching brackets
-vim.o.number         = true -- show line numbers
-vim.o.relativenumber = true -- relative line numbers
-vim.o.termguicolors  = true -- termguicolors
-vim.o.spell          = true -- spell check for comments
-vim.o.expandtab      = true -- use spaces instead of tabs
-vim.o.list           = true -- show whitespaces
+vim.o.mouse          = "a"                     -- mouse
+vim.o.cursorline     = true                    -- highlight current line
+vim.o.autoindent     = true                    -- auto indent
+vim.o.showmatch      = true                    -- show matching brackets
+vim.o.number         = true                    -- show line numbers
+vim.o.relativenumber = true                    -- relative line numbers
+vim.o.termguicolors  = true                    -- termguicolors
+vim.o.spell          = true                    -- spell check for comments
+vim.o.expandtab      = true                    -- use spaces instead of tabs
+vim.o.list           = true                    -- show whitespaces
 -- todo fix this as default ftplugin overrides :verbose set formatoptions
 vim.opt.formatoptions:remove { "c", "r", "o" } -- don't auto-wrap comments
 -- vim.o.cmdheight = 0 -- cmdheight
@@ -57,3 +57,22 @@ endfunction
 )
 
 vim.g.mkdp_browserfunc = 'OpenMarkdownPreview'
+
+-- Create user command to toggle format-on-save
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
+  desc = "Disable autoformat-on-save",
+  bang = true,
+})
+vim.api.nvim_create_user_command("FormatEnable", function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, {
+  desc = "Re-enable autoformat-on-save",
+})

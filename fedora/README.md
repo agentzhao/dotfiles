@@ -1,20 +1,47 @@
-### fedora
-
-https://spins.fedoraproject.org/en/kde/
+# Fedora
 
 todo
 
 - view files from windows
 - sway (rounded windows)
+- fix waybar calendar scroll
 
-# finding missing commands
+### tools to install
+
+`sudo dnf install ydiff`
+
+### finding missing commands
 
 ```
 dnf provides chsh
 dnf provides */chsh
 ```
 
-# changing shell
+### displays
+
+`wdisplays` for enabling and disabling monitors
+`wl-mirror <output>` for duplicating screen, `swaymsg -t get_outputs` to get outputs
+
+### connecting to wifi
+
+`ifconfig -a` to find network interface
+
+`wlp9s0` for wireless
+
+```
+nmcli connection add type wifi ifname <INTERFACE> con-name WeWorkWiFi ssid WeWorkWiFi
+nmcli connection edit WeWorkWiFi
+nmcli> set 802-1x.eap peap
+nmcli> set 802-1x.phase2-auth mschapv2
+nmcli> set 802-1x.identity <USERNAME>
+nmcli> set 802-1x.password <PASSWORD>
+nmcli> set wifi-sec.key-mgmt wpa-eap
+nmcli> save
+nmcli> activate
+Ctrl + D
+```
+
+### changing shell
 
 ```
 chsh -s /bin/zsh
@@ -30,7 +57,7 @@ oat /etc/passwd | grep `cd; pwd` # check which shell is listed
 
 then use `chsh -s /usr/bin/zsh`
 
-# Wifi
+### Wifi
 
 ```
 nmtui
@@ -59,13 +86,13 @@ snap install spotify
 p7zip-plugins
 ```
 
-# sway
+### sway
 
 ```
 sudo dnf install sway waybar swaylock swayidle grimshot light pavucontrol azote mako
 ```
 
-# docker
+### docker
 
 ```
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
@@ -82,7 +109,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/hyperupcall/autoenv ~/.autoenv
 ```
 
-# nvim stuff
+### nvim stuff
 
 ```
 npm install --save-dev --save-exact prettier
@@ -90,7 +117,11 @@ pip3 install black
 npm install -g tree-sitter-cli prettier eslint_d
 ```
 
-# hack font
+### other languges
+
+`sudo dnf install fcitx5`
+
+### hack font
 
 ```
 git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git
@@ -99,7 +130,7 @@ git sparse-checkout add patched-fonts/Hack
 ./install.sh Hack
 ```
 
-# languages
+### languages
 
 ```
 sudo dnf install python3.11 python3-pip
@@ -110,14 +141,14 @@ sudo dnf install gcc clang golang java-17-openjdk.x86_64
 sudo dnf install nodejs npm
 ```
 
-# bluetooth
+### bluetooth
 
 ```
 rfkill unblock all
 bluetoothctl power on
 ```
 
-# vlc media player
+### vlc media player
 
 ```
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
@@ -125,22 +156,22 @@ dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rel
 dnf install vlc
 ```
 
-# wofi
+### wofi
 
 - drun - searches $XDG_DATA_HOME/applications and $XDG_DATA_DIRS/applications for desktop files and allows them to be run by selecting them.
 - In the event $XDG_DATA_HOME is not specified it defaults to ~/.local/share. If $XDG_DATA_DIRS is not specified it defaults to /usr/local/share:/usr/share.
 
-# misc
+### misc
 
 ```
 flatpak install flathub us.zoom.Zoom
 ```
 
-# cleaning up system
+### cleaning up system
 
 `ncdu /home/zhao`
 
-# sway and workstation shenanigans
+### sway and workstation shenanigans
 
 `sudo dnf group install Sway Workstation`
 

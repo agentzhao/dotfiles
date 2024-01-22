@@ -106,11 +106,12 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "~/.config/sway/scripts/toggle_bluetooth.sh",
+    "on-click": "swaymsg exec \"foot --title 'bluetoothctl' sh -c 'bluetoothctl'\"",
+    "on-click-right": "~/.config/sway/scripts/toggle_bluetooth.sh",
   },
   "clock": {
     "interval": 1,
-    "timezone": "Europe/Madrid",
+    // "timezone": "Asia/Singapore",
     "format": "{:%a %d %b, %H:%M:%S}",
     //"format-alt": "{:%d/%m/%Y}",
     "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><big>{calendar}</big></tt>",
@@ -121,9 +122,9 @@
     "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>",
     "on-click": "-1",
     "on-click-right": "1",
-    /* "on-scroll": { */
-    /*   "calendar": 1 */
-    /* } */
+    "on-scroll": {
+      "calendar": 1
+    }
   },
   "cpu": {
     "format": "{usage}% ",

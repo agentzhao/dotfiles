@@ -1,4 +1,12 @@
 # Tips and Tricks
 
-// temporarily diable formatting
-''':noa w'''
+### Leader key `,`
+
+- temporarily disable formatting
+  `:noa w`
+
+- format file using conform.nvim
+  `<space>f`
+
+- lazygit
+  `,gg`

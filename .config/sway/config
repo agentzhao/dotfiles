@@ -93,16 +93,21 @@ exec swayidle -w \
 input * accel_profile flat
 
 # Set the default workspace layout for each output
-workspace 1 output $monitor1 $laptop
-workspace 2 output $monitor1 $laptop
-workspace 3 output $monitor1 $laptop
-workspace 4 output $monitor1 $laptop
-workspace 5 output $monitor1 $laptop
+workspace 1 output $laptop
+workspace 2 output $laptop
+workspace 3 output $laptop
+workspace 4 output $laptop
+workspace 5 output $laptop
+
+# moving workspaces between monitors
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
 
 assign [app_id="firefox"] workspace number 2
 assign [class="discord"] workspace number 4
-assign [class="Spotify"] workspace number 5
 assign [class="steam"] workspace number 4
+assign [class="Spotify"] workspace number 5
+assign [class="Sonixd"] workspace number 5
 
 gaps inner 5
 gaps outer 5
@@ -124,10 +129,10 @@ for_window [app_id="firefox" title="File Upload"]          floating enable, move
 # for_window [app_id="firefox" title="Save As"]          floating enable, move position center
 for_window [app_id="Discord"]                              floating disable
 for_window [app_id="kitty"]                                floating disable
-for_window [app_id="foot"]                                floating disable
+for_window [app_id="foot"]                                 floating disable
 for_window [class="discord"]                               floating disable
 for_window [class="Spotify"]                               floating disable
-for_window [app_id="nmtui"]                                floating enable, move position center
+for_window [title="nmtui"]                                 floating enable, move position center
 
 for_window [title="(?:Open|Save) (?:File|Folder|As)"]      floating enable, resize set width 1030 height 710
 for_window [title="Picture-in-Picture"]                    floating enable, sticky on
@@ -175,9 +180,19 @@ for_window [class="Spotify"] move --no-auto-back-and-forth container to workspac
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input "9494:32:CM_Storm_Quickfire_Rapid_i" {
-  xkb_layout "us,cn,kr"
+# input "9494:32:CM_Storm_Quickfire_Rapid_i" {
+#   xkb_layout "us,cn,kr"
+#   xkb_options "grp:lalt_lshift_toggle"
+# }
+
+# https://unix.stackexchange.com/questions/292868/how-to-customise-keyboard-mappings-with-wayland
+# https://realh.co.uk/wp/linux-keymap-hacking/
+# man:xkeyboard-config(7)
+input * {
+  xkb_layout "us,cn"
   xkb_options "grp:lalt_lshift_toggle"
+  # xkb_switch_layout next
+  # xkb_numlock enabled
 }
 
 # 2821:6582:Asus_Keyboard

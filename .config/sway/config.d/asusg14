@@ -11,7 +11,7 @@ input "type:touchpad" {
 }
 
 input "2821:6582:Asus_Keyboard" {
-  xkb_layout "us,cn,kr"
+  xkb_layout "us,cn"
   xkb_options "grp:lalt_lshift_toggle"
 }
 

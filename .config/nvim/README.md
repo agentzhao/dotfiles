@@ -10,3 +10,6 @@
 
 - lazygit
   `,gg`
+
+- insert at start of selected lines
+  `:'<,'>s/^/character`

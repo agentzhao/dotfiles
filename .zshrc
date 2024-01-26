@@ -16,7 +16,6 @@ DIST=$(grep 'PRETTY_NAME=' /etc/*-release)
 
 plugins=(alias-finder
           asdf
-          autoenv
           docker
           dotenv
           git

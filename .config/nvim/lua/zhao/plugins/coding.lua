@@ -1,4 +1,59 @@
 return {
+  "tpope/vim-repeat",                -- dot-repeat
+  "simonefranza/nvim-conv",          -- Converts things
+  "hiphish/rainbow-delimiters.nvim", -- Rainbow parentheses
+  {
+    "folke/trouble.nvim",
+    dependencies = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup({})
+    end,
+  },
+  {
+    'stevearc/aerial.nvim',
+    config = function()
+      require("zhao.config.aerial")
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  { --Explains regular expressions
+    "bennypowers/nvim-regexplainer",
+    config = function()
+      require("regexplainer").setup({
+        auto = true,
+      })
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+  }, '*',
+  { -- Run snippets
+    "michaelb/sniprun",
+    build = "bash ./install.sh",
+  },
+  { -- Commentary
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+    lazy = false,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    tag = "release",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
   {
     "ggandor/leap.nvim", -- successor of lightspeed
     config = function()

@@ -62,8 +62,8 @@ bindsym Alt+Tab          [floating] scratchpad show
 set $laptop eDP-1
 set $monitor1 HDMI-A-1
 
-output $laptop pos 1920 0 res 1920x1080@60Hz
-output $monitor1 pos 0 0 res 1920x1080@144Hz
+# output $laptop pos 1920 0 res 1920x1080@60Hz
+# output $monitor1 pos 0 0 res 1920x1080@144Hz
 
 # bindswitch --reload --locked lid:on output $laptop disable
 # bindswitch --reload --locked lid:off output $laptop enable
@@ -93,11 +93,11 @@ exec swayidle -w \
 input * accel_profile flat
 
 # Set the default workspace layout for each output
-workspace 1 output $laptop
-workspace 2 output $laptop
-workspace 3 output $laptop
-workspace 4 output $laptop
-workspace 5 output $laptop
+workspace 1 output $laptop $monitor1
+workspace 2 output $laptop $monitor1
+workspace 3 output $laptop $monitor1
+workspace 4 output $laptop $monitor1
+workspace 5 output $laptop $monitor1
 
 # moving workspaces between monitors
 bindsym $mod+greater move workspace to output right
@@ -108,6 +108,7 @@ assign [class="discord"] workspace number 4
 assign [class="steam"] workspace number 4
 assign [class="Spotify"] workspace number 5
 assign [class="Sonixd"] workspace number 5
+assign [class="teams-for-linux"] workspace number 4
 
 gaps inner 5
 gaps outer 5

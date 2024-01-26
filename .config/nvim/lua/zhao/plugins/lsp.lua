@@ -17,10 +17,10 @@ return {
     config = function()
       require("zhao.config.luasnip")
     end,
+    dependencies = { "rafamadriz/friendly-snippets" },
   },
   "saadparwaiz1/cmp_luasnip",
   "ray-x/lsp_signature.nvim",
-  "rafamadriz/friendly-snippets",
   {
     "simrat39/rust-tools.nvim", --extra tools over rust_analyzer
     config = function()

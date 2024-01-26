@@ -76,3 +76,7 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
   desc = "Re-enable autoformat-on-save",
 })
+
+
+-- todo: set diffopt to horizontal
+vim.opt.diffopt.horizontal = true

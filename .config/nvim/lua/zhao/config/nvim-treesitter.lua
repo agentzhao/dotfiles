@@ -12,6 +12,7 @@ require("nvim-treesitter.configs").setup({
     "java",
     "javascript",
     "json",
+    "jsonc",
     "latex",
     "lua",
     "markdown",
@@ -30,7 +31,7 @@ require("nvim-treesitter.configs").setup({
   ignore_install = {},
   highlight = {
     enable = true,
-    disable = {},
+    disable = { 'NvimTree' },
     additional_vim_regex_highlighting = false,
   },
   rainbow = {

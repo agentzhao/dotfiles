@@ -179,3 +179,7 @@ flatpak install flathub us.zoom.Zoom
 
 [checking installed kernels using grubby](https://www.baeldung.com/linux/grub-menu-management)
 `sudo grubby --info=ALL`
+
+### sway unsupported gpu
+
+add --unsupported-gpu flag to /usr/share/wayland-sessions

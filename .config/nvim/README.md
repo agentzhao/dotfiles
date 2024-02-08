@@ -13,3 +13,6 @@
 
 - insert at start of selected lines
   `:'<,'>s/^/character`
+
+- get path of current file
+  `1 ctrl-g`

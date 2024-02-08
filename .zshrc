@@ -71,12 +71,6 @@ export NVM_DIR="$HOME/.nvm"
 #     disown
 # fi
 
-# start tmux && [[ -n "$SSH_CONNECTION" ]]
-if [[ -z "$TMUX" ]] && [[ -n $SSH_TTY ]]; then
-  tmux new-session -A -s zhao
-fi
-
-#
 # # >>> conda initialize >>>
 # # !! Contents within this block are managed by 'conda init' !!
 # __conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

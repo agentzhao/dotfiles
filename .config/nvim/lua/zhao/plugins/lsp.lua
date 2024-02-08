@@ -69,6 +69,12 @@ return {
       require("zhao.config.flutter-tools")
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    -- event = "VeryLazy",
+    config = function()
+      require("zhao.config.lsp.lsp_signature")
+    end,
   }
-
 }

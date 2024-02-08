@@ -17,7 +17,10 @@ set $mod Mod4
 exec flameshot
 exec syncthing
 # Notification
-exec mako
+# exec mako
+# Notification Daemon
+# TODO: fix notifications
+exec swaync
 # Wallpapers
 exec ~/.azotebg
 
@@ -204,7 +207,7 @@ input * {
 bindsym Print exec export XDG_CURRENT_DESKTOP=sway && flameshot gui
 bindsym $mod+Print exec export XDG_CURRENT_DESKTOP=sway && flameshot full --path ~/Pictures/Screenshots
 bindsym $mod+question exec ~/.config/sway/scripts/sway-prop.sh
-bindsym $mod+Shift+s exec grimshot copy area
+bindsym $mod+Shift+s exec export XDG_CURRENT_DESKTOP=sway && flameshot gui
 
 # bindsym Alt+Tab exec
 

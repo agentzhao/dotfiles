@@ -2,6 +2,17 @@ return {
   "tpope/vim-repeat",                -- dot-repeat
   "simonefranza/nvim-conv",          -- Converts things
   "hiphish/rainbow-delimiters.nvim", -- Rainbow parentheses
+  "nvim-treesitter/nvim-treesitter-context",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("zhao.config.nvim-treesitter")
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    requires = "nvim-treesitter/nvim-treesitter",
+  },
   {
     "folke/trouble.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
@@ -11,8 +22,15 @@ return {
   },
   {
     'stevearc/aerial.nvim',
+    keys = {
+      { "<leader>a", "<cmd>AerialToggle!<CR>", "n", desc = "toggle aerial" },
+      { "{",         "<cmd>AerialPrev<CR>",    "n", desc = "jump to previous" },
+      { "}",         "<cmd>AerialNext<CR>",    "n", desc = "jump to next" },
+      { "[[",        "<cmd>AerialPrevUp<CR>",  "n", desc = "jump to previous up" },
+      { "]]",        "<cmd>AerialNextUp<CR>",  "n", desc = "jump to next up" },
+    },
     config = function()
-      require("zhao.config.aerial")
+      require("aerial").setup()
     end,
   },
   {
@@ -32,7 +50,8 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
-  }, '*',
+  },
+  '*',
   { -- Run snippets
     "michaelb/sniprun",
     build = "bash ./install.sh",
@@ -51,7 +70,7 @@ return {
     },
     tag = "release",
     config = function()
-      require("gitsigns").setup()
+      require("zhao.config.gitsigns")
     end,
   },
   {
@@ -189,5 +208,21 @@ return {
       -- If you want the formatexpr, here is the place to set it
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
-  }
+  },
+  {
+    'linux-cultist/venv-selector.nvim',
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+    opts = {
+      -- Your options go here
+      -- name = "venv",
+      -- auto_refresh = false
+    },
+    event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    keys = {
+      -- Keymap to open VenvSelector to pick a venv.
+      { '<leader>vs', '<cmd>VenvSelect<cr>' },
+      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+      { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+    },
+  },
 }

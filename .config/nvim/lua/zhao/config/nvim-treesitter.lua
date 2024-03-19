@@ -1,4 +1,4 @@
-local ignored_filetypes = { 'NvimTree', 'lazygit', 'toggleterm' }
+local ignored_filetypes = { 'NvimTree', 'lazygit', 'toggleterm', 'lspinfo' }
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
@@ -31,7 +31,7 @@ require("nvim-treesitter.configs").setup({
   },
   sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
   auto_install = true,
-  ignore_install = {},
+  ignore_install = ignored_filetypes,
   highlight = {
     enable = true,
     disable = ignored_filetypes,
@@ -47,7 +47,7 @@ require("nvim-treesitter.configs").setup({
   },
   indent = {
     enable = true,
-    disable = {},
+    disable = ignored_filetypes,
   },
   textobjects = {
     select = {

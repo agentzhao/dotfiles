@@ -50,6 +50,7 @@ alias dex="docker exec -it"
 alias lzdr='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /dotfiles/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
 alias lzd='lazydocker'
 alias dcrb="docker-compose build --no-cache"
+alias dsp='docker system prune --filter "until=24h"'
 
 # Plugins
 alias fd=fdfind

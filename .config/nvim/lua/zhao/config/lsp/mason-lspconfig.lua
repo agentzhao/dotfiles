@@ -36,6 +36,7 @@ local others = {
 
   -- Linters
   "eslint_d",
+  "pylint",
 
   -- Formatters
   "black",

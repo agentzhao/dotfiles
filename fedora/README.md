@@ -167,7 +167,7 @@ dnf install vlc
 flatpak install flathub us.zoom.Zoom
 ```
 
-### cleaning up system
+### cleaning up system memory
 
 `ncdu /home/zhao`
 
@@ -183,3 +183,15 @@ flatpak install flathub us.zoom.Zoom
 ### sway unsupported gpu
 
 add --unsupported-gpu flag to /usr/share/wayland-sessions
+
+### random tools
+
+- zathura - document viewer
+
+### auto export all env variables in .env file
+
+- `set -a` to auto export, `set +a` for manual
+
+### wireshark on linux
+
+change owner of dumpcap from root to user acc `sudo chown -R $LOGNAME /usr/bin/dumpcap` see: [https://askubuntu.com/a/919405]

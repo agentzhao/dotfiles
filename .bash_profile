@@ -19,5 +19,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+source /usr/local/lib/node_modules/@hyperupcall/autoenv/activate.sh # autoenv
 source ~/.bash_aliases
 source ~/.bash_functions

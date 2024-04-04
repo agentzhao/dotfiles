@@ -5,9 +5,7 @@
   // "spacing": 4, // Gaps between modules (4px)
 
   // Choose the order of the modules
-  "modules-left": [
-    "sway/workspaces",
-  ],
+  "modules-left": ["sway/workspaces"],
   "modules-center": ["clock"],
   "modules-right": [
     "sway/language",
@@ -21,6 +19,7 @@
     "temperature",
     "battery",
     "custom/notification",
+    "custom/power",
   ],
 
   // Modules configuration 
@@ -45,26 +44,26 @@
       /* "urgent": "", */
       /* "focused": "", */
       /* "default": "" */
-    }
+    },
   },
   "keyboard-state": {
-      "numlock": true,
-      "capslock": true,
-      "format": "{name} {icon}",
-      "format-icons": {
-        "locked": "",
-        "unlocked": ""
-      }
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": "",
+    },
   },
   "sway/mode": {
-      "format": "<span style=\"italic\">{}</span>"
+    "format": "<span style=\"italic\">{}</span>",
   },
   "sway/scratchpad": {
-      "format": "{icon} {count}",
-      "show-empty": false,
-      "format-icons": ["", ""],
-      "tooltip": true,
-      "tooltip-format": "{app}: {title}"
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}",
   },
   "backlight": {
     "device": "amdgpu_bl0",
@@ -80,7 +79,7 @@
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "format": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
@@ -90,10 +89,10 @@
     // "format-full": "",
     "format-icons": ["", "", "", "", ""],
     "tooltip": true,
-    "tooltip-format": "{power}W\n{timeTo}"
+    "tooltip-format": "{power}W\n{timeTo}",
   },
   "battery#bat2": {
-      "bat": "BAT2"
+    "bat": "BAT2",
   },
   "bluetooth": {
     "format": "",
@@ -122,19 +121,19 @@
     "on-click": "-1",
     "on-click-right": "1",
     "on-scroll": {
-      "calendar": 1
-    }
+      "calendar": 1,
+    },
   },
   "cpu": {
     "format": "{usage}% ",
-    "tooltip": true
+    "tooltip": true,
   },
   "sway/language": {
     "format": "{flag}{shortDescription}",
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
   },
   "memory": {
-    "format": "{used}GB "
+    "format": "{used}GB ",
   },
   "mpd": {
     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -143,24 +142,24 @@
     "unknown-tag": "N/A",
     "interval": 2,
     "consume-icons": {
-        "on": " "
+      "on": " ",
     },
     "random-icons": {
-        "off": "<span color=\"#f53c3c\"></span> ",
-        "on": " "
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " ",
     },
     "repeat-icons": {
-        "on": " "
+      "on": " ",
     },
     "single-icons": {
-        "on": "1 "
+      "on": "1 ",
     },
     "state-icons": {
-        "paused": "",
-        "playing": ""
+      "paused": "",
+      "playing": "",
     },
     "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)"
+    "tooltip-format-disconnected": "MPD (disconnected)",
   },
   "network": {
     "interval": 5,
@@ -190,7 +189,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", "", ""],
     },
     "on-click": "pavucontrol",
     "max-volume": 150,
@@ -200,7 +199,7 @@
     "format-icons": {
       "activated": "",
       "deactivated": "",
-    }
+    },
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -209,8 +208,8 @@
     "format": "{temperatureC}°C ",
   },
   "tray": {
-      // "icon-size": 21,
-      "spacing": 10
+    // "icon-size": 21,
+    "spacing": 10,
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -220,19 +219,13 @@
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition"
-    }
+      "firefoxdeveloperedition": "firefox-developer-edition",
+    },
   },
   "custom/power": {
     "format": "", // This icon is provided by the Awesome-fonts collection, not sure how to paste it unfortunately
-    "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit'--background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
+    // "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit'--background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
+    "on-click": "swaymsg exec ~/.config/sway/scripts/wofipowermenu.py",
   },
   "custom/media": {
     "format": "{icon} {}",
@@ -240,30 +233,29 @@
     "max-length": 40,
     "format-icons": {
       "spotify": "",
-      "default": "🎜"
+      "default": "🎜",
     },
-    "escape": true,
-    //"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-    "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    "escape": true, //"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
   },
   "custom/notification": {
     "tooltip": false,
-    "format": "{icon}",
+    "format": " {icon}",
     "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
+      "notification": " <span foreground='red'><sup></sup></span>",
+      "none": " ",
+      "dnd-notification": " <span foreground='red'><sup></sup></span>",
+      "dnd-none": " ",
+      "inhibited-notification": " <span foreground='red'><sup></sup></span>",
+      "inhibited-none": " ",
+      "dnd-inhibited-notification": " <span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": " ",
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
-    "escape": true
+    "escape": true,
   },
 }

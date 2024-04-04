@@ -39,19 +39,20 @@ return {
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
-  { --Explains regular expressions
-    "bennypowers/nvim-regexplainer",
-    config = function()
-      require("regexplainer").setup({
-        auto = true,
-      })
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-  },
-  '*',
+  -- this causes errors on treesitter when opening nvimtree
+  -- { --Explains regular expressions
+  --   "bennypowers/nvim-regexplainer",
+  --   config = function()
+  --     require("regexplainer").setup({
+  --       auto = true,
+  --       disable = { "NvimTree" },
+  --     })
+  --   end,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  -- },
   { -- Run snippets
     "michaelb/sniprun",
     build = "bash ./install.sh",

@@ -81,7 +81,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "gR", "<cmd>Trouble lsp_references<CR>", opts)
 
   -- custom
-  buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
+  buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts) -- definition references
 end
 
 -- Capabilities

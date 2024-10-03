@@ -10,6 +10,7 @@ client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
+# use windows key as mod key
 set $mod Mod4
 
 ### On startup
@@ -106,16 +107,17 @@ workspace 5 output $laptop $monitor1
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 
-assign [app_id="firefox"] workspace number 2
+assign [app_id="firefox-aurora"] workspace number 1
+assign [app_id="org.mozilla.firefox"] workspace number 2
 assign [class="discord"] workspace number 4
+assign [class="Ferdium"] workspace number 4
 assign [class="steam"] workspace number 4
+assign [class="teams-for-linux"] workspace number 4
 assign [class="Spotify"] workspace number 5
 assign [class="Sonixd"] workspace number 5
-assign [class="teams-for-linux"] workspace number 4
 
 gaps inner 5
 gaps outer 5
-
 # disable window titlebar
 default_border pixel 1
 # default_border none
@@ -136,7 +138,9 @@ for_window [app_id="kitty"]                                floating disable
 for_window [app_id="foot"]                                 floating disable
 for_window [class="discord"]                               floating disable
 for_window [class="Spotify"]                               floating disable
+for_window [class="Ferdium"]                               floating disable
 for_window [title="nmtui"]                                 floating enable, move position center
+for_window [app_id="org.pwmt.zathura"]                     floating enable, resize set width 1500 height 900
 
 for_window [title="(?:Open|Save) (?:File|Folder|As)"]      floating enable, resize set width 1030 height 710
 for_window [title="Picture-in-Picture"]                    floating enable, sticky on
@@ -304,7 +308,7 @@ bindsym $mod+Shift+s exec export XDG_CURRENT_DESKTOP=sway && flameshot gui
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+t layout tabbed
+    # bindsym $mod+t layout tabbed
     # bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen

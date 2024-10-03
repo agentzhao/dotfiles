@@ -51,13 +51,19 @@ vim.keymap.set("v", "d", smart_dd, opts3)
 
 -- Delete word by word
 map("i", "<M-BS>", "<C-w>", opts)
-map("i", "<M-d>", "<cmd>norm! dw<CR>", opts)
+-- map("i", "<M-d>", "<cmd>norm! dw<CR>", opts)
 
 -- Window navigation :ball :vert ball
-map("n", "<M-k>", ":wincmd k<CR>", opts)
-map("n", "<M-j>", ":wincmd j<CR>", opts)
-map("n", "<M-h>", ":wincmd h<CR>", opts)
-map("n", "<M-l>", ":wincmd l<CR>", opts)
+-- deprecated, using zellij-nav.nvim now
+-- map("n", "<c-k>", ":wincmd k<CR>", opts2)
+-- map("n", "<c-j>", ":wincmd j<CR>", opts2)
+-- map("n", "<c-h>", ":wincmd h<CR>", opts2)
+-- map("n", "<c-l>", ":wincmd l<CR>", opts2)
+
+-- map("n", "<M-k>", ":wincmd k<CR>", opts2)
+-- map("n", "<M-j>", ":wincmd j<CR>", opts2)
+-- map("n", "<M-h>", ":wincmd h<CR>", opts2)
+-- map("n", "<M-l>", ":wincmd l<CR>", opts2)
 
 -- Shift + J/K moves selected lines down/up in visual mode
 map("x", "J", ":move '>+1<CR>zzgv-gv", opts2)

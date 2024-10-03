@@ -75,7 +75,17 @@ alias tls='tmux ls'
 alias trs='tmux rename-session -t'
 alias 256colors='for i in {0..255}; do  printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
 
+# zellij
+alias z='zellij'
+alias zls='zellij ls'
+alias zl='zellij --layout'
+alias zr='zellij run --'
+alias za='zellij attach'
+alias zrf='zellij run -f --height 70% --width 70% -x 15% -y 15% --'
+
 alias npmadd='npm install --save --package-lock-only --no-package-lock'
+alias yarnadd='yarn add --mode update-lockfile'
+
 
 # network wifi
 alias wifi='nmcli radio wifi on && nmcli device wifi list'

@@ -76,5 +76,5 @@ return {
     config = function()
       require("zhao.config.lsp.lsp_signature")
     end,
-  }
+  },
 }

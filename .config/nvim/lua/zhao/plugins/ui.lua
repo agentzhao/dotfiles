@@ -75,7 +75,7 @@ return {
       require("lualine").setup({
         options = {
           theme = "auto",
-          globalstatus = "true",
+          globalstatus = true,
         },
         sections = {
           lualine_d = { require("auto-session.lib").current_session_name },
@@ -131,10 +131,10 @@ return {
       'kyazdani42/nvim-web-devicons',
     },
     keys = {
-      { "<C-h>",     "<cmd>BufferPrevious<CR>",            "n", desc = "previous buffer" },
-      { "<C-l>",     "<cmd>BufferNext<CR>",                "n", desc = "next buffer" },
-      { "<C-w>",     "<cmd>BufferClose<CR>",               "n", desc = "close buffer" },
-      { "<C-p>",     "<cmd>BufferPick<CR>",                "n", desc = "pick buffer" },
+      -- { "<C-l>",     "<cmd>BufferNext<CR>",                "n", desc = "next buffer" },
+      -- { "<C-h>",     "<cmd>BufferPrevious<CR>",            "n", desc = "previous buffer" },
+      -- { "<C-w>",     "<cmd>BufferClose<CR>",               "n", desc = "close buffer" },
+      -- { "<C-p>",     "<cmd>BufferPick<CR>",                "n", desc = "pick buffer" },
       -- sort automatically by...
       { "<space>bb", "<cmd>BufferOrderByBufferNumber<CR>", "n", desc = "sort by buffer number" },
       { "<space>bd", "<cmd>BufferOrderByDirectory<CR>",    "n", desc = "sort by directory" },
@@ -154,5 +154,17 @@ return {
       require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
       require("zhao.config.alpha")
     end,
+  },
+  {
+    "https://git.sr.ht/~swaits/zellij-nav.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    keys = {
+      { "<c-h>", "<cmd>ZellijNavigateLeft<cr>",  { silent = true, desc = "navigate left" } },
+      { "<c-j>", "<cmd>ZellijNavigateDown<cr>",  { silent = true, desc = "navigate down" } },
+      { "<c-k>", "<cmd>ZellijNavigateUp<cr>",    { silent = true, desc = "navigate up" } },
+      { "<c-l>", "<cmd>ZellijNavigateRight<cr>", { silent = true, desc = "navigate right" } },
+    },
+    opts = {},
   }
 }

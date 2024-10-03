@@ -5,11 +5,17 @@
 [credential "https://github.com"]
   helper = !gh auth git-credential
 [user]
-	email = 20024592+agentzhao@users.noreply.github.com
+  email = 20024592+agentzhao@users.noreply.github.com
   name = zhao
 [init]
-    templateDir = ~/.config/git/template/
+  templateDir = ~/.config/git/template/
+[commit]
+  template = ~/.config/git/template/.gitmessage.txt
+[help]
+	autocorrect = 1
 [alias]
+  # remove all possible instance of file
+  # git filter-repo --path-glob 'filename' --invert-paths
   s = status
   rao = remote add origin
   ac = !git add . && git commit -am
@@ -33,7 +39,4 @@
   last = !git log -1 --stat
   changes = !git show HEAD
   logs = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit
-[commit]
-	template = /home/zhao/.config/git/template/.gitmessage.txt
-[help]
-	autocorrect = 1
+

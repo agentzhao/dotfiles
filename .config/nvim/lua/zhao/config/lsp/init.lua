@@ -73,15 +73,21 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- trouble.nvim
-  buf_set_keymap("n", "<space>xx", "<cmd>Trouble<CR>", opts)
-  buf_set_keymap("n", "<space>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", opts)
-  buf_set_keymap("n", "<space>xd", "<cmd>Trouble lsp_document_diagnostics<CR>", opts)
-  buf_set_keymap("n", "<space>xl", "<cmd>Trouble loclist<CR>", opts)
-  buf_set_keymap("n", "<space>xq", "<cmd>Trouble quickfix<CR>", opts)
-  buf_set_keymap("n", "gR", "<cmd>Trouble lsp_references<CR>", opts)
 
-  -- custom
-  buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts) -- definition references
+  buf_set_keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>",
+    { noremap = true, silent = true, desc = "Diagnostics (Trouble)" })
+  buf_set_keymap("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+    { noremap = true, silent = true, desc = "Buffer Diagnostics (Trouble)" })
+  buf_set_keymap("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>",
+    { noremap = true, silent = true, desc = "Symbols (Trouble)" })
+  buf_set_keymap("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<CR>",
+    { noremap = true, silent = true, desc = "LSP Definitions / references / ... (Trouble)" })
+  buf_set_keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<CR>",
+    { noremap = true, silent = true, desc = "Location List (Trouble)" })
+  buf_set_keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<CR>",
+    { noremap = true, silent = true, desc = "Quickfix List (Trouble)" })
+  buf_set_keymap("n", "gR", "<cmd>Telescope lsp_references<CR>",
+    { noremap = true, silent = true, desc = "LSP References" })
 end
 
 -- Capabilities

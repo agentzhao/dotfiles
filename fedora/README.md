@@ -26,7 +26,7 @@ dnf provides */chsh
 
 `ifconfig -a` to find network interface
 
-`wlp9s0` for wireless
+`wlp2s0` for wireless
 
 ```
 nmcli connection add type wifi ifname <INTERFACE> con-name WeWorkWiFi ssid WeWorkWiFi
@@ -195,3 +195,7 @@ add --unsupported-gpu flag to /usr/share/wayland-sessions
 ### wireshark on linux
 
 change owner of dumpcap from root to user acc `sudo chown -R $LOGNAME /usr/bin/dumpcap` see: [https://askubuntu.com/a/919405]
+
+### add yourself into a group
+
+sudo usermod -aG user_group $(whoami)

@@ -19,7 +19,6 @@ plugins=(alias-finder
           docker
           dotenv
           git
-          ripgrep
           zsh-autosuggestions
           zsh-completions
           zsh-syntax-highlighting

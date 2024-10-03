@@ -1,4 +1,5 @@
 -- h nvim-tree-default-mappings
+-- ctrl+k on file shows details like path, size, modified time, etc
 
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", {
   noremap = true,

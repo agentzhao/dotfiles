@@ -19,6 +19,7 @@
     "temperature",
     "battery",
     "custom/notification",
+    "tray",
     "custom/power",
   ],
 

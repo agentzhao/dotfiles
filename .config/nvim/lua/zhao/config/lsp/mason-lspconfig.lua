@@ -22,6 +22,7 @@ local servers = {
   "rust_analyzer",
   "marksman", -- Markdown
   "tailwindcss",
+  "texlab",
   "volar",
   "lemminx", -- XML
   "yamlls",

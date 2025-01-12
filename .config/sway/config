@@ -23,7 +23,8 @@ exec syncthing
 # TODO: fix notifications
 exec swaync
 # Wallpapers
-exec ~/.azotebg
+output * bg ~/.config/sway/darker_unicat.png fill
+# exec ~/.azotebg
 
 # Notification Daemon
 # exec swaync

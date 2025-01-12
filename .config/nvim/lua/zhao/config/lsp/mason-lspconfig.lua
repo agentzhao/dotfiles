@@ -16,7 +16,7 @@ local servers = {
   "html",
   "jsonls",
   "jdtls",
-  "tsserver",
+  "ts_ls",
   "lua_ls",
   "pyright",
   "rust_analyzer",
@@ -102,8 +102,8 @@ mason_lspconfig.setup_handlers({
     })
   end,
 
-  ["tsserver"] = function()
-    lspconfig.tsserver.setup({
+  ["ts_ls"] = function()
+    lspconfig.ts_ls.setup({
       on_attach = null_ls,
     })
   end,

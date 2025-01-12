@@ -22,3 +22,4 @@ export XMODIFIERS=@im=fcitx
 source /usr/local/lib/node_modules/@hyperupcall/autoenv/activate.sh # autoenv
 source ~/.bash_aliases
 source ~/.bash_functions
+. "$HOME/.cargo/env"

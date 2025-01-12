@@ -10,6 +10,8 @@ default_layout "compact"
 default_mode "locked"
 
 keybinds {
+    unbind "Ctrl g" // unbind in all modes, used in neovim
+
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
@@ -18,7 +20,6 @@ keybinds {
     }
     // only using these
     locked {
-        // bind "Alt g" { SwitchToMode "Normal"; } // go to normal mode
         bind "Alt t" { NewTab; } // new tab
         bind "Alt =" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }

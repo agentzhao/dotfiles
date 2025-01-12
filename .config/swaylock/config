@@ -1,6 +1,6 @@
 ignore-empty-password
 disable-caps-lock-text
-image=~/Pictures/wallpapers/darker_unicat.png
+image=~/.config/sway/darker_unicat.png
 
 /* text-ver-color=00000000 */
 /* text-wrong-color=00000000 */

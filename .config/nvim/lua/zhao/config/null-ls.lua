@@ -1,12 +1,6 @@
 -- Here is the formatting config
 local null_ls = require("null-ls")
 
-local formatter = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
-local actions = null_ls.builtins.code_actions
-local completion = null_ls.builtins.completion
-local hover = null_ls.builtins.hover
-
 local has_eslint = function(utils)
   -- root_has_file accepts multiple files now
   return utils.root_has_file({
@@ -22,37 +16,28 @@ end
 
 local lssources = {
   -- formatting
-  formatter.prettier,
-  -- formatter.stylua.with({
-  --   args = { "--indent-width", "2", "--indent-type", "Spaces", "-" },
-  -- }),
-  formatter.black.with({ extra_args = { "--fast" } }), --python
-  formatter.rustywind, -- tailwindcss
-  -- formatter.asmfmt, -- assembly
-  -- formatter.shfmt, -- bash shell
-  -- formatter.google_java_format, -- java
-  -- formatter.uncrustify, --C, C++, C#, ObjectiveC, D, java, pawn and VALA
-
-  -- null_ls.builtins.formatting.cmake_format, --foramt listfiiles
-  -- null_ls.builtins.formatting.gofmt, -- format go programs
-
-  -- diagnostics.shellcheck, -- bash/sh shell scripts
-  --diagnostics.cppcheck, --fast static analysis of C/C++ code
+  null_ls.builtins.formatting.prettier,
+  null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }), --python
+  null_ls.builtins.formatting.rustywind, -- tailwindcss
 
   -- Completion
-  completion.luasnip,
+  null_ls.builtins.completion.luasnip,
+
+  -- Actions
+  null_ls.builtins.code_actions.gitsigns,
 
   -- Hover
-  hover.dictionary,
+  null_ls.builtins.hover.dictionary, -- definition of word
+  null_ls.builtins.hover.printenv,   -- print environment variables
 
   -- If eslint config exists use eslint, else use prettier
-  formatter.eslint_d.with({
+  null_ls.builtins.formatting.eslint_d.with({
     condition = has_eslint,
   }),
-  diagnostics.eslint_d.with({
+  null_ls.builtins.diagnostics.eslint_d.with({
     condition = has_eslint,
   }),
-  actions.eslint_d.with({
+  null_ls.builtins.code_actions.eslint_d.with({
     condition = has_eslint,
   }),
 }

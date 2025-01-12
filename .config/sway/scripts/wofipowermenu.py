@@ -10,7 +10,7 @@ import os
 def run_menu():
     keys = (
         "\uf023   Log Out",
-        "\uf9b1   Sleep",
+        "󰒲   Sleep",
         "\uf186   Suspend",
         "\uf2dc   Hibernate",
         "\uf021   Reboot",

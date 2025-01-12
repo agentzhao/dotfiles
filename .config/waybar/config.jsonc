@@ -25,23 +25,25 @@
 
   // Modules configuration 
   "sway/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
     "disable-scroll": true,
     "all-outputs": true,
-    "persistent_workspaces": {
+    "persistent-workspaces": {
       "1": [],
       "2": [],
       "3": [],
       "4": [],
       "5": [],
+      "6": [],
     },
-    "format": "{icon}",
     "format-icons": {
       "1": "",
       "2": "",
       "3": "",
       "4": "",
       "5": "",
-      "6": "",
+      "6": "",
       /* "urgent": "", */
       /* "focused": "", */
       /* "default": "" */
@@ -83,7 +85,7 @@
       "critical": 15,
     },
     "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
+    "format-charging": "{capacity}% 󰂄",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
@@ -97,8 +99,8 @@
   },
   "bluetooth": {
     "format": "",
-    "format-disabled": "",
-    "format-connected": "",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",

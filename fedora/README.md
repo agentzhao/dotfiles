@@ -10,6 +10,13 @@ todo
 
 `sudo dnf install ydiff`
 
+### dark mode
+
+```
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+```
+
 ### finding missing commands
 
 ```
@@ -199,3 +206,11 @@ change owner of dumpcap from root to user acc `sudo chown -R $LOGNAME /usr/bin/d
 ### add yourself into a group
 
 sudo usermod -aG user_group $(whoami)
+
+### conflicting i686 and x86_64 package (32 vs 64 bit)
+
+`file /usr/share/man/man5/cert9.db.5.gz from install of nss-3.107.0-1.fc40.i686 conflicts with file from package nss-3.104.0-1.fc40.x86_64`
+
+`rpm -qa | grep nss`
+
+`sudo dnf remove nss.i686`

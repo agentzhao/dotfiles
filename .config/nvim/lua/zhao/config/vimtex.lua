@@ -20,4 +20,4 @@ vim.g.vimtex_compiler_method = 'latexmk'
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 map("n", "<leader>ll", ":VimtexCompile<CR>", opts)
-map("n", "<leader>li", ":VimtexInfo<CR>", opts)
+map("n", "<leader>lv", ":VimtexView<CR>", opts)

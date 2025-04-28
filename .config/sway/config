@@ -13,17 +13,22 @@ client.background        $base
 # use windows key as mod key
 set $mod Mod4
 
-### On startup
-# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway
+### flameshot
+# https://github.com/flameshot-org/flameshot/blob/master/docs/Sway%20and%20wlroots%20support.md
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 exec flameshot
+
 exec syncthing
 # Notification
 # exec mako
 # Notification Daemon
 # TODO: fix notifications
 exec swaync
-# Wallpapers
-output * bg ~/.config/sway/darker_unicat.png fill
+# background wallpaper
+output * bg ~/.config/sway/siberian-husky-dog-1920x1080.jpg fill
 # exec ~/.azotebg
 
 # Notification Daemon

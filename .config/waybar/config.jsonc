@@ -167,12 +167,12 @@
   "network": {
     "interval": 5,
     "format": "{icon}",
-    "format-ethernet": "{ipaddr}/{cidr} ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
     "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "",
-    "format-disabled": "睊",
-    "tooltip-format": "{ipaddr} via {gwaddr} \nFrequency: {frequency} MHz\nSignal: {signalStrength} dB\nUp: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "󰤮",
+    "format-disabled": "",
+    "tooltip-format": "{ipaddr} via {gwaddr} 󰊗\nFrequency: {frequency} MHz\nSignal: {signalStrength} dB\nUp: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}",
     /* "tooltip-format-disconnected": "", */
     "on-click": "swaymsg exec \"foot --title 'nmtui' sh -c 'nmtui'\"",
     "on-click-right": "~/.config/sway/scripts/toggle_wifi.sh",

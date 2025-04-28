@@ -36,15 +36,15 @@ dnf provides */chsh
 `wlp2s0` for wireless
 
 ```
-nmcli connection add type wifi ifname <INTERFACE> con-name WeWorkWiFi ssid WeWorkWiFi
-nmcli connection edit WeWorkWiFi
-nmcli> set 802-1x.eap peap
-nmcli> set 802-1x.phase2-auth mschapv2
-nmcli> set 802-1x.identity <USERNAME>
-nmcli> set 802-1x.password <PASSWORD>
-nmcli> set wifi-sec.key-mgmt wpa-eap
-nmcli> save
-nmcli> activate
+nmcli connection add type wifi ifname wlp2s0 con-name Wireless@SGx ssid Wireless@SGx
+nmcli connection edit Wireless@SGx
+set 802-1x.eap peap
+set 802-1x.phase2-auth mschapv2
+set 802-1x.identity <USERNAME>
+set 802-1x.password <PASSWORD>
+set wifi-sec.key-mgmt wpa-eap
+save
+activate
 Ctrl + D
 ```
 

@@ -62,6 +62,7 @@ local opts = {
   capabilities = require("zhao.config.lsp").capabilities,
 }
 
+-- disable formatting to use null_ls instead
 local null_ls = function(client)
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
@@ -101,13 +102,6 @@ mason_lspconfig.setup_handlers({
       on_attach = null_ls,
     })
   end,
-
-  ["ts_ls"] = function()
-    lspconfig.ts_ls.setup({
-      on_attach = null_ls,
-    })
-  end,
-
 
   ["html"] = function()
     lspconfig.html.setup({

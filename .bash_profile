@@ -4,9 +4,14 @@ export PATH=$PATH:$(pwd):~/.local/bin:/usr/local/go/bin:~/.cargo/bin:/usr/lib/da
 export TESSDATA_PREFIX='/usr/local/share/tessdata'
 export GOPATH="$HOME/go"
 
-# sway
+# sway - to allow flameshot to work
+# https://github.com/flameshot-org/flameshot/blob/master/docs/Sway%20and%20wlroots%20support.md
 if [[ -n "$SWAYSOCK" ]] then
+  export SDL_VIDEODRIVER=wayland
+  export _JAVA_AWT_WM_NONREPARENTING=1
+  export QT_QPA_PLATFORM=wayland
   export XDG_CURRENT_DESKTOP=sway
+  export XDG_SESSION_DESKTOP=sway
 fi
 
 # If running from tty1 start sway

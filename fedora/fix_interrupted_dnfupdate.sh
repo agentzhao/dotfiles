@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# check duplicate packages
+# rpm -qa --qf '%{NAME}.%{ARCH}\n' | sort | uniq -d
+
 exec > /var/log/fix_updates 2>&1
 
 # Upgrade everything that can be safely upgraded

@@ -23,8 +23,8 @@ end
 local lssources = {
   -- formatting
   null_ls.builtins.formatting.prettier,
-  null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }), --python
-  null_ls.builtins.formatting.rustywind,                                 -- tailwindcss
+  -- null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }), --python
+  null_ls.builtins.formatting.rustywind,
 
   -- Completion
   null_ls.builtins.completion.luasnip,
@@ -46,9 +46,9 @@ local lssources = {
   -- null_ls.builtins.code_actions.eslint_d.with({
   --   condition = has_eslint,
   -- }),
-  require("none-ls.diagnostics.eslint_d"),
-  require("none-ls.formatting.eslint_d"),
-  require("none-ls.code_actions.eslint_d"),
+  -- require("none-ls.diagnostics.eslint_d"),
+  -- require("none-ls.formatting.eslint_d"),
+  -- require("none-ls.code_actions.eslint_d"),
   require("none-ls-shellcheck.diagnostics"),
   require("none-ls-shellcheck.code_actions"),
 }

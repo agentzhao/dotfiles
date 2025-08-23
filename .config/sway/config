@@ -67,6 +67,24 @@ bindsym $mod+shift+minus [floating workspace=__focused__] move scratchpad
 bindsym $mod+minus       [floating] scratchpad show
 bindsym Alt+Tab          [floating] scratchpad show
 
+## wl-mirror
+mode "present" {
+    # command starts mirroring
+    bindsym m mode "default"; exec wl-present mirror
+    # these commands modify an already running mirroring window
+    bindsym o mode "default"; exec wl-present set-output
+    bindsym r mode "default"; exec wl-present set-region
+    bindsym Shift+r mode "default"; exec wl-present unset-region
+    bindsym s mode "default"; exec wl-present set-scaling
+    bindsym f mode "default"; exec wl-present toggle-freeze
+    bindsym c mode "default"; exec wl-present custom
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+p mode "present"
+
 ### Output configuration
 # Monitor outputs: swaymsg -t get_outputs
 set $laptop eDP-1

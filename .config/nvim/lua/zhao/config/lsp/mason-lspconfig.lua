@@ -13,12 +13,14 @@ local servers = {
   "cssls",
   "dockerls",
   "gopls",
+  "harper_ls", -- grammer
   "html",
   "jsonls",
   "jdtls",
   "ts_ls",
   "lua_ls",
   "pyright",
+  "ruff",
   "rust_analyzer",
   "marksman", -- Markdown
   "tailwindcss",
@@ -28,24 +30,9 @@ local servers = {
   "yamlls",
 }
 
-local others = {
-  -- Debuggers
-  "codelldb",
-  "debugpy",
-  "go-debug-adaper",
-  "node-debug2-adapter",
-
-  -- Linters
-  "eslint_d",
-  "pylint",
-
-  -- Formatters
-  "black",
-  "prettier",
-  "shfmt",
-}
 
 mason_lspconfig.setup({
+  -- install servers and others
   ensure_installed = servers,
   automatic_installation = true,
 })
@@ -113,6 +100,27 @@ mason_lspconfig.setup_handlers({
   -- For example, a handler override for the `rust_analyzer`:
   ["rust_analyzer"] = function()
     require('rust-tools').setup(opts)
+  end,
+
+  ["ruff"] = function()
+    lspconfig["ruff"].setup {
+      capabilities = {
+        general = {
+          -- https://github.com/astral-sh/ruff/issues/14483#issuecomment-2526717736
+          positionEncodings = { "utf-16" }
+        },
+      }
+    }
+  end,
+
+  ["harper_ls"] = function()
+    lspconfig.harper_ls.setup({
+      settings = {
+        ["harper_ls"] = {
+          userDictPath = "~/dict.txt"
+        }
+      }
+    })
   end,
 
 

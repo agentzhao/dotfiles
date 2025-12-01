@@ -77,9 +77,25 @@ return {
   {
     "ggandor/leap.nvim", -- successor of lightspeed
     config = function()
-      require('leap').add_default_mappings()
-      -- Bidireectional search
-      -- require('leap').leap { target_windows = { vim.fn.win_getid() } }
+      vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
+      vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+
+      vim.keymap.set({ 'n', 'o' }, 'gs', function()
+        require('leap.remote').action {
+          -- Automatically enter Visual mode when coming from Normal.
+          input = vim.fn.mode(true):match('o') and '' or 'v'
+        }
+      end)
+      -- Forced linewise version (`gS{leap}jjy`):
+      vim.keymap.set({ 'n', 'o' }, 'gS', function()
+        require('leap.remote').action { input = 'V' }
+      end)
+
+      vim.keymap.set({ 'x', 'o' }, 'R', function()
+        require('leap.treesitter').select {
+          opts = require('leap.user').with_traversal_keys('R', 'r')
+        }
+      end)
     end,
   },
   {
@@ -219,13 +235,13 @@ return {
       "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
       { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
     },
-    lazy = false,
-    branch = "regexp", -- This is the regexp branch, use this for the new version
-    config = function()
-      require("venv-selector").setup()
-    end,
+    ft = "python",                   -- Load when opening Python files
     keys = {
-      { ",v", "<cmd>VenvSelect<cr>" },
+      { ",v", "<cmd>VenvSelect<cr>" }, -- Open picker on keymap
+    },
+    opts = {                         -- this can be an empty lua table - just showing below for clarity.
+      search = {},                   -- if you add your own searches, they go here.
+      options = {}                   -- if you add plugin options, they go here.
     },
   },
   -- latex

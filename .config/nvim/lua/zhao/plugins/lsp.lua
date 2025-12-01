@@ -22,10 +22,9 @@ return {
   "saadparwaiz1/cmp_luasnip",
   "ray-x/lsp_signature.nvim",
   {
-    "simrat39/rust-tools.nvim", --extra tools over rust_analyzer
-    config = function()
-      require("zhao.config.rust-tools")
-    end,
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    lazy = false,   -- This plugin is already lazy
   },
 
   {

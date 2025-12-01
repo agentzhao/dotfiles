@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 -- null-ls
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
@@ -101,12 +99,6 @@ capabilities.offsetEncoding = "utf-8"
 capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true
-}
-
--- dartls
-require('lspconfig')['dartls'].setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
 }
 
 vim.diagnostic.enable(bufnr)

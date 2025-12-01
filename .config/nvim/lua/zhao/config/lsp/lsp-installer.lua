@@ -114,16 +114,5 @@ lsp_installer.on_server_ready(function(server)
     opts.capabilities.offsetEncoding = { "utf-16" }
   end
 
-  if server.name == "rust_analyzer" then
-    local _, req_server = require("nvim-lsp-installer.servers").get_server(server.name)
-    opts.server = {
-      cmd = req_server._default_options.cmd,
-      on_attach = opts.on_attach,
-    }
-    require("rust-tools").setup(opts)
-  else
-    server:setup(opts)
-  end
-
   vim.cmd([[ do User LspAttachBuffers ]])
 end)
